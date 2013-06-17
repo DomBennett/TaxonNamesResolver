@@ -33,3 +33,10 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Misc.
+*~
+taxa.txt
+plants_bremen.txt
+testing/
+.Rhistory
