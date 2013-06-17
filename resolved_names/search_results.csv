@@ -1,0 +1,990 @@
+query_name,returned_name,use?,taxon_id,rank
+Anthus novaeseelandiae,Anthus,yes,36257,genus
+Orthonyx spaldingii,Orthonyx spaldingii,yes,38397,species
+Aplonis dichroa,Aplonis,no,245045,genus
+Megalurulus rubiginosus,no_record,no,no_record,no_record
+Melithreptus affinis,Melithreptus affinis,yes,863592,species
+Stresemannia bougainvillei,no_record,no,no_record,no_record
+Oriolus sagittatus,Oriolus sagittatus,yes,585470,species
+Pachycephala soror,Pachycephala soror,yes,156164,species
+Leptocoma sericea,Leptocoma sericea,yes,632601,species
+Monarcha everetti,Monarcha,no,175125,genus
+Scenopoeetes dentirostris,Scenopoeetes dentirostris,yes,34929,species
+Monarcha julianae,Monarcha,no,175125,genus
+Sericornis keri,Sericornis keri,yes,38398,species
+Myzomela vulnerata,Myzomela,no,108837,genus
+Myzomela eques,Myzomela eques,yes,108838,species
+Hemignathus kauaiensis,Hemignathus kauaiensis,yes,570635,species
+Melithreptus gularis,Melithreptus gularis,yes,863591,species
+Pachycephala simplex,Pachycephala simplex,yes,449370,species
+Zosterops kulambangrae,Zosterops kulambangrae,yes,589884,species
+Arses lorealis,Arses,no,338443,genus
+Corvus coronoides,Corvus coronoides,yes,108826,species
+Gerygone ruficollis,Gerygone ruficollis,yes,1158112,species
+Anthus australis,Anthus,no,36257,genus
+Zosterops rotensis,Zosterops rotensis,yes,135992,species
+Myzomela sanguinolenta,Myzomela sanguinolenta,yes,266325,species
+Malurus leucopterus,Malurus leucopterus,yes,228326,species
+Myzomela erythromelas,Myzomela,no,108837,genus
+Coracina papuensis,Coracina papuensis,yes,381022,species
+Pomarea mendozae,Pomarea mendozae,yes,237971,species
+Coracina boyeri,Coracina boyeri,yes,424853,species
+Myiagra pluto,Myiagra,no,107223,genus
+Oriolus melanotis,Oriolus melanotis,yes,890105,species
+Rhipidura spilodera,Rhipidura spilodera,yes,435711,species
+Myzomela blasii,Myzomela,no,108837,genus
+Pomatostomus ruficeps,Pomatostomus ruficeps,yes,9176,species
+Neochmia phaeton,Neochmia phaeton,yes,247736,species
+Dicaeum tristrami,Dicaeum tristrami,yes,667166,species
+Psophodes leucogaster,Psophodes,no,461241,genus
+Gerygone albofrontata,Gerygone,no,117202,genus
+Petrochelidon ariel,Petrochelidon,no,72883,genus
+Megalurus punctatus,Megalurus punctatus,yes,980226,species
+Poecilodryas brachyura,Poecilodryas,no,665155,genus
+Lonchura castaneothorax,Lonchura castaneothorax,yes,247806,species
+Ficedula bonthaina,Ficedula bonthaina,yes,393718,species
+Manorina flavigula,Manorina flavigula,yes,266316,species
+Telespiza cantans,Telespiza cantans,yes,74863,species
+Cettia annae,Cettia annae,yes,359651,species
+Dicaeum erythrothorax,Dicaeum,no,135426,genus
+Monarcha menckei,Monarcha,no,175125,genus
+Artamus insignis,Artamus,yes,585475,species
+Meliphaga gracilis,Meliphaga gracilis,yes,243057,species
+Melanocharis versteri,Melanocharis versteri,yes,254552,species
+Foulehaio carunculatus,Foulehaio,yes,266355,genus
+Corcorax melanorhamphos,Corcorax melanorhamphos,yes,9145,species
+Astrapia stephaniae,Astrapia stephaniae,yes,681187,species
+Conopophila whitei,Conopophila,no,266345,genus
+Coracina melas,Coracina,no,108824,genus
+Monarcha melanopsis,Monarcha melanopsis,yes,338456,species
+Strepera versicolor,Strepera versicolor,yes,1160849,species
+Myiagra atra,Myiagra,no,107223,genus
+Zosterops griseotinctus,Zosterops griseotinctus,yes,589881,species
+Petroica boodang,Petroica boodang,yes,665151,species
+Tephrozosterops stalkeri,no_record,no,no_record,no_record
+Coracina analis,Coracina analis,yes,424858,species
+Corvus kubaryi,Corvus kubaryi,yes,68294,species
+Gerygone mouki,Gerygone mouki,yes,117495,species
+Pyrrholaemus brunneus,Pyrrholaemus brunneus,yes,720589,species
+Clytorhynchus hamlini,Clytorhynchus hamlini,yes,338449,species
+Mino dumontii,Mino dumontii,yes,381027,species
+Monarcha castaneiventris,Monarcha castaneiventris,yes,338458,species
+Clytorhynchus pachycephaloides,Clytorhynchus pachycephaloides,yes,338450,species
+Arses kaupi,Arses,no,338443,genus
+Sericornis nouhuysi,Sericornis nouhuysi,yes,722684,species
+Phylloscopus sarasinorum,Phylloscopus sarasinorum,yes,287176,species
+Neochmia temporalis,Neochmia temporalis,yes,247735,species
+Meliphaga notata,Meliphaga notata,yes,390649,species
+Orthonyx novaeguineae,Orthonyx novaeguineae,yes,151709,species
+Melidectes leucostephes,Melidectes,no,43160,genus
+Glycifohia notabilis,no_record,no,no_record,no_record
+Zosterops xanthochroa,Zosterops,no,36298,genus
+Clytomyias insignis,Clytomyias insignis,yes,720581,species
+Coracina tenuirostris,Coracina tenuirostris,yes,381023,species
+Zosterops rennellianus,Zosterops rennellianus,yes,511766,species
+Astrapia mayeri,Astrapia mayeri,yes,681183,species
+Zosterops consobrinorum,Zosterops,no,36298,genus
+Sericulus bakeri,Sericulus bakeri,yes,507603,species
+Gerygone palpebrosa,Gerygone palpebrosa,yes,722654,species
+Pachycephala pectoralis,Pachycephala pectoralis,yes,46904,species
+Megalurulus llaneae,no_record,no,no_record,no_record
+Pitohui kirhocephalus,Pitohui kirhocephalus,yes,156167,species
+Zosterops samoensis,Zosterops,no,36298,genus
+Colluricincla woodwardi,Colluricincla woodwardi,yes,461217,species
+Paroreomyza montana,Paroreomyza montana,yes,64811,species
+Phylidonyris niger,Phylidonyris,no,266414,genus
+Manucodia ater,Manucodia ater,yes,254549,species
+Lichenostomus subfrenatus,Lichenostomus subfrenatus,yes,998107,species
+Arses insularis,Arses,no,338443,genus
+Philemon meyeri,Philemon meyeri,yes,266329,species
+Melipotes fumigatus,Melipotes fumigatus,yes,108834,species
+Eremiornis carteri,Eremiornis carteri,yes,979578,species
+Pachycephala lanioides,Pachycephala lanioides,yes,449383,species
+Cracticus nigrogularis,Cracticus nigrogularis,yes,459955,species
+Myadestes obscurus,Myadestes obscurus,yes,164888,species
+Ramsayornis fasciatus,Ramsayornis fasciatus,yes,266379,species
+Zoothera schistacea,Zoothera schistacea,yes,486376,species
+Peltops montanus,Peltops,no,626434,genus
+Zosterops novaeguineae,Zosterops,no,36298,genus
+Turdus poliocephalus,Turdus poliocephalus,yes,358072,species
+Pitta elegans,Pitta elegans,yes,397311,species
+Acrocephalus rehsei,Acrocephalus rehsei,yes,435334,species
+Monarcha boanensis,Monarcha,no,175125,genus
+Megalurus rufescens,Megalurus,no,69941,genus
+Monarcha guttulus,Monarcha,no,175125,genus
+Phylidonyris pyrrhopterus,Phylidonyris,no,266414,genus
+Coracina ingens,Coracina ingens,yes,880547,species
+Sericornis citreogularis,Sericornis citreogularis,yes,38399,species
+Acanthisitta chloris,Acanthisitta chloris,yes,57068,species
+Malurus pulcherrimus,Malurus pulcherrimus,yes,722681,species
+Astrapia splendidissima,Astrapia splendidissima,yes,681186,species
+Acrocephalus rimitarae,Acrocephalus rimitarae,yes,435341,species
+Coracina montana,Coracina montana,yes,424876,species
+Monarcha brehmii,Monarcha,no,175125,genus
+Ptiloris victoriae,Ptiloris victoriae,yes,681208,species
+Acanthiza ewingii,Acanthiza ewingii,yes,117186,species
+Melampitta lugubris,Melampitta lugubris,yes,254551,species
+Megazosterops palauensis,no_record,no,no_record,no_record
+Pachycephala johni,Pachycephala,yes,461221,species
+Ailuroedus crassirostris,Ailuroedus crassirostris,yes,34925,species
+Rhipidura leucothorax,Rhipidura leucothorax,yes,667190,species
+Lichenostomus melanops,Lichenostomus melanops,yes,722678,species
+Pachycephala griseonota,Pachycephala griseonota,yes,449379,species
+Lichmera squamata,Lichmera,no,266361,genus
+Parotia berlepschi,Parotia,no,39959,genus
+Pericrocotus lansbergei,Pericrocotus lansbergei,yes,424834,species
+Pycnopygius ixoides,Pycnopygius,no,266375,genus
+Pardalotus rubricatus,Pardalotus rubricatus,yes,722682,species
+Eopsaltria flaviventris,Eopsaltria,no,44317,genus
+Lichenostomus fasciogularis,Lichenostomus fasciogularis,yes,998100,species
+Pachycephala meyeri,Pachycephala,yes,461221,species
+Hemignathus ellisianus,Hemignathus,no,64797,genus
+Petroica macrocephala,Petroica macrocephala,yes,369484,species
+Oriolus szalayi,Oriolus szalayi,yes,890115,species
+Semioptera wallacii,Semioptera wallacii,yes,681210,species
+Malurus cyanocephalus,Malurus cyanocephalus,yes,1034728,species
+Grallina bruijni,Grallina,no,254540,genus
+Notiomystis cincta,Notiomystis cincta,yes,366454,species
+Ptiloprora plumbea,Ptiloprora plumbea,yes,9148,species
+Petroica phoenicea,Petroica phoenicea,yes,665152,species
+Manorina melanotis,Manorina,no,44313,genus
+Philemon moluccensis,Philemon,no,108843,genus
+Pachycephala phaionota,Pachycephala phaionota,yes,449362,species
+Myzomela pulchella,Myzomela,no,108837,genus
+Zosterops uropygialis,Zosterops,no,36298,genus
+Psophodes occidentalis,Psophodes,no,461241,genus
+Melidectes nouhuysi,Melidectes,no,43160,genus
+Oedistoma iliolophum,Oedistoma iliolophum,yes,175128,species
+Myzomela cineracea,Myzomela cineracea,yes,381034,species
+Hemignathus parvus,Hemignathus,no,64797,genus
+Paradisaea minor,Paradisaea minor,yes,39964,species
+Sericornis spilodera,Sericornis,no,27581,genus
+Hemignathus munroi,Hemignathus munroi,yes,64798,species
+Zosterops conspicillatus,Zosterops conspicillatus,yes,135980,species
+Petroica rodinogaster,Petroica rodinogaster,yes,665154,species
+Hemignathus flavus,Hemignathus flavus,yes,591142,species
+Melithreptus albogularis,Melithreptus albogularis,yes,266320,species
+Psophodes olivaceus,Psophodes olivaceus,yes,461246,species
+Zosterops explorator,Zosterops,no,36298,genus
+Dicaeum aureolimbatum,Dicaeum aureolimbatum,yes,632595,species
+Psophodes nigrogularis,Psophodes,no,461241,genus
+Paradisaea guilielmi,Paradisaea guilielmi,yes,681200,species
+Poecilodryas albonotata,Poecilodryas albonotata,yes,1080716,species
+Callaeas cinerea,Callaeas cinerea,yes,192207,species
+Malurus alboscapulatus,Malurus alboscapulatus,yes,925988,species
+Lalage tricolor,Lalage tricolor,yes,498423,species
+Poecilodryas cinereifrons,Poecilodryas,no,665155,genus
+Cyornis omissus,Cyornis,no,127912,genus
+Zoothera peronii,Zoothera peronii,yes,572149,species
+Toxorhamphus novaeguineae,Toxorhamphus novaeguineae,yes,175137,species
+Monarcha leucurus,Monarcha,no,175125,genus
+Melanocharis longicauda,Melanocharis,no,175123,genus
+Melidectes torquatus,Melidectes torquatus,yes,266318,species
+Philemon cockerelli,Philemon,no,108843,genus
+Pachycephala schlegelii,Pachycephala schlegelii,yes,156163,species
+Meliphaga analoga,Meliphaga analoga,yes,175007,species
+Corvus mellori,Corvus mellori,yes,1196299,species
+Amytornis merrotsyi,Amytornis merrotsyi,yes,555788,species
+Amytornis goyderi,Amytornis goyderi,yes,722645,species
+Chlamydera nuchalis,Chlamydera nuchalis,yes,34932,species
+Aplonis atrifusca,Aplonis,no,245045,genus
+Pachycephala arctitorquis,Pachycephala arctitorquis,yes,449380,species
+Archboldia papuensis,Archboldia papuensis,yes,34939,species
+Streptocitta albertinae,Streptocitta,no,451436,genus
+Coracina remota,Coracina remota,yes,880546,species
+Ifrita kowaldi,Ifrita kowaldi,yes,461245,species
+Lonchura monticola,Lonchura,no,40156,genus
+Neolalage banksiana,Neolalage banksiana,yes,338446,species
+Sericornis papuensis,Sericornis papuensis,yes,722685,species
+Monarcha erythrostictus,Monarcha,no,175125,genus
+Rhipidura drownei,Rhipidura,no,107227,genus
+Loxops coccineus,Loxops coccineus,yes,64804,species
+Paradisaea decora,Paradisaea decora,yes,681199,species
+Pachycephala caledonica,Pachycephala caledonica,yes,449373,species
+Stagonopleura bella,Stagonopleura,no,247739,genus
+Aplonis striata,Aplonis,no,245045,genus
+Eopsaltria australis,Eopsaltria australis,yes,44318,species
+Phylloscopus poliocephalus,Phylloscopus poliocephalus,yes,287173,species
+Gerygone levigaster,Gerygone levigaster,yes,722652,species
+Microeca griseoceps,Microeca griseoceps,yes,665146,species
+Acanthiza iredalei,Acanthiza iredalei,yes,117189,species
+Ptilorrhoa castanonota,Ptilorrhoa castanonota,yes,449385,species
+Zosterops murphyi,Zosterops murphyi,yes,589902,species
+Ailuroedus buccoides,Ailuroedus buccoides,yes,1055197,species
+Rukia longirostra,no_record,no,no_record,no_record
+Rhipidura tenebrosa,Rhipidura tenebrosa,yes,667194,species
+Lonchura pallida,Lonchura pallida,yes,267977,species
+Acrocephalus taiti,Acrocephalus taiti,yes,435342,species
+Pitohui ferrugineus,Pitohui ferrugineus,yes,461223,species
+Pitohui dichrous,Pitohui dichrous,yes,156166,species
+Stipiturus malachurus,Stipiturus malachurus,yes,342565,species
+Melanodryas vittata,Melanodryas vittata,yes,665144,species
+Anthus gutturalis,Anthus,no,36257,genus
+Lichenostomus cratitius,Lichenostomus cratitius,yes,998099,species
+Erythrura kleinschmidti,Erythrura,no,44315,genus
+Mayrornis schistaceus,Mayrornis,no,338451,genus
+Astrapia rothschildi,Astrapia rothschildi,yes,681185,species
+Pycnopygius cinereus,Pycnopygius cinereus,yes,266376,species
+Philemon argenticeps,Philemon argenticeps,yes,266326,species
+Philemon corniculatus,Philemon corniculatus,yes,108844,species
+Sipodotus wallacii,Sipodotus wallacii,yes,1034748,species
+Oriolus forsteni,Oriolus forsteni,yes,890058,species
+Lalage sueurii,Lalage sueurii,yes,424883,species
+Sericornis arfakianus,Sericornis,no,27581,genus
+Lichmera lombokia,Lichmera,no,266361,genus
+Zoothera heinei,Zoothera heinei,yes,311347,species
+Lichmera notabilis,Lichmera,no,266361,genus
+Pardalotus quadragintus,Pardalotus,yes,585477,species
+Stipiturus mallee,Stipiturus mallee,yes,266393,species
+Monarcha infelix,Monarcha,no,175125,genus
+Aplonis corvina,Aplonis,no,245045,genus
+Phylidonyris novaehollandiae,Phylidonyris novaehollandiae,yes,266418,species
+Lichenostomus unicolor,Lichenostomus unicolor,yes,722680,species
+Monarcha browni,Monarcha,no,175125,genus
+Zoothera erythronota,Zoothera erythronota,yes,486371,species
+Rhipidura dedemi,Rhipidura,no,107227,genus
+Pomarea dimidiata,Pomarea dimidiata,yes,237972,species
+Poephila cincta,Poephila cincta,yes,247741,species
+Myzomela nigrita,Myzomela,no,108837,genus
+Dasyornis longirostris,Dasyornis,no,243058,genus
+Paradisaea apoda,Paradisaea apoda,yes,681198,species
+Myzomela malaitae,Myzomela,no,108837,genus
+Anthochaera carunculata,Anthochaera carunculata,yes,266366,species
+Xanthotis flaviventer,Xanthotis flaviventer,yes,266389,species
+Lalage moesta,Lalage,no,254545,genus
+Paramythia montium,Paramythia montium,yes,254574,species
+Zosterops ugiensis,Zosterops ugiensis,yes,589908,species
+Taeniopygia bichenovii,Taeniopygia bichenovii,yes,247775,species
+Petroica rosea,Petroica rosea,yes,461222,species
+Myzomela boiei,Myzomela,no,108837,genus
+Vestiaria coccinea,Vestiaria coccinea,yes,64815,species
+Myiagra nana,Myiagra,no,107223,genus
+Machaerirhynchus nigripectus,Machaerirhynchus nigripectus,yes,1160894,species
+Dasyornis brachypterus,Dasyornis brachypterus,yes,722651,species
+Zosterops hypoxanthus,Zosterops,no,36298,genus
+Pachycephala rufiventris,Pachycephala rufiventris,yes,381037,species
+Amytornis textilis,Amytornis textilis,yes,722647,species
+Rhinomyias colonus,Rhinomyias,no,245064,genus
+Aplonis metallica,Aplonis metallica,yes,381019,species
+Lalage sharpei,Lalage sharpei,yes,880550,species
+Megalurulus mariei,no_record,no,no_record,no_record
+Poephila personata,Poephila personata,yes,522439,species
+Colluricincla megarhyncha,Colluricincla megarhyncha,yes,156160,species
+Lichenostomus flavus,Lichenostomus flavus,yes,266315,species
+Corvus tristis,Corvus tristis,yes,1196314,species
+Dicaeum nehrkorni,Dicaeum,no,135426,genus
+Ptiloris intercedens,Ptiloris intercedens,yes,681207,species
+Atrichornis rufescens,Atrichornis,no,449593,genus
+Zosterops cinereus,Zosterops,no,36298,genus
+Zosterops albogularis,Zosterops,no,36298,genus
+Pachycephalopsis hattamensis,Pachycephalopsis hattamensis,yes,449355,species
+Toxorhamphus poliopterus,Toxorhamphus poliopterus,yes,483554,species
+Lichenostomus obscurus,Lichenostomus obscurus,yes,998105,species
+Colluricincla tenebrosa,Colluricincla,no,156159,genus
+Drepanornis albertisi,Drepanornis,no,681189,genus
+Myiagra galeata,Myiagra,no,107223,genus
+Microeca flavovirescens,Microeca flavovirescens,yes,665159,species
+Chaetorhynchus papuensis,Chaetorhynchus papuensis,yes,254446,species
+Aplonis tabuensis,Aplonis tabuensis,yes,381106,species
+Cinnyris jugularis,Cinnyris,yes,570433,genus
+Eopsaltria griseogularis,Eopsaltria griseogularis,yes,665143,species
+Myiagra ruficollis,Myiagra,no,107223,genus
+Zosterops oleagineus,Zosterops oleagineus,yes,135990,species
+Moho bishopi,Moho bishopi,yes,572099,species
+Myzomela jugularis,Myzomela,no,108837,genus
+Philemon buceroides,Philemon buceroides,yes,266327,species
+Drymodes superciliaris,Drymodes superciliaris,yes,1080357,species
+Lonchura montana,Lonchura,no,40156,genus
+Meliphaga montana,Meliphaga montana,yes,390644,species
+Lonchura hunsteini,Lonchura,no,40156,genus
+Peneothello bimaculata,Peneothello bimaculata,yes,254640,species
+Poecilodryas albispecularis,Poecilodryas albispecularis,yes,38565,species
+Artamus maximus,Artamus maximus,yes,1160893,species
+Ptiloprora guisei,Ptiloprora guisei,yes,266330,species
+Thapsinillas affinis,no_record,no,no_record,no_record
+Tesia everetti,Tesia everetti,yes,1126074,species
+Lichmera indistincta,Lichmera indistincta,yes,266363,species
+Pachycare flavogriseum,Pachycare flavogriseum,yes,692111,species
+Lichmera alboauricularis,Lichmera alboauricularis,yes,266362,species
+Woodfordia lacertosa,Woodfordia,no,141188,genus
+Philemon albitorques,Philemon,no,108843,genus
+Lichmera argentauris,Lichmera,no,266361,genus
+Tregellasia capito,Tregellasia capito,yes,665158,species
+Rhipidura phasiana,Rhipidura phasiana,yes,667192,species
+Mohoua albicilla,Mohoua albicilla,yes,626427,species
+Malurus lamberti,Malurus lamberti,yes,228352,species
+Myzomela eichhorni,Myzomela,no,108837,genus
+Myzomela sclateri,Myzomela,no,108837,genus
+Chasiempis sandwichensis,Chasiempis sandwichensis,yes,291285,species
+Coracina caeruleogrisea,Coracina caeruleogrisea,yes,424849,species
+Cisticola exilis,Cisticola,yes,52621,genus
+Acanthorhynchus superciliosus,Acanthorhynchus superciliosus,yes,266335,species
+Heinrichia calligyna,Heinrichia calligyna,yes,758443,species
+Poephila acuticauda,Poephila acuticauda,yes,259256,species
+Acanthiza chrysorrhoa,Acanthiza chrysorrhoa,yes,108821,species
+Melidectes fuscus,Melidectes,no,43160,genus
+Pomarea nigra,Pomarea nigra,yes,237978,species
+Philemon diemenensis,Philemon,no,108843,genus
+Prosthemadera novaeseelandiae,Prosthemadera novaeseelandiae,yes,266374,species
+Cracticus quoyi,Cracticus quoyi,yes,254525,species
+Monarcha rubiensis,Monarcha rubiensis,yes,338470,species
+Malurus campbelli,Malurus campbelli,yes,1034722,species
+Parotia helenae,Parotia helenae,yes,681202,species
+Lichenostomus flavescens,Lichenostomus flavescens,yes,670926,species
+Eulacestoma nigropectus,Eulacestoma nigropectus,yes,461239,species
+Timeliopsis fallax,Timeliopsis,no,266381,genus
+Corvus florensis,Corvus florensis,yes,1196286,species
+Menura alberti,Menura alberti,yes,1094189,species
+Zosterops finschii,Zosterops,no,36298,genus
+Pomatostomus halli,Pomatostomus halli,yes,9180,species
+Myzomela lafargei,Myzomela lafargei,yes,381035,species
+Cnemophilus loriae,Cnemophilus loriae,yes,254448,species
+Gerygone cinerea,Gerygone cinerea,yes,1158111,species
+Campochaera sloetii,Campochaera sloetii,yes,498412,species
+Cleptornis marchei,Cleptornis marchei,yes,43157,species
+Pitta dohertyi,Pitta,no,9162,genus
+Monarcha pileatus,Monarcha,no,175125,genus
+Pitta superba,Pitta superba,yes,397299,species
+Loxioides bailleui,Loxioides bailleui,yes,286692,species
+Philemon brassi,Philemon,no,108843,genus
+Cincloramphus cruralis,Cincloramphus cruralis,yes,979576,species
+Acanthiza pusilla,Acanthiza pusilla,yes,117193,species
+Astrapia nigra,Astrapia nigra,yes,681184,species
+Zosterops grayi,Zosterops,no,36298,genus
+Myzomela adolphinae,Myzomela,no,108837,genus
+Cracticus torquatus,Cracticus torquatus,yes,1120791,species
+Ptiloprora mayri,Ptiloprora,no,9147,genus
+Rhipidura albolimbata,Rhipidura albolimbata,yes,667181,species
+Arses telescopthalmus,Arses telescopthalmus,yes,338444,species
+Cheramoeca leucosterna,Cheramoeca,yes,317114,genus
+Epimachus fastuosus,Epimachus fastuosus,yes,28714,species
+Gymnomyza aubryana,Gymnomyza,no,572100,genus
+Rhipidura fuliginosa,Rhipidura fuliginosa,yes,381039,species
+Melidectes rufocrissalis,Melidectes,no,43160,genus
+Coracina dispar,Coracina dispar,yes,424869,species
+Acanthiza murina,Acanthiza murina,yes,117493,species
+Aplonis pelzelni,Aplonis pelzelni,yes,451391,species
+Myiagra alecto,Myiagra alecto,yes,338447,species
+Pomarea iphis,Pomarea iphis,yes,121425,species
+Rhipidura lepida,Rhipidura,no,107227,genus
+Melanocharis striativentris,Melanocharis,no,175123,genus
+Gerygone dorsalis,Gerygone,no,117202,genus
+Pachycephalopsis poliosoma,Pachycephalopsis poliosoma,yes,254571,species
+Cinnyris solaris,Cinnyris,no,570433,genus
+Coracina insperata,Coracina,no,108824,genus
+Ficedula harterti,Ficedula harterti,yes,393715,species
+Stagonopleura oculata,Stagonopleura,no,247739,genus
+Rhipidura rufiventris,Rhipidura rufiventris,yes,381043,species
+Pitta iris,Pitta iris,yes,363774,species
+Bradypterus timorensis,Bradypterus,no,203786,genus
+Aplonis insularis,Aplonis insularis,yes,451389,species
+Oreomystis bairdi,Oreomystis bairdi,yes,64806,species
+Myzomela rosenbergii,Myzomela rosenbergii,yes,266324,species
+Artamus cinereus,Artamus cinereus,yes,335548,species
+Malurus grayi,Malurus grayi,yes,1034723,species
+Chlamydera guttata,Chlamydera guttata,yes,1055202,species
+Amytornis housei,Amytornis housei,yes,556927,species
+Rhipidura rufidorsa,Rhipidura rufidorsa,yes,381042,species
+Rhipidura albiscapa,Rhipidura albiscapa,yes,315356,species
+Philemon subcorniculatus,Philemon,no,108843,genus
+Melanocharis nigra,Melanocharis nigra,yes,175124,species
+Artamus mentalis,Artamus,yes,585475,species
+Zosterops sanctaecrucis,Zosterops,no,36298,genus
+Philemon citreogularis,Philemon citreogularis,yes,266328,species
+Pteridophora alberti,Pteridophora alberti,yes,681206,species
+Anthochaera chrysoptera,Anthochaera chrysoptera,yes,266367,species
+Myiagra fulviventris,Myiagra,no,107223,genus
+Zosterops atrifrons,Zosterops atrifrons,yes,589875,species
+Coracina holopolia,Coracina holopolia,yes,381021,species
+Cettia ruficapilla,Cettia ruficapilla,yes,359650,species
+Certhionyx variegatus,Certhionyx variegatus,yes,266344,species
+Androphobus viridis,Androphobus viridis,yes,977957,species
+Pachycephala rufogularis,Pachycephala,yes,461221,species
+Amalocichla sclateriana,Amalocichla sclateriana,yes,692107,species
+Rhipidura fuscorufa,Rhipidura fuscorufa,yes,667189,species
+Myiagra vanikorensis,Myiagra,no,107223,genus
+Pachycephala lorentzi,Pachycephala lorentzi,yes,449372,species
+Zosterops inornatus,Zosterops inornatus,yes,589882,species
+Heteromunia pectoralis,Heteromunia pectoralis,yes,247810,species
+Cormobates placens,Cormobates placens,yes,181835,species
+Rhipidura nebulosa,Rhipidura,no,107227,genus
+Monarcha axillaris,Monarcha axillaris,yes,175126,species
+Crateroscelis nigrorufa,Crateroscelis,no,692108,genus
+Coracina schisticeps,Coracina,no,108824,genus
+Sphecotheres viridis,Sphecotheres,no,254660,genus
+Amytornis barbatus,Amytornis barbatus,yes,722644,species
+Sericornis perspicillatus,Sericornis perspicillatus,yes,266333,species
+Amytornis striatus,Amytornis striatus,yes,266391,species
+Turnagra capensis,Turnagra capensis,yes,46906,species
+Eumyias panayensis,Eumyias panayensis,yes,573048,species
+Basilornis galeatus,Basilornis,no,451429,genus
+Ptiloris magnificus,Ptiloris magnificus,yes,181836,species
+Epimachus meyeri,Epimachus meyeri,yes,36260,species
+Dicaeum geelvinkianum,Dicaeum geelvinkianum,yes,667155,species
+Zosterops luteus,Zosterops luteus,yes,589900,species
+Lalage atrovirens,Lalage atrovirens,yes,880549,species
+Xanthotis provocator,Xanthotis,no,266388,genus
+Paradigalla brevicauda,Paradigalla brevicauda,yes,681195,species
+Lonchura vana,Lonchura,no,40156,genus
+Myzomela melanocephala,Myzomela,no,108837,genus
+Coracina ceramensis,Coracina ceramensis,yes,424872,species
+Psophodes cristatus,Psophodes,no,461241,genus
+Moho braccatus,Moho braccatus,yes,572106,species
+Sericulus aureus,Sericulus aureus,yes,507602,species
+Petroica australis,Petroica australis,yes,256038,species
+Coracina monacha,Coracina,no,108824,genus
+Poecilodryas cerviniventris,Poecilodryas cerviniventris,yes,665156,species
+Trichodere cockerelli,Trichodere cockerelli,yes,266385,species
+Lichenostomus keartlandi,Lichenostomus keartlandi,yes,998104,species
+Zosterops atriceps,Zosterops,no,36298,genus
+Scissirostrum dubium,Scissirostrum dubium,yes,241745,species
+Zosterops fuscicapilla,Zosterops fuscicapilla,yes,589880,species
+Smicrornis brevirostris,Smicrornis brevirostris,yes,117206,species
+Epthianura aurifrons,Epthianura aurifrons,yes,266352,species
+Acrocephalus vaughani,Acrocephalus vaughani,yes,126876,species
+Stipiturus ruficeps,Stipiturus ruficeps,yes,466208,species
+Melidectes belfordi,Melidectes belfordi,yes,43161,species
+Amytornis dorotheae,Amytornis dorotheae,yes,912965,species
+Glycifohia undulata,no_record,no,no_record,no_record
+Gerygone igata,Gerygone igata,yes,874461,species
+Myiagra azureocapilla,Myiagra,no,107223,genus
+Diphyllodes respublica,Diphyllodes respublica,yes,36259,species
+Meliphaga albilineata,Meliphaga albilineata,yes,390652,species
+Microeca flavigaster,Microeca flavigaster,yes,665145,species
+Lonchura tristissima,Lonchura,no,40156,genus
+Pachycephala flavifrons,Pachycephala,yes,461221,species
+Clytorhynchus vitiensis,Clytorhynchus,no,338448,genus
+Myiagra rubecula,Myiagra rubecula,yes,381033,species
+Himatione sanguinea,Himatione sanguinea,yes,64801,species
+Malurus coronatus,Malurus coronatus,yes,481900,species
+Loboparadisea sericea,Loboparadisea sericea,yes,108828,species
+Struthidea cinerea,Struthidea cinerea,yes,181839,species
+Cormobates leucophaea,Cormobates,no,181834,genus
+Myzomela wakoloensis,Myzomela,no,108837,genus
+Artamus personatus,Artamus personatus,yes,335546,species
+Falcunculus frontatus,Falcunculus frontatus,yes,254539,species
+Calamanthus pyrrhopygius,Calamanthus pyrrhopygius,yes,720583,species
+Gerygone modesta,Gerygone modesta,yes,1158115,species
+Ptiloprora perstriata,Ptiloprora,no,9147,genus
+Myzomela erythrocephala,Myzomela erythrocephala,yes,266322,species
+Oreostruthus fuliginosus,no_record,no,no_record,no_record
+Erythrura trichroa,Erythrura trichroa,yes,247731,species
+Peltops blainvillii,Peltops blainvillii,yes,626435,species
+Lichenostomus reticulatus,Lichenostomus,no,43158,genus
+Basilornis corythaix,Basilornis,no,451429,genus
+Myiagra caledonica,Myiagra caledonica,yes,107224,species
+Rhipidura rennelliana,Rhipidura rennelliana,yes,381041,species
+Melidectes ochromelas,Melidectes ochromelas,yes,266317,species
+Monarcha takatsukasae,Monarcha takatsukasae,yes,338465,species
+Meliphaga lewinii,Meliphaga lewinii,yes,390651,species
+Melamprosops phaeosoma,Melamprosops phaeosoma,yes,385245,species
+Zosterops hypolais,Zosterops hypolais,yes,135982,species
+Rhipidura matthiae,Rhipidura,no,107227,genus
+Zosterops buruensis,Zosterops,no,36298,genus
+Amblyornis macgregoriae,Amblyornis macgregoriae,yes,9166,species
+Amblyornis flavifrons,Amblyornis,no,9165,genus
+Myzomela albigula,Myzomela,no,108837,genus
+Xanthotis macleayanus,Xanthotis,no,266388,genus
+Coracina bicolor,Coracina bicolor,yes,424852,species
+Zosterops minor,Zosterops,no,36298,genus
+Lonchura nevermanni,Lonchura,no,40156,genus
+Myzomela chermesina,Myzomela,no,108837,genus
+Sphecotheres hypoleucus,Sphecotheres,no,254660,genus
+Monarcha mundus,Monarcha mundus,yes,338469,species
+Lalage aurea,Lalage,no,254545,genus
+Acanthornis magna,Acanthornis magna,yes,720576,species
+Sericulus ardens,Sericulus ardens,yes,507604,species
+Rhipidura superflua,Rhipidura,no,107227,genus
+Crateroscelis murina,Crateroscelis,no,692108,genus
+Madanga ruficollis,no_record,no,no_record,no_record
+Ficedula timorensis,Ficedula timorensis,yes,393724,species
+Myadestes palmeri,Myadestes,no,123380,genus
+Rhipidura personata,Rhipidura,no,107227,genus
+Ptiloprora meekiana,Ptiloprora,no,9147,genus
+Lichenostomus leucotis,Lichenostomus leucotis,yes,722677,species
+Rhipidura leucophrys,Rhipidura leucophrys,yes,512576,species
+Timeliopsis fulvigula,Timeliopsis fulvigula,yes,266382,species
+Paradisaea raggiana,Paradisaea raggiana,yes,36268,species
+Orthonyx temminckii,Orthonyx temminckii,yes,151708,species
+Climacteris erythrops,Climacteris erythrops,yes,254447,species
+Manorina melanocephala,Manorina melanocephala,yes,44314,species
+Parotia carolae,Parotia carolae,yes,681201,species
+Saxicola gutturalis,Saxicola gutturalis,yes,517772,species
+Seleucidis melanoleucus,Seleucidis melanoleucus,yes,36265,species
+Coracina salomonis,Coracina salomonis,yes,880548,species
+Megalurus macrurus,Megalurus,no,69941,genus
+Gerygone olivacea,Gerygone olivacea,yes,117496,species
+Lichenostomus ornatus,Lichenostomus ornatus,yes,722679,species
+Colluricincla boweri,Colluricincla boweri,yes,675632,species
+Pomatostomus superciliosus,Pomatostomus superciliosus,yes,9177,species
+Palmeria dolei,Palmeria dolei,yes,64809,species
+Lichenostomus frenatus,Lichenostomus frenatus,yes,998102,species
+Meliphaga vicina,Meliphaga,no,108831,genus
+Lycocorax pyrrhopterus,Lycocorax pyrrhopterus,yes,681192,species
+Pardalotus striatus,Pardalotus striatus,yes,108840,species
+Pitta vigorsii,Pitta,no,9162,genus
+Myzomela tristrami,Myzomela,no,108837,genus
+Malurus melanocephalus,Malurus melanocephalus,yes,175006,species
+Erythrura hyperythra,Erythrura hyperythra,yes,414897,species
+Philemon inornatus,Philemon,no,108843,genus
+Acrocephalus syrinx,Acrocephalus syrinx,yes,435333,species
+Lalage leucomela,Lalage leucomela,yes,254546,species
+Dicrurus bracteatus,Dicrurus bracteatus,yes,424881,species
+Manucodia jobiensis,Manucodia jobiensis,yes,681193,species
+Megalurulus whitneyi,no_record,no,no_record,no_record
+Ptilorrhoa leucosticta,Ptilorrhoa leucosticta,yes,449384,species
+Ficedula henrici,Ficedula,no,36292,genus
+Parotia wahnesi,Parotia wahnesi,yes,681204,species
+Aplonis crassa,Aplonis,no,245045,genus
+Coracina nesiotis,Coracina,no,108824,genus
+Oreomystis mana,Oreomystis mana,yes,64807,species
+Xenicus gilviventris,no_record,no,no_record,no_record
+Zosterops nehrkorni,Zosterops,no,36298,genus
+Taeniopygia guttata,Taeniopygia guttata,yes,59729,species
+Artamus superciliosus,Artamus superciliosus,yes,335547,species
+Philemon kisserensis,Philemon,no,108843,genus
+Coracina longicauda,Coracina longicauda,yes,424855,species
+Aphelocephala nigricincta,Aphelocephala nigricincta,yes,722648,species
+Petroica archboldi,Petroica,no,228563,genus
+Corvus moneduloides,Corvus moneduloides,yes,1196302,species
+Coracina incerta,Coracina incerta,yes,424873,species
+Myzomela cardinalis,Myzomela cardinalis,yes,265620,species
+Poecilodryas superciliosa,Poecilodryas superciliosa,yes,665157,species
+Acanthiza robustirostris,Acanthiza robustirostris,yes,117197,species
+Menura novaehollandiae,Menura novaehollandiae,yes,47692,species
+Pyrrholaemus sagittatus,Pyrrholaemus sagittatus,yes,720578,species
+Hirundo neoxena,Hirundo neoxena,yes,317132,species
+Monarcha godeffroyi,Monarcha,no,175125,genus
+Eugerygone rubra,Eugerygone rubra,yes,254536,species
+Heleia crassirostris,Heleia crassirostris,yes,634299,species
+Myzomela rubratra,Myzomela rubratra,yes,135975,species
+Acrocephalus atyphus,Acrocephalus atyphus,yes,435339,species
+Lonchura grandis,Lonchura,no,40156,genus
+Pitohui incertus,Pitohui incertus,yes,461224,species
+Meliphaga mimikae,Meliphaga mimikae,yes,390645,species
+Gerygone tenebrosa,Gerygone tenebrosa,yes,1158113,species
+Myiagra cyanoleuca,Myiagra cyanoleuca,yes,107231,species
+Myiagra freycineti,Myiagra,no,107223,genus
+Rukia ruki,no_record,no,no_record,no_record
+Coracina atriceps,Coracina atriceps,yes,424846,species
+Aplonis feadensis,Aplonis,no,245045,genus
+Cinclosoma ajax,Cinclosoma ajax,yes,1110501,species
+Malurus amabilis,Malurus amabilis,yes,165193,species
+Myiagra hebetior,Myiagra hebetior,yes,381031,species
+Lophozosterops squamiceps,Lophozosterops squamiceps,yes,589844,species
+Acridotheres cinereus,Acridotheres cinereus,yes,513299,species
+Clytorhynchus nigrogularis,Clytorhynchus,no,338448,genus
+Drymodes brunneopygia,Drymodes brunneopygia,yes,626378,species
+Gymnomyza viridis,Gymnomyza,no,572100,genus
+Guadalcanaria inexpectata,no_record,no,no_record,no_record
+Acrocephalus kerearako,Acrocephalus kerearako,yes,435340,species
+Anthochaera paradoxa,Anthochaera paradoxa,yes,266369,species
+Zosterops metcalfii,Zosterops metcalfii,yes,589901,species
+Climacteris picumnus,Climacteris picumnus,yes,175000,species
+Pachycephala sulfuriventer,Pachycephala sulfuriventer,yes,449366,species
+Oriolus flavocinctus,Oriolus flavocinctus,yes,449354,species
+Oriolus phaeochromus,Oriolus phaeochromus,yes,890113,species
+Monarcha barbatus,Monarcha barbatus,yes,338461,species
+Petroica traversi,Petroica traversi,yes,228564,species
+Cracticus mentalis,Cracticus mentalis,yes,1120785,species
+Calamanthus montanellus,Calamanthus,no,720582,genus
+Parotia sefilata,Parotia sefilata,yes,681203,species
+Cincloramphus mathewsi,Cincloramphus mathewsi,yes,237418,species
+Zoothera talaseae,Zoothera talaseae,yes,311346,species
+Emblema pictum,Emblema pictum,yes,247745,species
+Peneothello cyanus,Peneothello cyanus,yes,665149,species
+Zoothera margaretae,Zoothera,yes,1200834,species
+Hylocitrea bonensis,Hylocitrea bonensis,yes,498422,species
+Lonchura fuscata,Lonchura,no,40156,genus
+Mirafra javanica,Mirafra javanica,yes,215312,species
+Pycnoptilus floccosus,Pycnoptilus floccosus,yes,720588,species
+Pycnopygius stictocephalus,Pycnopygius stictocephalus,yes,266377,species
+Lalage leucopygialis,Lalage leucopygialis,yes,498425,species
+Myza celebensis,no_record,no,no_record,no_record
+Phylloscopus presbytes,Phylloscopus presbytes,yes,287175,species
+Zosterops stresemanni,Zosterops stresemanni,yes,589907,species
+Melidectes whitemanensis,Melidectes,no,43160,genus
+Myadestes myadestinus,Myadestes,no,123380,genus
+Paroreomyza maculata,Paroreomyza,no,64810,genus
+Pomatostomus temporalis,Pomatostomus temporalis,yes,9178,species
+Petroica multicolor,Petroica multicolor,yes,369483,species
+Pachycephala implicata,Pachycephala,yes,461221,species
+Phylidonyris albifrons,Phylidonyris albifrons,yes,266415,species
+Heleia muelleri,Heleia,no,634298,genus
+Zosterops wallacei,Zosterops wallacei,yes,589911,species
+Basilornis celebensis,Basilornis celebensis,yes,451430,species
+Pomarea whitneyi,Pomarea whitneyi,yes,237977,species
+Lichenostomus versicolor,Lichenostomus versicolor,yes,998108,species
+Pachycephala orpheus,Pachycephala,yes,461221,species
+Coracina leucopygia,Coracina leucopygia,yes,424854,species
+Lonchura leucosticta,Lonchura,no,40156,genus
+Myiagra erythrops,Myiagra,no,107223,genus
+Timeliopsis griseigula,Timeliopsis griseigula,yes,266383,species
+Origma solitaria,Origma solitaria,yes,720586,species
+Zoothera mendeni,Zoothera,yes,1200834,species
+Rhinomyias additus,Rhinomyias additus,yes,869924,species
+Zoothera dumasi,Zoothera,yes,1200834,species
+Rhipidura malaitae,Rhipidura,no,107227,genus
+Erythrura tricolor,Erythrura tricolor,yes,522418,species
+Sericornis frontalis,Sericornis frontalis,yes,108847,species
+Pachycephala macrorhyncha,Pachycephala macrorhyncha,yes,521089,species
+Lichmera deningeri,Lichmera,no,266361,genus
+Melidectes foersteri,Melidectes,no,43160,genus
+Rhagologus leucostigma,Rhagologus leucostigma,yes,156170,species
+Crateroscelis robusta,Crateroscelis robusta,yes,692109,species
+Phylloscopus amoenus,Phylloscopus amoenus,yes,322142,species
+Dasyornis broadbenti,Dasyornis broadbenti,yes,243059,species
+Artamus monachus,Artamus,yes,585475,species
+Myiagra inquieta,Myiagra inquieta,yes,381032,species
+Pachycephala orioloides,Pachycephala orioloides,yes,521084,species
+Artamus cyanopterus,Artamus cyanopterus,yes,254442,species
+Peneothello sigillata,Peneothello sigillata,yes,665150,species
+Colluricincla harmonica,Colluricincla harmonica,yes,254449,species
+Conopophila rufogularis,Conopophila rufogularis,yes,266347,species
+Dicaeum eximium,Dicaeum eximium,yes,667154,species
+Myzomela obscura,Myzomela obscura,yes,266323,species
+Oedistoma pygmaeum,Oedistoma pygmaeum,yes,483553,species
+Cyornis djampeanus,Cyornis,no,127912,genus
+Mayrornis lessoni,Mayrornis lessoni,yes,338452,species
+Colluricincla umbrina,Colluricincla,no,156159,genus
+Pachycephala monacha,Pachycephala,yes,461221,species
+Urosphena subulata,Urosphena,yes,260107,genus
+Sericornis magnirostra,Sericornis,no,27581,genus
+Erythrura cyaneovirens,Erythrura,no,44315,genus
+Rhipidura maculipectus,Rhipidura,no,107227,genus
+Daphoenositta miranda,Daphoenositta,no,254527,genus
+Rhipidura brachyrhyncha,Rhipidura brachyrhyncha,yes,667184,species
+Lonchura stygia,Lonchura,no,40156,genus
+Philemon novaeguineae,Philemon,no,108843,genus
+Sericornis rufescens,Sericornis,no,27581,genus
+Cinclosoma castanotum,Cinclosoma castanotum,yes,1110500,species
+Zosterops mysorensis,Zosterops,no,36298,genus
+Machaerirhynchus flaviventer,Machaerirhynchus flaviventer,yes,338559,species
+Megalurus albolimbatus,Megalurus,no,69941,genus
+Paradisaea rudolphi,Paradisaea rudolphi,yes,36267,species
+Melipotes ater,Melipotes,no,108833,genus
+Zosterops splendidus,Zosterops splendidus,yes,589906,species
+Amytornis purnelli,Amytornis purnelli,yes,722646,species
+Woodfordia superciliosa,Woodfordia superciliosa,yes,589863,species
+Grallina cyanoleuca,Grallina cyanoleuca,yes,254541,species
+Coracina parvula,Coracina,no,108824,genus
+Pitta erythrogaster,Pitta erythrogaster,yes,363773,species
+Acanthagenys rufogularis,Acanthagenys rufogularis,yes,266413,species
+Acrocephalus caffer,Acrocephalus caffer,yes,435337,species
+Pitta sordida,Pitta sordida,yes,9163,species
+Macgregoria pulchra,Macgregoria pulchra,yes,108830,species
+Zosterops stalkeri,Zosterops,no,36298,genus
+Cracticus cassicus,Cracticus,no,254524,genus
+Epthianura albifrons,Epthianura albifrons,yes,266351,species
+Tregellasia leucops,Tregellasia leucops,yes,175139,species
+Amblyornis inornata,Amblyornis,no,9165,genus
+Philesturnus carunculatus,Philesturnus carunculatus,yes,192213,species
+Pachycephala mentalis,Pachycephala,yes,461221,species
+Conopophila albogularis,Conopophila albogularis,yes,266346,species
+Geomalia heinrichi,no_record,no,no_record,no_record
+Lophozosterops pinaiae,Lophozosterops,no,589842,genus
+Manucodia comrii,Manucodia comrii,yes,36261,species
+Coracina fortis,Coracina,no,108824,genus
+Meliphaga albonotata,Meliphaga albonotata,yes,266319,species
+Peneothello cryptoleuca,Peneothello,no,254639,genus
+Aethopyga duyvenbodei,Aethopyga duyvenbodei,yes,667140,species
+Entomyzon cyanotis,Entomyzon cyanotis,yes,266349,species
+Lichenostomus flavicollis,Lichenostomus flavicollis,yes,998101,species
+Phylloscopus makirensis,Phylloscopus,no,9181,genus
+Amytornis ballarae,Amytornis ballarae,yes,722641,species
+Aplonis fusca,Aplonis,no,245045,genus
+Glyciphila melanops,Glyciphila melanops,yes,1156028,species
+Pachycephala citreogaster,Pachycephala citreogaster,yes,521068,species
+Corvus typicus,Corvus typicus,yes,1196315,species
+Monarcha leucotis,Monarcha leucotis,yes,338472,species
+Lonchura teerinki,Lonchura,no,40156,genus
+Corvus hawaiiensis,Corvus hawaiiensis,yes,134902,species
+Coracornis raveni,Coracornis raveni,yes,498420,species
+Rhipidura dryas,Rhipidura dryas,yes,667188,species
+Lichenostomus chrysops,Lichenostomus chrysops,yes,998093,species
+Corvus tasmanicus,Corvus tasmanicus,yes,1196310,species
+Neochmia ruficauda,Neochmia ruficauda,yes,247737,species
+Gerygone chrysogaster,Gerygone chrysogaster,yes,266332,species
+Meliphaga aruensis,Meliphaga aruensis,yes,390647,species
+Mayrornis versicolor,Mayrornis,no,338451,genus
+Oreocharis arfaki,Oreocharis arfaki,yes,979223,species
+Prionodura newtoniana,Prionodura newtoniana,yes,34935,species
+Lonchura melaena,Lonchura,no,40156,genus
+Corvus unicolor,Corvus unicolor,yes,1196317,species
+Corvus woodfordi,Corvus woodfordi,yes,1196320,species
+Rhinomyias oscillans,Rhinomyias,no,245064,genus
+Cettia parens,Cettia parens,yes,359649,species
+Lalage leucopyga,Lalage leucopyga,yes,498424,species
+Lophozosterops superciliaris,Lophozosterops superciliaris,yes,589845,species
+Poecilodryas placens,Poecilodryas placens,yes,1080718,species
+Monarcha bimaculatus,Monarcha,no,175125,genus
+Monarcha sacerdotum,Monarcha,no,175125,genus
+Zosterops vellalavella,Zosterops vellalavella,yes,589909,species
+Dicaeum maugei,Dicaeum,no,135426,genus
+Erythrura gouldiae,Erythrura gouldiae,yes,44316,species
+Melilestes megarhynchus,Melilestes megarhynchus,yes,266365,species
+Rhipidura threnothorax,Rhipidura threnothorax,yes,381044,species
+Oreornis chrysogenys,no_record,no,no_record,no_record
+Pitohui cristatus,Pitohui cristatus,yes,254643,species
+Oreoica gutturalis,Oreoica gutturalis,yes,254566,species
+Monarcha cinerascens,Monarcha cinerascens,yes,338463,species
+Daphoenositta papuensis,Daphoenositta,no,254527,genus
+Parotia lawesii,Parotia lawesii,yes,39961,species
+Meliphaga orientalis,Meliphaga orientalis,yes,390646,species
+Sericulus chrysocephalus,Sericulus chrysocephalus,yes,34937,species
+Hemignathus virens,Hemignathus virens,yes,64799,species
+Pachycephala olivacea,Pachycephala olivacea,yes,449356,species
+Gerygone inornata,Gerygone inornata,yes,1158116,species
+Monarcha frater,Monarcha frater,yes,338455,species
+Monarcha richardsii,Monarcha richardsii,yes,381028,species
+Melanodryas cucullata,Melanodryas cucullata,yes,254554,species
+Dicaeum nitidum,Dicaeum,no,135426,genus
+Climacteris affinis,Climacteris,no,47694,genus
+Zosterops citrinella,Zosterops,no,36298,genus
+Dicaeum pectorale,Dicaeum pectorale,yes,381025,species
+Dicrurus montanus,Dicrurus,no,107204,genus
+Melithreptus lunatus,Melithreptus lunatus,yes,108836,species
+Philemon fuscicapillus,Philemon,no,108843,genus
+Aleadryas rufinucha,Aleadryas rufinucha,yes,461220,species
+Zosterops strenuus,Zosterops,no,36298,genus
+Ramsayornis modestus,Ramsayornis modestus,yes,266380,species
+Aplonis mystacea,Aplonis,no,245045,genus
+Certhionyx niger,Certhionyx niger,yes,266342,species
+Ptiloris paradiseus,Ptiloris paradiseus,yes,28720,species
+Corvus fuscicapillus,Corvus fuscicapillus,yes,1196287,species
+Climacteris rufus,Climacteris rufus,yes,47695,species
+Myiagra cervinicauda,Myiagra,no,107223,genus
+Aplonis zelandica,Aplonis,no,245045,genus
+Epthianura tricolor,Epthianura tricolor,yes,266354,species
+Aplonis mysolensis,Aplonis,no,245045,genus
+Aplonis mavornata,Aplonis,no,245045,genus
+Amalocichla incerta,Amalocichla incerta,yes,692106,species
+Acrocephalus familiaris,Acrocephalus familiaris,yes,435335,species
+Pachycephala modesta,Pachycephala modesta,yes,449364,species
+Paroreomyza flammea,Paroreomyza,no,64810,genus
+Megalurus timoriensis,Megalurus timoriensis,yes,980225,species
+Zosterops tenuirostris,Zosterops,no,36298,genus
+Muscicapa segregata,Muscicapa,yes,69507,genus
+Lichenostomus virescens,Lichenostomus virescens,yes,335985,species
+Cracticus louisiadensis,Cracticus,no,254524,genus
+Rhipidura diluta,Rhipidura diluta,yes,667187,species
+Gymnorhina tibicen,no_record,no,no_record,no_record
+Calamanthus cautus,Calamanthus cautus,yes,722674,species
+Pachycephala graeffii,Pachycephala,yes,461221,species
+Pseudonestor xanthophrys,Pseudonestor xanthophrys,yes,64813,species
+Corvus validus,Corvus validus,yes,1196318,species
+Climacteris melanurus,Climacteris,no,47694,genus
+Daphoenositta chrysoptera,Daphoenositta chrysoptera,yes,254528,species
+Zosterops semperi,Zosterops semperi,yes,135988,species
+Dicaeum vulneratum,Dicaeum,no,135426,genus
+Coracina morio,Coracina morio,yes,424871,species
+Cnemophilus macgregorii,Cnemophilus macgregorii,yes,108823,species
+Strepera fuliginosa,Strepera fuliginosa,yes,1120784,species
+Cinnyris buettikoferi,Cinnyris,no,570433,genus
+Coracina abbotti,Coracina abbotti,yes,424857,species
+Rhipidura hyperythra,Rhipidura hyperythra,yes,381040,species
+Gerygone fusca,Gerygone fusca,yes,117203,species
+Acrocephalus aequinoctialis,Acrocephalus aequinoctialis,yes,435336,species
+Acanthiza nana,Acanthiza nana,yes,117192,species
+Dicaeum hirundinaceum,Dicaeum hirundinaceum,yes,381024,species
+Coracina maxima,Coracina maxima,yes,424840,species
+Anthochaera lunulata,Anthochaera lunulata,yes,266368,species
+Melidectes princeps,Melidectes,no,43160,genus
+Rhipidura cockerelli,Rhipidura cockerelli,yes,381038,species
+Pachycephala nudigula,Pachycephala nudigula,yes,449376,species
+Lonchura quinticolor,Lonchura quinticolor,yes,522431,species
+Rhipidura kubaryi,Rhipidura,no,107227,genus
+Aplonis opaca,Aplonis,no,245045,genus
+Calamanthus campestris,Calamanthus campestris,yes,722649,species
+Finschia novaeseelandiae,Finschia,yes,524978,genus
+Chlamydera lauterbachi,Chlamydera lauterbachi,yes,54078,species
+Paradisaea rubra,Paradisaea rubra,yes,39963,species
+Malurus splendens,Malurus splendens,yes,222595,species
+Coracina lineata,Coracina lineata,yes,175001,species
+Amytornis woodwardi,Amytornis woodwardi,yes,912966,species
+Cettia carolinae,Cettia carolinae,yes,393629,species
+Melipotes gymnops,Melipotes,no,108833,genus
+Pachycephala aurea,Pachycephala,yes,461221,species
+Coracina personata,Coracina,no,108824,genus
+Paradigalla carunculata,Paradigalla carunculata,yes,681197,species
+Myiagra albiventris,Myiagra,no,107223,genus
+Monarcha viduus,Monarcha,no,175125,genus
+Cinclosoma cinnamomeum,Cinclosoma cinnamomeum,yes,1110498,species
+Aplonis grandis,Aplonis grandis,yes,381018,species
+Coracina caledonica,Coracina caledonica,yes,424848,species
+Ashbyia lovensis,Ashbyia lovensis,yes,266339,species
+Falcunculus leucogaster,Falcunculus,no,254538,genus
+Zosterops lateralis,Zosterops lateralis,yes,43581,species
+Rhipidura teysmanni,Rhipidura teysmanni,yes,667195,species
+Artamus minor,Artamus minor,yes,335549,species
+Certhionyx pectoralis,Certhionyx pectoralis,yes,266343,species
+Rhipidura rufifrons,Rhipidura rufifrons,yes,135976,species
+Gymnomyza samoensis,Gymnomyza samoensis,yes,572101,species
+Corvus orru,Corvus orru,yes,254520,species
+Petroica goodenovii,Petroica goodenovii,yes,242120,species
+Malurus cyaneus,Malurus cyaneus,yes,55807,species
+Monarcha manadensis,Monarcha manadensis,yes,338466,species
+Corvus violaceus,Corvus violaceus,yes,1196319,species
+Melithreptus validirostris,Melithreptus validirostris,yes,863590,species
+Drepanornis bruijnii,Drepanornis bruijnii,yes,681190,species
+Lichenostomus plumulus,Lichenostomus plumulus,yes,998106,species
+Erythrura papuana,Erythrura,no,44315,genus
+Dicaeum annae,Dicaeum,no,135426,genus
+Meliarchus sclateri,no_record,no,no_record,no_record
+Melanocharis arfakiana,Melanocharis,no,175123,genus
+Lichmera monticola,Lichmera,no,266361,genus
+Monachella muelleriana,Monachella muelleriana,yes,1080469,species
+Myza sarasinorum,no_record,no,no_record,no_record
+Ptilonorhynchus violaceus,Ptilonorhynchus violaceus,yes,28724,species
+Dicaeum igniferum,Dicaeum igniferum,yes,667156,species
+Zosterops luteirostris,Zosterops luteirostris,yes,589899,species
+Myzomela cruentata,Myzomela,no,108837,genus
+Streptocitta albicollis,Streptocitta albicollis,yes,451437,species
+Enodes erythrophris,Enodes erythrophris,yes,451433,species
+Melampitta gigantea,Melampitta gigantea,yes,156162,species
+Acrocephalus mendanae,Acrocephalus mendanae,yes,435338,species
+Acanthiza reguloides,Acanthiza reguloides,yes,117195,species
+Acanthiza inornata,Acanthiza inornata,yes,117188,species
+Erythrura psittacea,Erythrura psittacea,yes,1036804,species
+Xanthotis polygrammus,Xanthotis,no,266388,genus
+Calamanthus fuliginosus,Calamanthus fuliginosus,yes,722650,species
+Aplonis santovestris,Aplonis,no,245045,genus
+Zosterops kuehni,Zosterops,no,36298,genus
+Lichenostomus fuscus,Lichenostomus fuscus,yes,43159,species
+Lamprolia victoriae,Lamprolia victoriae,yes,559178,species
+Garritornis isidorei,no_record,no,no_record,no_record
+Philemon yorki,Philemon,no,108843,genus
+Oriolus bouroensis,Oriolus bouroensis,yes,890049,species
+Chlamydera maculata,Chlamydera maculata,yes,34931,species
+Artamus leucorynchus,Artamus,yes,585475,species
+Grantiella picta,Grantiella picta,yes,266360,species
+Mino anais,Mino anais,yes,245040,species
+Eutrichomyias rowleyi,no_record,no,no_record,no_record
+Acanthiza uropygialis,Acanthiza uropygialis,yes,117199,species
+Philemon eichhorni,Philemon eichhorni,yes,1118818,species
+Myzomela pammelaena,Myzomela,no,108837,genus
+Cyornis sanfordi,Cyornis,no,127912,genus
+Melithreptus brevirostris,Melithreptus brevirostris,yes,266321,species
+Cracticus argenteus,Cracticus,no,254524,genus
+Sphecotheres vieilloti,Sphecotheres vieilloti,yes,254661,species
+Acrocephalus luscinius,Acrocephalus luscinius,yes,435332,species
+Anthornis melanura,Anthornis melanura,yes,698975,species
+Zosterops chloris,Zosterops chloris,yes,589876,species
+Microeca fascinans,Microeca fascinans,yes,461219,species
+Acanthiza lineata,Acanthiza lineata,yes,117191,species
+Rhipidura dahli,Rhipidura dahli,yes,667186,species
+Myzomela chloroptera,Myzomela,no,108837,genus
+Rhamphocharis crassirostris,no_record,no,no_record,no_record
+Colluricincla sanghirensis,Colluricincla,no,156159,genus
+Monarcha trivirgatus,Monarcha trivirgatus,yes,381029,species
+Pitta versicolor,Pitta versicolor,yes,182340,species
+Monarcha loricatus,Monarcha,no,175125,genus
+Aphelocephala leucopsis,Aphelocephala leucopsis,yes,117201,species
+Malurus elegans,Malurus elegans,yes,720584,species
+Psittirostra psittacea,no_record,no,no_record,no_record
+Microeca papuana,Microeca papuana,yes,254556,species
+Atrichornis clamosus,Atrichornis clamosus,yes,449594,species
+Lichmera flavicans,Lichmera,no,266361,genus
+Zoothera dohertyi,Zoothera dohertyi,yes,572145,species
+Pachycephala jacquinoti,Pachycephala,yes,461221,species
+Monarcha verticalis,Monarcha verticalis,yes,1118791,species
+Cyornis hoevelli,Cyornis,yes,127912,genus
+Aplonis cantoroides,Aplonis cantoroides,yes,451387,species
+Mino kreffti,Mino kreffti,yes,451411,species
+Myzomela kuehni,Myzomela,no,108837,genus
+Myiagra ferrocyanea,Myiagra ferrocyanea,yes,381030,species
+Zosterops minutus,Zosterops,no,36298,genus
+Pardalotus punctatus,Pardalotus punctatus,yes,254575,species
+Meliphaga flavirictus,Meliphaga flavirictus,yes,390650,species
+Cyornis hyacinthinus,Cyornis,no,127912,genus
+Aplonis magna,Aplonis,no,245045,genus
+Corvus bennetti,Corvus bennetti,yes,1196223,species
+Chlamydera cerviniventris,Chlamydera cerviniventris,yes,34933,species
+Acanthiza apicalis,Acanthiza apicalis,yes,117185,species
+Metabolus rugensis,Metabolus rugensis,yes,338454,species
+Pitta maxima,Pitta maxima,yes,397298,species
+Petrochelidon nigricans,Petrochelidon,yes,72883,genus
+Aplonis brunneicapillus,Aplonis brunneicapillus,yes,451386,species
+Lalage maculosa,Lalage maculosa,yes,632597,species
+Lichenostomus hindwoodi,Lichenostomus hindwoodi,yes,998103,species
+Ficedula rufigula,Ficedula rufigula,yes,393711,species
+Pachycephala hyperythra,Pachycephala hyperythra,yes,449363,species
+Neochmia modesta,Neochmia modesta,yes,267974,species
+Coracina novaehollandiae,Coracina novaehollandiae,yes,254452,species
+Lophozosterops dohertyi,Lophozosterops,no,589842,genus
+Monarcha chrysomela,Monarcha chrysomela,yes,254560,species
+Lonchura molucca,Lonchura,no,40156,genus
+Dicaeum aeneum,Dicaeum aeneum,yes,254529,species
+Acanthorhynchus tenuirostris,Acanthorhynchus tenuirostris,yes,266336,species
+Aplonis cinerascens,Aplonis cinerascens,yes,451388,species
+Coracina schistacea,Coracina schistacea,yes,424844,species
+Epthianura crocea,Epthianura crocea,yes,266353,species
+Melitograis gilolensis,no_record,no,no_record,no_record
+Coracina sula,Coracina sula,yes,424868,species
+Pachycephala melanura,Pachycephala melanura,yes,381036,species
+Aphelocephala pectoralis,Aphelocephala,no,117200,genus
+Gerygone chloronota,Gerygone chloronota,yes,1158118,species
+Acanthiza katherina,Acanthiza katherina,yes,117190,species
+Bradypterus castaneus,Bradypterus castaneus,yes,260101,species
+Diphyllodes magnificus,Diphyllodes magnificus,yes,28716,species
+Loxops caeruleirostris,Loxops caeruleirostris,yes,509921,species
+Strepera graculina,Strepera graculina,yes,254663,species
+Cicinnurus regius,Cicinnurus regius,yes,36263,species
+Pachycephala fulvotincta,Pachycephala,yes,461221,species
+Zosterops meeki,Zosterops,no,36298,genus
+Stagonopleura guttata,Stagonopleura guttata,yes,247740,species
+Ficedula buruensis,Ficedula buruensis,yes,393712,species
+Megalurus gramineus,Megalurus gramineus,yes,260106,species
+Aplonis minor,Aplonis minor,yes,451390,species
+Telespiza ultima,Telespiza ultima,yes,509919,species
+Ptiloprora erythropleura,Ptiloprora,no,9147,genus
+Cinclosoma punctatum,Cinclosoma punctatum,yes,626376,species
+Pitta anerythra,Pitta anerythra,yes,397312,species
+Dicrurus megarhynchus,Dicrurus megarhynchus,yes,450177,species
+Acrocephalus australis,Acrocephalus australis,yes,68484,species
+Zosterops anomalus,Zosterops,no,36298,genus
+Xanthomyza phrygia,Xanthomyza phrygia,yes,266387,species
+Pitohui nigrescens,Pitohui nigrescens,yes,461230,species
+Pachycephala inornata,Pachycephala inornata,yes,449358,species
+Lonchura caniceps,Lonchura,no,40156,genus
+Peneoenanthe pulverulenta,Peneoenanthe pulverulenta,yes,665148,species
+Eopsaltria georgiana,Eopsaltria georgiana,yes,665142,species
+Lonchura spectabilis,Lonchura,no,40156,genus
+Gerygone flavolateralis,Gerygone flavolateralis,yes,1158117,species
+Oreoscopus gutturalis,Oreoscopus gutturalis,yes,626433,species
+Megalurulus rufa,no_record,no,no_record,no_record
+Lonchura flaviprymna,Lonchura,no,40156,genus
+Rhipidura semirubra,Rhipidura,no,107227,genus
+Buettikoferella bivittata,no_record,no,no_record,no_record
+Saxicola caprata,Saxicola caprata,yes,491955,species
+Lichenostomus penicillatus,Lichenostomus penicillatus,yes,481899,species
+Gerygone magnirostris,Gerygone magnirostris,yes,722653,species
+Plectorhyncha lanceolata,Plectorhyncha lanceolata,yes,266371,species
+Dicaeum celebicum,Dicaeum celebicum,yes,667149,species
+Myiagra oceanica,Myiagra,no,107223,genus
+Zoothera lunulata,Zoothera lunulata,yes,46908,species
+Cinclosoma castaneothorax,Cinclosoma castaneothorax,yes,1110496,species
+Amblyornis subalaris,Amblyornis subalaris,yes,34926,species
+Rhipidura atra,Rhipidura atra,yes,667182,species
+Pachycephala vitiensis,Pachycephala vitiensis,yes,679514,species
+Poecilodryas hypoleuca,Poecilodryas hypoleuca,yes,1080714,species
+Ptilorrhoa caerulescens,Ptilorrhoa caerulescens,yes,254657,species
+Falcunculus whitei,Falcunculus,no,254538,genus
+Petroica bivittata,Petroica,no,228563,genus
+Lonchura forbesi,Lonchura,no,40156,genus
+Coracina dohertyi,Coracina dohertyi,yes,424867,species
+Phonygammus keraudrenii,Phonygammus keraudrenii,yes,108846,species
+Zosterops flavifrons,Zosterops flavifrons,yes,511756,species
+Myadestes lanaiensis,Myadestes,no,123380,genus
+Lophorina superba,Lophorina superba,yes,39958,species
+Lichmera incana,Lichmera,no,266361,genus
+Manorina melanophrys,Manorina melanophrys,yes,61467,species
+Manucodia chalybatus,Manucodia chalybatus,yes,254550,species
+Microeca hemixantha,Microeca,no,254555,genus
+Hemignathus lucidus,Hemignathus,no,64797,genus
+Malia grata,Malia grata,yes,1149646,species
+Coracina temminckii,Coracina temminckii,yes,424850,species
+Aplonis circumscripta,Aplonis,no,245045,genus
+Mohoua ochrocephala,Mohoua ochrocephala,yes,874463,species
+Hirundo tahitica,Hirundo tahitica,yes,317131,species
+Rhipidura opistherythra,Rhipidura,no,107227,genus
