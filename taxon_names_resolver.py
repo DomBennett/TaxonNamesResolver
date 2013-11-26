@@ -4,8 +4,8 @@
 ## 07/06/2013
 ## TODO: add informative doc-strings to largest functions and classes
 ## TODO: use a minimal score (avoid calling hybrids 'species')
-## TODO: run genera separately
 ## TODO: create a stats-out function
+## TODO: have a highest unique taxon option
 import contextlib
 import json
 import os
@@ -125,15 +125,16 @@ class GnrStore(dict):
 			self[term] = []
 		
 	def add(self, jobj):
-		for record in jobj:
-			term = record['supplied_name_string']
-			try:
-				if len(record) > 1:
-					self[term].extend(record['results'])
-				else:
-					self[term] = []
-			except KeyError:
-				print 'JSON object contains terms not in GnrStore'
+		if not isinstance(jobj, bool):
+			for record in jobj:
+				term = record['supplied_name_string']
+				try:
+					if len(record) > 1:
+						self[term].extend(record['results'])
+					else:
+						self[term] = []
+				except KeyError:
+					print 'JSON object contains terms not in GnrStore'
 	
 	def replace(self, jobj):
 		for record in jobj:
@@ -159,27 +160,7 @@ class GnrStore(dict):
 class TaxonNamesResolver(object):
 	"""Resolves taxon names"""
 	def __init__(self, input_file = False, datasource = False, \
-	 taxon_id = False, user_input = False):
-		# user input
-		if user_input:
-			print '\n\nHello, this is TaxonNamesResolver!\n'
-			print 'Please give the file of the taxon names to be searched'
-			input_file = raw_input('File name: ')
-			print '\nPlease give the Datasource name from which you\'d ' +\
-			'like to resolve, or hit return to use NCBI by default'
-			datasource = raw_input('Datasource: ')
-			if datasource == '':
-				datasource = 'NCBI'
-			print '\nPlease give the lowest shared taxonomic group ID ' +\
-			'or hit return to skip'
-			taxon_id = raw_input('Taxon ID: ')
-			print '\n\nUser input ...'
-			print 'Input File: ' + input_file + '\nDatasource: ' + datasource +\
-			'\nTaxon ID: ' + taxon_id + '\n\nIs this all correct?\n' +\
-			'If not, hit Ctrl+C (or Cmd+C for Mac) to exit.'
-			raw_input('Hit return to continue.')
-			if taxon_id == '':
-				taxon_id = False
+	 taxon_id = False):
 		# organising dirs
 		self.directory = os.getcwd()
 		self.outdir = os.path.join(self.directory, 'resolved_names')
@@ -198,27 +179,41 @@ class TaxonNamesResolver(object):
 		# init dep classes
 		self.terms = terms
 		self._res = GnrResolver(datasource)
+		self.primary_datasource = datasource
 		self._store = GnrStore(terms)
 		self.taxon_id = taxon_id
 		self.tnr_obj = [] # this will hold all ouput
 		
-	def main(self, old = False):
-		# First search (or import old results)
-		print 'Preliminary search ...'
-		if old:
-			res = self._readInJson()
-		else:
-			res = self._res.search(self.terms)
-		self._store.add(res)
-		# Check for no records
-		no_records = self._count(nrecords = 1)
-		if len(no_records) > 0:
-			print 'Secondary searches ...'
-			res = self._res.search(no_records, prelim = False)
-			if res:
-				self._store.add(res)
-			no_records = self._count(nrecords = 1)
-		# TODO: search just genus names for remaining no_records?
+	def main(self):
+		primary_bool = True
+		no_records = True
+		nsearch = 1
+		search_terms = self.terms
+		while no_records:
+			if primary_bool:
+				print 'Searching [{0}] ...'.format(self.primary_datasource)
+			else:
+				print 'Searching other datasources ...'
+			res = self._res.search(search_terms, prelim = primary_bool)
+			if nsearch > 2 and res:
+				for each_res, original_name in zip(res, original_names):
+					each_res['supplied_name_string'] = original_name
+			self._store.add(res)
+			no_records = self._count(nrecords = 1) # Check for returns without records
+			if nsearch == 1:
+				primary_bool = False
+			elif nsearch == 2:
+				original_names = no_records
+				no_records = [e.split()[0] for e in no_records]  # genus names
+				primary_bool = True
+			elif nsearch == 3:
+				original_names = no_records
+				no_records = [e.split()[0] for e in no_records]
+				primary_bool = False
+			else:
+				break
+			nsearch += 1
+			search_terms = no_records
 		# Check for multiple records
 		multi_records = self._count(greater = True, nrecords = 1)
 		if multi_records:
@@ -226,7 +221,16 @@ class TaxonNamesResolver(object):
 			res = self._sieve(multi_records, self.taxon_id)
 			self._store.replace(res)
 		# Parse and write-out
-		self._parseResults()
+		# self._parseResults()
+		## Currently coding a system for extracting the highest unique taxon id (26/11/2013)
+		lineage_ids = []
+		for key in self._store.keys():
+			res = self._store[key]
+			if len(res) > 0:
+				lineage_id = res[0]['classification_path_ids']
+				lineage_id = [int(e) for e in lineage_id.split('|')]
+				lineage_ids.append(lineage_id)
+		self.lineage_ids = lineage_ids
 		self._writeResults()
 		
 	def extract(self, what):
@@ -252,7 +256,10 @@ class TaxonNamesResolver(object):
 		for i, key in enumerate(GnrStore.keys()):
 			if len_bools[i]:
 				assessed.append(key)
-		return assessed
+		if len(assessed) == 0:
+			return False
+		else:
+			return assessed
 	
 	def _sieve(self, multiple_records, tax_group = False):
 		# TODO: must revise this function:
@@ -315,7 +322,7 @@ class TaxonNamesResolver(object):
 				else:
 					results = results[0]
 					if genera:
-						ranks = results['classification_path']
+						ranks = results['classification_path_ranks']
 						rank = ranks.split('|')[-1]
 						if rank not in genera:
 							rname = results['canonical_form']
@@ -369,12 +376,28 @@ class TaxonNamesResolver(object):
 				writer.writerow(row)
 
 if __name__ == "__main__":
-	# Example Usage:
-	input_file = 'indo_pacific_passerines.txt'
-	datasource = 'NCBI'
-	taxon_id = 9126
+	print '\n\nHello, this is TaxonNamesResolver!\n'
+	print 'Please give the file of the taxon names to be searched'
+	#input_file = raw_input('File name: ')
+	input_file = "0_data/mammal_taxnames.txt"
+	print '\nPlease give the Datasource name from which you\'d ' +\
+	    'like to resolve, or hit return to use NCBI by default'
+	#datasource = raw_input('Datasource: ')
+	datasource = ""
+	if datasource == '':
+		datasource = 'NCBI'
+	print '\nPlease give the lowest shared taxonomic group ID ' +\
+	    'or hit return to skip'
+	#taxon_id = raw_input('Taxon ID: ')
+	taxon_id = "40674"
+	print '\n\nUser input ...'
+	print 'Input File: ' + input_file + '\nDatasource: ' + datasource +\
+	    '\nTaxon ID: ' + taxon_id + '\n\nIs this all correct?\n' +\
+	    'If not, hit Ctrl+C (or Cmd+C for Mac) to exit.'
+	raw_input('Hit return to continue.')
+	if taxon_id == '':
+		taxon_id = False
 	resolver = TaxonNamesResolver(input_file, datasource, taxon_id)
-	#resolver = TaxonNamesResolver(user_input = True)
 	print '\n\nProcessing (N.B. queries are in batches) ...\n'
 	resolver.main()
 	# resolver.extract('taxonids') # extract the taxids into python session

@@ -36,7 +36,4 @@ nosetests.xml
 
 # Misc.
 *~
-taxa.txt
-plants_bremen.txt
-testing/
-.Rhistory
+resolved_names
