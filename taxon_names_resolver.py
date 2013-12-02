@@ -5,7 +5,7 @@
 ## TODO: add informative doc-strings to largest functions and classes
 ## TODO: use a minimal score (avoid calling hybrids 'species')
 ## TODO: create a stats-out function
-## TODO: have a highest unique taxon option
+## TODO: have user specified output, default all
 import contextlib
 import json
 import os
@@ -146,16 +146,6 @@ class GnrStore(dict):
 					self[term] = []
 			except KeyError:
 				print 'JSON object contains terms not in GnrStore'
-	
-	def retrieve(self, key_term):
-		retrieved = []
-		for key in self.keys():
-			record = self[key]
-			if len(record) > 0:
-				retrieved.append(record[0][key_term])
-			else:
-				retrieved.append('no_record')
-		return retrieved
 		
 class TaxonNamesResolver(object):
 	"""Resolves taxon names"""
@@ -182,7 +172,7 @@ class TaxonNamesResolver(object):
 		self.primary_datasource = datasource
 		self._store = GnrStore(terms)
 		self.taxon_id = taxon_id
-		self.tnr_obj = [] # this will hold all ouput
+		self.tnr_obj = [] # this will hold all output
 		
 	def main(self):
 		primary_bool = True
@@ -220,18 +210,9 @@ class TaxonNamesResolver(object):
 			print 'Choosing best records to return ...'
 			res = self._sieve(multi_records, self.taxon_id)
 			self._store.replace(res)
-		# Parse and write-out
-		# self._parseResults()
-		## Currently coding a system for extracting the highest unique taxon id (26/11/2013)
-		lineage_ids = []
-		for key in self._store.keys():
-			res = self._store[key]
-			if len(res) > 0:
-				lineage_id = res[0]['classification_path_ids']
-				lineage_id = [int(e) for e in lineage_id.split('|')]
-				lineage_ids.append(lineage_id)
-		self.lineage_ids = lineage_ids
+		# Write-out
 		self._writeResults()
+		
 		
 	def extract(self, what):
 		lkeys = ['qnames', 'rnames', 'taxonids', 'ranks']
@@ -296,11 +277,11 @@ class TaxonNamesResolver(object):
 						if tax_group in class_ids:
 							bool_tg[i] = 1
 					results = boolResults(results, bool_tg)
-				# what score?
+				# choose result with best score
 				scores = [result['score'] for result in results]
 				bool_score = [1 if score == max(scores) else 0 for score in scores]
 				results = boolResults(results, bool_score)
-				# what rank?
+				# choose result resolved to lowest taxonomic rank
 				res_ranks = [result['classification_path_ranks'].split('|')[-1] for result in results]
 				for j, rank in enumerate(ranks):
 					bool_rank = [1 if res_rank == rank else 0 for res_rank in res_ranks]
@@ -312,46 +293,47 @@ class TaxonNamesResolver(object):
 			sieved.append(record)
 		return sieved
 		
-	def _parseResults(self):
-		def buildTnrObj(GnrStore, tnr_obj, genera = False):
-			keys = GnrStore.keys()
-			for key in keys:
-				results = GnrStore[key]
-				if len(results) == 0:
-					pass
-				else:
-					results = results[0]
-					if genera:
-						ranks = results['classification_path_ranks']
-						rank = ranks.split('|')[-1]
-						if rank not in genera:
-							rname = results['canonical_form']
-							taxonid = results['taxon_id']
-							tnr_obj.append([key, rname, taxonid, rank])
-							genera.append(rname)
-							del GnrStore[key]
-					else:
-						ranks = results['classification_path_ranks']
-						rank = ranks.split('|')[-1]
-						if rank == 'species':
-							rname = results['canonical_form']
-							taxonid = results['taxon_id']
-							tnr_obj.append([key, rname, taxonid, rank])
-							del GnrStore[key]
-			return tnr_obj
-		GnrStore = self._store.copy()
-		tnr_obj = []
-		tnr_obj = buildTnrObj(GnrStore, tnr_obj)
-		genera = [each[1] for each in tnr_obj]
-		genera = [re.split('\s', each)[0] for each in genera]
-		tnr_obj = buildTnrObj(GnrStore, tnr_obj, genera)
-		self.tnr_obj.extend(tnr_obj)
+	#def _parseResults(self):
+	# Deprecated (02/12/2013): unnecessary, shouldn't determine the output for the user
+	#	def buildTnrObj(GnrStore, tnr_obj, genera = False):
+	#		keys = GnrStore.keys()
+	#		for key in keys:
+	#			results = GnrStore[key]
+	#			if len(results) == 0:
+	#				pass
+	#			else:
+	#				results = results[0]
+	#				if genera:
+	#					ranks = results['classification_path_ranks']
+	#					rank = ranks.split('|')[-1]
+	#					if rank not in genera:
+	#						rname = results['canonical_form']
+	#						taxonid = results['taxon_id']
+	#						tnr_obj.append([key, rname, taxonid, rank])
+	#						genera.append(rname)
+	#						del GnrStore[key]
+	#				else:
+	#					ranks = results['classification_path_ranks']
+	#					rank = ranks.split('|')[-1]
+	#					if rank == 'species':
+	#						rname = results['canonical_form']
+	#						taxonid = results['taxon_id']
+	#						tnr_obj.append([key, rname, taxonid, rank])
+	#						del GnrStore[key]
+	#		return tnr_obj
+	#	GnrStore = self._store.copy()
+	#	tnr_obj = []
+	#	tnr_obj = buildTnrObj(GnrStore, tnr_obj)
+	#	genera = [each[1] for each in tnr_obj]
+	#	genera = [re.split('\s', each)[0] for each in genera]
+	#	tnr_obj = buildTnrObj(GnrStore, tnr_obj, genera)
+	#	self.tnr_obj.extend(tnr_obj)
 		
 	def _writeResults(self):
 		GnrStore = self._store
 		tnr_qnames = self.extract('qnames')
 		csv_file = os.path.join(self.outdir, 'search_results.csv')
-		headers = ['query_name', 'returned_name', 'use?',\
+		headers = ['query_name', 'returned_name',\
 		'taxon_id', 'rank']
 		with open(csv_file, 'wb') as file:
 			writer = csv.writer(file)
@@ -367,13 +349,58 @@ class TaxonNamesResolver(object):
 					taxonid = results['taxon_id']
 					ranks = results['classification_path_ranks']
 					rank = ranks.split('|')[-1]
-					if key in tnr_qnames:
-						use = 'yes'
-					else:
-						use = 'no'
-					row.extend([r_name, use, taxonid, rank])
+					row.extend([r_name, taxonid, rank])
 				row = [e.encode('ascii') for e in row]
 				writer.writerow(row)
+
+	def retrieve(self, term):
+		"""Return data for term specified for each resolved name as a list. Possible terms (02/12/2013): 'query_name', 'classification_path', 'data_source_title', 'match_type', 'score', 'classification_path_ranks', 'name_string', 'canonical_form', 'classification_path_ids', 'prescore', 'data_source_id', 'taxon_id', 'gni_uuid'"""
+		terms = ['query_name', 'classification_path', 'data_source_title', 'match_type', 'score',\
+				 'classification_path_ranks', 'name_string', 'canonical_form',\
+				 'classification_path_ids', 'prescore', 'data_source_id',\
+				 'taxon_id', 'gni_uuid']
+		if term not in terms:
+			raise IndexError('Term given is invalid! Check doc string for valid terms.')
+		retrieved = []
+		for key in self._store.keys():
+			record = self._store[key]
+			if len(record) > 0:
+				if term == 'query_name':
+					retrieved.append(key)
+				else:
+					retrieved.append(record[0][term])
+		if re.search('path', term): # helpfully removing the |s from the paths, aren't I nice?
+			retrieved = [[r2 for r2 in r1.split('|')] for r1 in retrieved]
+		return retrieved
+		
+
+	def extractHighestGroup(self):
+		"""Return highest unique taxonomic group for each resolved name, excluding names resovled to the same genus."""
+		def find(i):
+			temp = lineages[:]
+			lineage = temp.pop(i)
+			for j, lid in enumerate(lineage):
+				tempslice = [e[j] for e in temp]
+				matches = [e == lid for e in tempslice]
+				if any(matches):
+					temp = [temp[ei] for ei,e in enumerate(matches) if e]
+				else:
+					return j,lid
+		q_names = self.retrieve('query_name')
+		lineages_id = self.retrieve('classification_path_ids')
+		lineages_id = [int(e) for e in lineages_id]
+		lineages = self.retrieve('classification_path')
+		ranks = self.retrieve('classification_path_ranks')
+		## TODO: remove duplicated resovled taxa
+		for i in len(lineages):
+			j,lid = find(i)
+			
+			
+			
+					
+		self.lineage_ids = lineage_ids
+		self.huids = huids
+		self.ranks = ranks
 
 if __name__ == "__main__":
 	print '\n\nHello, this is TaxonNamesResolver!\n'
