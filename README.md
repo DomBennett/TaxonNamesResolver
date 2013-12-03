@@ -7,6 +7,8 @@ Automatically search taxon names against the [Global Names Resolver (GNR)](resol
 Return raw JSON search files, csv file of resolved names and txt file of unresolved names.
 
 ## How does it work?
+Global Names Resolver is a powerful API that uses specialised fuzzy-matching algorithms to search taxonomic datasources across the web. TaxonNamesResovler queries these datasources through the programming language python.
+
 TaxonNamesResolver first searches all the names (in chunks of 100) against the main datasource (search 1). Names that fail to be resolved are then searched against other datasources (search 2) to find synonyms. If any synonyms are returned, these are searched against the main datasource (search 3). Names that remain unresolved, are reduced to their genus name, and these are again searched as above (searches 4 to 6).
 
 For returned names with multiple records, the most likely match is found by testing if the name is in the correct clade (as specified by the user), if the name has the highest GNR score and/or the name at the lowest taxonomic level.
@@ -28,8 +30,8 @@ Requires [python 2.7.3](https://wiki.python.org/moin/BeginnersGuide/Download) to
 The TaxonNamesResolver class can be imported into a python session and run, so:
 ```{python}
 resolver = TaxonNamesResolver(input_file, datasource, taxon_id)
-resolver.main # to run the search
-resolver.write # to output the csv file
+resolver.main() # to run the search
+resolver.write() # to output the csv file
 ```
 Different elements of the returned JSON file can be extracted using `.retrieve(key_term)`. This function will return a list for each resolved name based on the key_term given. The key_terms are:
 * query_name -- name used to search datasources
