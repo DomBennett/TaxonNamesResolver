@@ -31,7 +31,7 @@ resolver = TaxonNamesResolver(input_file, datasource, taxon_id)
 resolver.main # to run the search
 resolver.write # to output the csv file
 ```
-Different elements of the returned JSON file can be extracted using .retrieve(key_term). This function will return a list for each resolved name based on the key_term given. The key_terms are:
+Different elements of the returned JSON file can be extracted using `.retrieve(key_term)`. This function will return a list for each resolved name based on the key_term given. The key_terms are:
 * query_name -- name used to search datasources
 * classification_path -- taxonomic lineage, according to main datasource
 * data_source_title -- name of datasource
@@ -50,7 +50,7 @@ Different elements of the returned JSON file can be extracted using .retrieve(ke
 Taxonomy is full of synonyms; to avoid returning the wrong name it is best to specifiy a parent clade ID. For example, if you know all the taxon names in your list are mammals, then any names matched that are not a mammal must be incorrect and TaxonNamesResolver will remove them. When searching NCBI as the main datasource, use [NCBI taxonomy](http://www.ncbi.nlm.nih.gov/taxonomy) to search for and find the ID of your parent clade.
 
 ## JSON files
-The GNR API returns [JSON](http://en.wikipedia.org/wiki/JSON) files after searching across datasources. To keep the program transparent, every search carried out be TaxonNamesResolver is saved in the 'resolved_names' folder. These files can be viewd in a web browser if the appropriate add-on.
+The GNR API returns [JSON](http://en.wikipedia.org/wiki/JSON) files after searching across datasources. To keep the program transparent, every search carried out be TaxonNamesResolver is saved in the 'resolved_names' folder. These files can be viewed in a web browser with the appropriate add-on.
 
 ## Future
 * Unit tests
@@ -63,4 +63,4 @@ The GNR API returns [JSON](http://en.wikipedia.org/wiki/JSON) files after search
 * Thanks to the GNR API and the [Global Names](http://www.globalnames.org/) family for creating this wonderful resource
 
 ## Author
-Dominic John Bennett
+Dominic John Bennett (dominic.john.bennett@gmail.com)
