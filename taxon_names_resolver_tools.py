@@ -18,7 +18,7 @@ def genTaxTree(resolver, by_ids = False, draw = False):
          by_ids = Use taxon IDs instead of names (logical)
          draw = Draw ascii tree (logical)
 
-         Returns:
+         Return:
           (Newick Tree Object, [shared lineage])"""
         if by_ids:
             idents = resolver.retrieve('taxon_id')
@@ -75,7 +75,7 @@ def lineageMerge(resovler, min_rank = 'genus'):
      min_rank = the minimum rank level below which all resolved names
       will be merged (default genus)
 
-    Returns:
+    Return:
      TaxonNamesResolver class"""
     def belowMinRank(index):
         # if min_rank is in rank lineage, then name must be below
@@ -105,30 +105,40 @@ def lineageMerge(resovler, min_rank = 'genus'):
     return resolver
             
 
-def extractHighestGroup(resolver):
-    """Return highest unique taxonomic group for each resolved name."""
+def extractHighestClade(resolver, by_ids = False):
+    """Return highest unique taxonomic clade for each resolved name.
+    
+    Arguments:
+     resolver = TaxonNamesResolver class (lineages should be merged)
+     by_ids = return IDs or names (logical, default False)
+     
+    Return:
+     (query_name, name or ID)"""
     def find(i):
-        temp = lineages[:]
-        lineage = temp.pop(i)
-        for j, lid in enumerate(lineage):
-            tempslice = [e[j] for e in temp]
-            matches = [e == lid for e in tempslice]
+        # for each lineage, step through the lineage
+        # keep all reference lineages that share the same lineage
+        #  as the query lineage
+        # as soon as the query lineage is unique, return its index
+        references = lineages[:]
+        query = references.pop(i)
+        for j,qid in enumerate(query):
+            refids = [e[j] for e in references]
+            matches = [e == qid for e in refids]
             if any(matches):
-                temp = [temp[ei] for ei,e in enumerate(matches) if e]
+                references = [references[ei] for ei,e in enumerate(matches) if e]
             else:
-                return j,lid
-            q_names = self.retrieve('query_name')
-            lineages_id = self.retrieve('classification_path_ids')
-            lineages_id = [int(e) for e in lineages_id]
-            lineages = self.retrieve('classification_path')
-            ranks = self.retrieve('classification_path_ranks')
-            ## TODO: remove duplicated resovled taxa
-            for i in len(lineages):
-                j,lid = find(i)
-            self.lineage_ids = lineage_ids
-            self.huids = huids
-            self.ranks = ranks
+                return j
+    q_names = resolver.retrieve('query_name')
+    ranks = resolver.retrieve('classification_path_ranks')
+    lineages = resolver.retrieve('classification_path_ids')
+    lineages = [[int(e2) for e2 in e1] for e1 in lineages]
+    indexes = []
+    for i in range(len(lineages)):
+        indexes.append(find(i))
+    if not by_ids:
+        lineages = resolver.retrieve('classification_path')
+    res = [lineages[ei][e] for ei,e in enumerate(indexes)]
+    return zip(q_names, res)
 
 if __name__ == '__main__':    
     # doctests to come
-    merged_resolver = lineageMerge(resolver)
