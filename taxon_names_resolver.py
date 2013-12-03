@@ -375,7 +375,7 @@ class TaxonNamesResolver(object):
 		return retrieved
 
 if __name__ == "__main__":
-	print '\n\nHello, this is TaxonNamesResolver!\n'
+	print '\n\nHello, this is TaxonNamesResolver! For details please see https://github.com/DomBennett/TaxonNamesResolver\n'
 	print 'Please give the file of the taxon names to be searched'
 	input_file = raw_input('File name: ')
 	#input_file = "0_data/mammal_taxnames.txt"
