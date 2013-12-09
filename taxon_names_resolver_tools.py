@@ -67,7 +67,7 @@ def genTaxTree(resolver, by_ids = False, draw = False):
             Phylo.draw_ascii(tree)
 	return (tree, shared_lineage)
 
-def lineageMerge(resovler, min_rank = 'genus'):
+def lineageMerge(resolver, min_rank = 'genus'):
     """Return TaxonNamesResolver class with duplicated lineages merged
 
     Arguments:
@@ -141,4 +141,4 @@ def extractHighestClade(resolver, by_ids = False):
     return zip(q_names, res)
 
 if __name__ == '__main__':    
-    # doctests to come
+	pass # doctests to come
