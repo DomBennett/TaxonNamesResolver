@@ -22,6 +22,8 @@ def genTaxTree(resolver, by_ids = False, draw = False):
           (Newick Tree Object, [shared lineage])"""
         if by_ids:
             idents = resolver.retrieve('taxon_id')
+	    idents = ["tx{0}".format(e) for e in idents]
+	    print idents
             lineages = resolver.retrieve('classification_path_ids')
             ranks = resolver.retrieve('classification_path_ranks')
         else:
@@ -138,7 +140,7 @@ def extractHighestClade(resolver, by_ids = False):
     if not by_ids:
         lineages = resolver.retrieve('classification_path')
     res = [lineages[ei][e] for ei,e in enumerate(indexes)]
-    return zip(q_names, res)
+    return q_names, res
 
 if __name__ == '__main__':    
 	pass # doctests to come
