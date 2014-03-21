@@ -10,6 +10,7 @@ import os
 import csv
 import urllib, urllib2
 import re
+import copy
 
 class GnrDataSources(object):
 	"""GNR data sources class: extract IDs for specified data sources."""
@@ -362,9 +363,10 @@ class TaxonNamesResolver(object):
 		"""Return data for key term specified for each resolved name as a list. Possible terms (02/12/2013): 'query_name', 'classification_path', 'data_source_title', 'match_type', 'score', 'classification_path_ranks', 'name_string', 'canonical_form', 'classification_path_ids', 'prescore', 'data_source_id', 'taxon_id', 'gni_uuid'"""
 		if key_term not in self.key_terms:
 			raise IndexError('Term given is invalid! Check doc string for valid terms.')
+		store = copy.deepcopy(self._store)
 		retrieved = []
-		for key in self._store.keys():
-			record = self._store[key]
+		for key in store.keys():
+			record = store[key]
 			if len(record) > 0:
 				if key_term == 'query_name':
 					retrieved.append(key)
