@@ -20,6 +20,7 @@ class GnrDataSources(object):
 		self.available = json.loads(res)
 
 	def summary(self):
+		# see what sources are available
 		return [dict(id=ds['id'], title=ds['title']) for ds in self.available]
 
 	def byName(self, names, invert = False):
