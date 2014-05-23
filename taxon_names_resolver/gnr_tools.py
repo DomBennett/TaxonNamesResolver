@@ -39,7 +39,8 @@ class GnrResolver(object):
 
 	def search(self, terms, prelim = True):
 		"""Search terms against GNR. If prelim = False, search other datasources \
-for alternative names (i.e. synonyms) with which to search main datasource. Return JSON object."""
+for alternative names (i.e. synonyms) with which to search main datasource.\
+Return JSON object."""
 		if prelim: # preliminary search
 			res = self._resolve(terms, self.Id)
 			self._write(res)
@@ -51,6 +52,8 @@ for alternative names (i.e. synonyms) with which to search main datasource. Retu
 			if len(alt_terms) == 0:
 				return False
 			else:
+				# search the main source again with alt_terms
+				# replace names in json
 				terms = [each[1] for each in alt_terms] # unzip
 				res = self._resolve(terms, self.Id)
 				self._write(res)
@@ -80,8 +83,10 @@ for alternative names (i.e. synonyms) with which to search main datasource. Retu
 		# replace sup name in jobj with original terms
 		for record in jobj:
 			sup_name = record['supplied_name_string']
+			# find original name in alt_terms
 			term = [i for i, each in enumerate(alt_terms) if each[1] == sup_name]
-			# avoid the possibility of having the same term with >1 r_names
+			# pop from alt_terms and rename json use 0 to
+			#  avoid the possibility of having the same term with >1 r_names
 			term = alt_terms.pop(term[0])[0]
 			record['supplied_name_string'] = term
 		return jobj
