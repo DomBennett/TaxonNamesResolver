@@ -35,11 +35,13 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 				for name in names:
 					terms.append(name.strip())
 			terms = [term for term in terms if not term == '']
-			print '\nFound [{0}] taxon names to search in input file... '.format(len(terms))
+			print '\nFound [{0}] taxon names to search in input file... '.\
+			format(len(terms))
 		else:
 			if not terms:
 				print "No terms provided"
-		print '\nFound [{0}] taxon names to search in input file... '.format(len(terms))
+		print '\nFound [{0}] taxon names to search in input file... '.\
+		format(len(terms))
 		terms = list(set(terms))
 		print '... of which [{0}] are unique.'.format(len(terms))
 		# init dep classes
@@ -61,27 +63,32 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 		no_records = True
 		nsearch = 1
 		search_terms = self.terms
-		while no_records:
+		original_names = []
+		while True:
 			if primary_bool:
 				print 'Searching [{0}] ...'.format(self.primary_datasource)
 			else:
 				print 'Searching other datasources ...'
 			res = self._res.search(search_terms, prelim = primary_bool)
 			if nsearch > 2 and res:
+				# if second search failed, look up alternative names
 				for each_res, original_name in zip(res, original_names):
 					each_res['supplied_name_string'] = original_name
 			self._store.add(res)
 			no_records = self._count(nrecords = 1) # Check for returns without records
-			if nsearch == 1:
-				primary_bool = False
-			elif nsearch == 2:
-				original_names = no_records
-				no_records = [e.split()[0] for e in no_records]  # genus names
-				primary_bool = True
-			elif nsearch == 3:
-				original_names = no_records
-				no_records = [e.split()[0] for e in no_records]
-				primary_bool = False
+			if no_records:
+				if nsearch == 1:
+					primary_bool = False
+				elif nsearch == 2:
+					original_names = no_records
+					no_records = [e.split()[0] for e in no_records]  # genus names
+					primary_bool = True
+				elif nsearch == 3:
+					original_names = no_records
+					no_records = [e.split()[0] for e in no_records]
+					primary_bool = False
+				else:
+					break
 			else:
 				break
 			nsearch += 1
@@ -107,6 +114,8 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 		return jobj
 
 	def _count(self, greater = False, nrecords = 0):
+		# return a list of all keys that have records 
+		#  greater or less than nrecords
 		GnrStore = self._store
 		assessed = []
 		lens = [len(GnrStore[key]) for key in GnrStore.keys()]
@@ -123,7 +132,10 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 			return assessed
 	
 	def _sieve(self, multiple_records, tax_group = False):
-		"""Return json object without multiple returns per resolved name. Names with multiple records are reduced by finding the name in the clade of interest, have the highest score, have the lowest taxonomic rank and/or are the first item returned."""
+		"""Return json object without multiple returns per resolved name.\
+Names with multiple records are reduced by finding the name in the clade of\ 
+interest, have the highest score, have the lowest taxonomic rank and/or are\
+the first item returned."""
 		GnrStore = self._store
 		def writeAsJson(term, results):
 			record = {'supplied_name_string': term}
@@ -148,11 +160,12 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 			while len(results) > 1:
 				# in correct taxonomic group?
 				if tax_group:
+					# ensure tax_group is string; class_ids are stringst
+					tax_group = str(tax_group)
 					key_str = 'classification_path_ids'
 					bool_tg = [0] * len(results)
 					for i,result in enumerate(results):
 						class_ids = result[key_str].split('|')
-						class_ids = [int(tid) for tid in class_ids]
 						if tax_group in class_ids:
 							bool_tg[i] = 1
 					results = boolResults(results, bool_tg)
@@ -161,7 +174,8 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 				bool_score = [1 if score == max(scores) else 0 for score in scores]
 				results = boolResults(results, bool_score)
 				# choose result resolved to lowest taxonomic rank
-				res_ranks = [result['classification_path_ranks'].split('|')[-1] for result in results]
+				res_ranks = [result['classification_path_ranks'].split('|')[-1] for\
+				result in results]
 				for j, rank in enumerate(ranks):
 					bool_rank = [1 if res_rank == rank else 0 for res_rank in res_ranks]
 					if sum(bool_rank) > 0:
@@ -236,7 +250,10 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 					file.write("{0}\n".format(name))
 
 	def retrieve(self, key_term):
-		"""Return data for key term specified for each resolved name as a list. Possible terms (02/12/2013): 'query_name', 'classification_path', 'data_source_title', 'match_type', 'score', 'classification_path_ranks', 'name_string', 'canonical_form', 'classification_path_ids', 'prescore', 'data_source_id', 'taxon_id', 'gni_uuid'"""
+		"""Return data for key term specified for each resolved name as a list.\
+Possible terms (02/12/2013): 'query_name', 'classification_path', 'data_source_title',\
+'match_type', 'score', 'classification_path_ranks', 'name_string', 'canonical_form',\
+'classification_path_ids', 'prescore', 'data_source_id', 'taxon_id', 'gni_uuid'"""
 		if key_term not in self.key_terms:
 			raise IndexError('Term given is invalid! Check doc string for valid terms.')
 		store = copy.deepcopy(self._store)
