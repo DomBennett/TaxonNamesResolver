@@ -271,5 +271,5 @@ Possible terms (02/12/2013): 'query_name', 'classification_path', 'data_source_t
 				else:
 					retrieved.append(record[0][key_term])
 		if re.search('path', key_term):
-			retrieved = [[r2 for r2 in r1.split('|')] for r1 in retrieved]
+			retrieved = [[r2 for r2 in r1.split('|')[1:]] for r1 in retrieved]
 		return retrieved
