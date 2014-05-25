@@ -17,7 +17,7 @@ The resolved names are then written to a csv file.
 
 ## Installation
 Requires [python 2.7.3](https://wiki.python.org/moin/BeginnersGuide/Download) to be installed and requires the installation of the python pacakge setuptools.
-* Click 'Download ZIP' and the downloaded zipped file
+* Click 'Download ZIP' to download the program
 * Open a terminal/command prompt, and navigate to the downloaded folder
 * Type 'python setup.py install' (for mac and unix systems you may need to type 'sudo python setup.py install')
 * This will install taxon names resolver as a package in your python library, it will also add the python script 'TaxonNamesResolver.py' to your system path
