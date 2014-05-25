@@ -8,17 +8,20 @@ import taxon_names_resolver as tnr
 
 ## Test data
 # results from the first search
-with open(os.path.join('data','test_firstsearch.json'), 'r') as file:
+with open(os.path.join(os.path.dirname(__file__), 'data','test_firstsearch.json'),\
+	'r') as file:
 	first = json.load(file)
 # results from a thrid search on the original datasource with alt name
 #  with the supplied name corrected
-with open(os.path.join('data','test_fourthsearch.json'), 'r') as file:
+with open(os.path.join(os.path.dirname(__file__), 'data','test_fourthsearch.json'),\
+	'r') as file:
 	fourth = json.load(file)
 # results containing multiple records:
 # -one in the wrong taxonomic group (plus a repeat)
 # -one with a lower matching score
 # -one resolved to a higher taxonomic level 
-with open(os.path.join('data','test_multiple.json'), 'r') as file:
+with open(os.path.join(os.path.dirname(__file__), 'data','test_multiple.json'),\
+	'r') as file:
 	multiple = json.load(file)
 
 terms = ['GenusA speciesA', 'GenusA speciesB', 'GenusA speciesC', 'GenusB speciesD',\
@@ -43,19 +46,28 @@ class Dummy_GnrDataSources(object):
 		else:
 			return [4]
 
-tnr.gnr_tools.GnrResolver.search = dummy_search
-tnr.gnr_tools.GnrDataSources = Dummy_GnrDataSources
-
 class ResolverTestSuite(unittest.TestCase):
 
 	def setUp(self):
+		# patch
+		self.true_search = tnr.gnr_tools.GnrResolver.search
+		self.True_GnrDataSources = tnr.gnr_tools.GnrDataSources
+		tnr.gnr_tools.GnrResolver.search = dummy_search
+		tnr.gnr_tools.GnrDataSources = Dummy_GnrDataSources
 		# first resolver has no store
-		self.resolver1 = tnr.resolver.Resolver(terms = terms, taxon_id = 51)
+		self.resolver1 = tnr.resolver.Resolver(terms = terms, taxon_id = 51,\
+			verbose = False)
 		# second has a store added
-		self.resolver2 = tnr.resolver.Resolver(terms = terms, taxon_id = 51)
+		self.resolver2 = tnr.resolver.Resolver(terms = terms, taxon_id = 51,\
+			verbose = False)
 		test_store = tnr.gnr_tools.GnrStore(terms)
 		test_store.add(first)
 		self.resolver2._store = test_store
+
+	def tearDown(self):
+		# replace patches
+		tnr.gnr_tools.GnrResolver.search = self.true_search
+		tnr.gnr_tools.GnrDataSources = self.True_GnrDataSources
 
 	def test_resolver_private_count(self):
 		# all results will have fewer than 2 records

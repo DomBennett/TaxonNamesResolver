@@ -8,13 +8,16 @@ from taxon_names_resolver import gnr_tools as gt
 
 ## Test data
 # results from the first search
-with open(os.path.join('data','test_firstsearch.json'), 'r') as file:
+with open(os.path.join(os.path.dirname(__file__),'data','test_firstsearch.json'),\
+	'r') as file:
 	first = json.load(file)
 # results from the secondary search in other datasources for alt names
-with open(os.path.join('data','test_secondsearch.json'), 'r') as file:
+with open(os.path.join(os.path.dirname(__file__),'data','test_secondsearch.json'),\
+	'r') as file:
 	second = json.load(file)
 # results from a thrid search on the original datasource with alt name
-with open(os.path.join('data','test_thirdsearch.json'), 'r') as file:
+with open(os.path.join(os.path.dirname(__file__),'data','test_thirdsearch.json'),\
+	'r') as file:
 	third = json.load(file)
 
 terms = ['GenusA speciesA', 'GenusA speciesB', 'GenusA speciesC', 'GenusB speciesD',\
@@ -59,13 +62,12 @@ def dummy_query(self, terms, data_source_ids):
 
 Dummy_GnrResolver._query = dummy_query
 
-
 class GNRToolsTestSuite(unittest.TestCase):
 	# no tests for search and write
 
 	def setUp(self):
-		self.resolver = gt.GnrResolver()
-		self.dummy_resolver = Dummy_GnrResolver()
+		self.resolver = gt.GnrResolver(verbose = False)
+		self.dummy_resolver = Dummy_GnrResolver(verbose = False)
 
 	def test_datasources(self):
 		# create test datasources class
