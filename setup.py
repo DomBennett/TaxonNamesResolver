@@ -6,6 +6,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 PACKAGES = find_packages()
+PACKAGES = [each for each in PACKAGES if each != 'tests']
 PACKAGE_DIRS = [p.replace(".", os.path.sep) for p in PACKAGES]
 
 setup(
@@ -19,6 +20,7 @@ setup(
     url = "https://github.com/DomBennett/TaxonNamesResolver",
     packages = PACKAGES,
     package_dir = dict(zip (PACKAGES, PACKAGE_DIRS)),
+    test_suite = 'tests',
     scripts = ['TaxonNamesResolver.py'],
     long_description=read('README.md'),
     classifiers=[
