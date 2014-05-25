@@ -31,7 +31,8 @@ class GnrDataSources(object):
 			
 class GnrResolver(object):
 	"""GNR resolver class: search the GNR"""
-	def __init__(self, datasource = 'NCBI'):
+	def __init__(self, datasource = 'NCBI', verbose = True):
+		self.verbose = verbose
 		ds = GnrDataSources()
 		self.write_counter = 1
 		self.Id = ds.byName(datasource)
@@ -99,7 +100,9 @@ Return JSON object."""
 		lower = 0
 		while lower < len(terms):
 			upper = min(len(terms), lower + chunk_size)
-			print 'Querying [{0}] to [{1}] of [{2}]'.format(lower, upper, len(terms))
+			if self.verbose:
+				print 'Querying [{0}] to [{1}] of [{2}]'.format(lower, upper,\
+					len(terms))
 			res.append(self._query(terms[lower:upper], ds_id))
 			lower = upper
 		res = [record for search in res for record in search['data']]

@@ -21,7 +21,8 @@ class Resolver(object):
 through GNR. All output written in 'resolved_names' folder.
 See https://github.com/DomBennett/TaxonNamesResolver for details."""
 	def __init__(self, input_file = None, datasource = 'NCBI', \
-	 taxon_id = None, terms = None):
+	 taxon_id = None, terms = None, verbose = True):
+		self.verbose = verbose
 		# organising dirs
 		self.directory = os.getcwd()
 		self.outdir = os.path.join(self.directory, 'resolved_names')
@@ -35,18 +36,20 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 				for name in names:
 					terms.append(name.strip())
 			terms = [term for term in terms if not term == '']
-			print '\nFound [{0}] taxon names to search in input file... '.\
+			if self.verbose:
+				print '\nFound [{0}] taxon names to search in input file... '.\
 			format(len(terms))
 		else:
 			if not terms:
 				print "No terms provided"
-		print '\nFound [{0}] taxon names to search in input file... '.\
-		format(len(terms))
 		terms = list(set(terms))
-		print '... of which [{0}] are unique.'.format(len(terms))
+		if self.verbose:
+			print '\nFound [{0}] taxon names to search in input file... '.\
+		format(len(terms))
+			print '... of which [{0}] are unique.'.format(len(terms))
 		# init dep classes
 		self.terms = terms
-		self._res = GnrResolver(datasource)
+		self._res = GnrResolver(datasource, verbose = verbose)
 		self.primary_datasource = datasource
 		self._store = GnrStore(terms)
 		self.taxon_id = taxon_id
@@ -65,10 +68,11 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 		search_terms = self.terms
 		original_names = []
 		while True:
-			if primary_bool:
-				print 'Searching [{0}] ...'.format(self.primary_datasource)
-			else:
-				print 'Searching other datasources ...'
+			if self.verbose:
+				if primary_bool:
+					print 'Searching [{0}] ...'.format(self.primary_datasource)
+				else:
+					print 'Searching other datasources ...'
 			res = self._res.search(search_terms, prelim = primary_bool)
 			if nsearch > 2 and res:
 				# if second search failed, look up alternative names
@@ -96,7 +100,8 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 		# Check for multiple records
 		multi_records = self._count(greater = True, nrecords = 1)
 		if multi_records:
-			print 'Choosing best records to return ...'
+			if self.verbose:
+				print 'Choosing best records to return ...'
 			res = self._sieve(multi_records, self.taxon_id)
 			self._store.replace(res)
 		
