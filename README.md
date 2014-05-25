@@ -15,11 +15,15 @@ For returned names with multiple records, the most likely match is found by test
 
 The resolved names are then written to a csv file.
 
+## Installation
+Requires [python 2.7.3](https://wiki.python.org/moin/BeginnersGuide/Download) to be installed and requires the installation of the python pacakge setuptools.
+* Click 'Download ZIP' and the downloaded zipped file
+* Open a terminal/command prompt, and navigate to the downloaded folder
+* Type 'python setup.py install' (for mac and unix systems you may need to type 'sudo python setup.py install')
+* This will install taxon names resolver as a package in your python library, it will also add the python script 'TaxonNamesResolver.py' to your system path
+
 ## Basic usage
-Requires [python 2.7.3](https://wiki.python.org/moin/BeginnersGuide/Download) to be installed and the installation of the following python packages: contextlib, json, urllib and urllib2
-* Download taxon_names_resolver.py
-* Place in folder with list of taxon names to be searched
-* Open terminal/command prompt and type: 'python taxon_names_resolver.py'
+* To run the program, open terminal/command prompt and type: 'TaxonNamesResolver.py'
  * Provide file name for list of taxon names
  * Provide the name of the datasource you wish to search against (NCBI by default)
  * Provide the taxon ID of the parent clade of all names given (see Taxon ID below)
@@ -27,9 +31,10 @@ Requires [python 2.7.3](https://wiki.python.org/moin/BeginnersGuide/Download) to
 * Results are generated in the 'resolved_names' folder
 
 ## Within python
-The TaxonNamesResolver class can be imported into a python session and run, so:
+The taxon_names_resolver is a pacakge and be imported into a python session and run, so:
 ```{python}
-resolver = TaxonNamesResolver(input_file, datasource, taxon_id)
+from taxon_names_resolver import Resolver
+resolver = Resolver(input_file, datasource, taxon_id)
 resolver.main() # to run the search
 resolver.write() # to output the csv file
 ```
@@ -55,7 +60,6 @@ Taxonomy is full of synonyms; to avoid returning the wrong name it is best to sp
 The GNR API returns [JSON](http://en.wikipedia.org/wiki/JSON) files after searching across datasources. To keep the program transparent, every search carried out be TaxonNamesResolver is saved in the 'resolved_names' folder. These files can be viewed in a web browser with the appropriate add-on.
 
 ## Future
-* Unit tests
 * TaxonNamesResolver tools:
  * Generate taxonomic trees
  * Return different names based on given options
