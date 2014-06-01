@@ -1,39 +1,93 @@
 #! /usr/bin/env python
-## No warranty, no copyright
 ## Dominic John Bennett
 ## 16/05/2014
 """
-Script for TaxonNamesResolver
+TaxonNamesResolver is a python package for resolving taxonomic
+names through Global Names Resolver (Copyright (C) 2012-2013 
+Marine Biological Laboratory). It was written by Dominic John
+Bennett with additional help from Lawrence Hudson.
+
+Copyright (C) 2014  Dominic John Bennett
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
 # Import
-import os,sys
+import os,sys,argparse,logging,platform
+from datetime import datetime
 from taxon_names_resolver import Resolver
 
-# Script
-print '\n\nHello, this is TaxonNamesResolver! For details please see https://github.com/DomBennett/TaxonNamesResolver\n'
-print 'Please give the file of the taxon names to be searched'
-input_file = raw_input('File name: ')
-if not os.path.isfile(input_file):
-	print "[{0}] not a file!".format(input_file)
-	sys.exit()
-print '\nPlease give the Datasource name from which you\'d ' +\
-    'like to resolve, or hit return to use NCBI by default'
-datasource = raw_input('Datasource: ')
-if datasource == '':
-	datasource = 'NCBI'
-print '\nPlease give the lowest shared taxonomic group ID ' +\
-    'or hit return to skip'
-taxon_id = raw_input('Taxon ID: ')
-print '\n\nUser input ...'
-print 'Input File: ' + input_file + '\nDatasource: ' + datasource +\
-    '\nTaxon ID: ' + taxon_id + '\n\nIs this all correct?\n' +\
-    'If not, hit Ctrl+C (or Cmd+C for Mac) to exit.'
-raw_input('Hit return to continue.')
-if taxon_id == '':
-	taxon_id = False
-resolver = Resolver(input_file, datasource, taxon_id)
-print '\n\nProcessing -- in batches ...\n'
-resolver.main()
-resolver.write()
-print '\n\nComplete!\n'
+description = """
+TaxonNamesResolver D.J. Bennett (C) 2014
+
+Resolve taxonomic names through the Global Names Resolver
+(Copyright (C) 2012-2013 Marine Biological Laboratory) by searching
+multiple taxonomic datasources.
+"""
+
+def parseArgs():
+	"""Read arguments"""
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-names", "-n", help=".txt file of taxonomic names")
+	parser.add_argument("-datasource", "-d", help="taxonomic datasource by \
+which names will be resolved (default NCBI)")
+	parser.add_argument("-taxonid", "-t", help="parent taxonomic ID")
+	parser.add_argument("--verbose", help="increase output verbosity",
+					action="store_true")
+	return parser
+
+def logSysInfo():
+	"""Write system info to log file"""
+	logging.info('\n' + '#' * 70)
+	logging.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
+	logging.info('Running on [{0}] [{1}]'.format(platform.node(),
+				platform.platform()))
+	logging.info('Python [{0}]'.format(sys.version))
+	logging.info('#' * 70 + '\n')
+
+def logEndTime():
+	"""Write end info to log"""
+	logging.info('\n' + '#' * 70)
+	logging.info('Complete')
+	logging.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
+	logging.info('#' * 70 + '\n')
+
+if __name__ == '__main__':
+	parser = parseArgs()
+	args = parser.parse_args()
+	if not os.path.isfile(args.names):
+		print '[{0}] could not be found!'.format(args.names)
+		sys.exit()
+	print '\n' + description + '\n'
+	if args.datasource:
+		datasource = args.datasource
+	else:
+		datasource = 'NCBI'
+	# simple logging, no levels, duplicate to console if verbose
+	logfile = 'log.txt'
+	logging.basicConfig(filename = logfile, level=logging.INFO,\
+		format = '%(message)s')
+	if args.verbose:
+		console = logging.StreamHandler()
+		console.setLevel(logging.INFO)
+		logging.getLogger('').addHandler(console)
+	# log system info
+	logSysInfo()
+	resolver = Resolver(args.names, datasource, args.taxonid)
+	resolver.main()
+	resolver.write()
+	logEndTime()
+	if not args.verbose:
+		print '\nComplete\n'
