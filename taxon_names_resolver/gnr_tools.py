@@ -1,12 +1,11 @@
 #! /usr/bin/env python
-## No warranty, no copyright
 ## Dominic John Bennett
 ## 16/05/2014
 """
 Tools for interacting with the GNR.
 """
 
-import contextlib
+import contextlib,logging
 import json
 import urllib, urllib2
 import os
@@ -31,8 +30,7 @@ class GnrDataSources(object):
 			
 class GnrResolver(object):
 	"""GNR resolver class: search the GNR"""
-	def __init__(self, datasource = 'NCBI', verbose = True):
-		self.verbose = verbose
+	def __init__(self, datasource = 'NCBI'):
 		ds = GnrDataSources()
 		self.write_counter = 1
 		self.Id = ds.byName(datasource)
@@ -100,9 +98,8 @@ Return JSON object."""
 		lower = 0
 		while lower < len(terms):
 			upper = min(len(terms), lower + chunk_size)
-			if self.verbose:
-				print 'Querying [{0}] to [{1}] of [{2}]'.format(lower, upper,\
-					len(terms))
+			logging.info('Querying [{0}] to [{1}] of [{2}]'.format(lower, upper,\
+				len(terms)))
 			res.append(self._query(terms[lower:upper], ds_id))
 			lower = upper
 		res = [record for search in res for record in search['data']]
@@ -142,7 +139,7 @@ class GnrStore(dict):
 					else:
 						self[term] = []
 				except KeyError:
-					print 'JSON object contains terms not in GnrStore'
+					logging.debug('JSON object contains terms not in GnrStore')
 
 	def replace(self, jobj):
 		for record in jobj:
@@ -153,4 +150,4 @@ class GnrStore(dict):
 				else:
 					self[term] = []
 			except KeyError:
-				print 'JSON object contains terms not in GnrStore'
+				logging.debug('JSON object contains terms not in GnrStore')

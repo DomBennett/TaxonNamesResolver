@@ -55,11 +55,9 @@ class ResolverTestSuite(unittest.TestCase):
 		tnr.gnr_tools.GnrResolver.search = dummy_search
 		tnr.gnr_tools.GnrDataSources = Dummy_GnrDataSources
 		# first resolver has no store
-		self.resolver1 = tnr.resolver.Resolver(terms = terms, taxon_id = 51,\
-			verbose = False)
+		self.resolver1 = tnr.resolver.Resolver(terms = terms, taxon_id = 51)
 		# second has a store added
-		self.resolver2 = tnr.resolver.Resolver(terms = terms, taxon_id = 51,\
-			verbose = False)
+		self.resolver2 = tnr.resolver.Resolver(terms = terms, taxon_id = 51)
 		test_store = tnr.gnr_tools.GnrStore(terms)
 		test_store.add(first)
 		self.resolver2._store = test_store

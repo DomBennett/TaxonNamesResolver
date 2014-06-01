@@ -66,8 +66,8 @@ class GNRToolsTestSuite(unittest.TestCase):
 	# no tests for search and write
 
 	def setUp(self):
-		self.resolver = gt.GnrResolver(verbose = False)
-		self.dummy_resolver = Dummy_GnrResolver(verbose = False)
+		self.resolver = gt.GnrResolver()
+		self.dummy_resolver = Dummy_GnrResolver()
 
 	def test_datasources(self):
 		# create test datasources class
