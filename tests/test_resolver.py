@@ -17,7 +17,6 @@ with open(os.path.join(os.path.dirname(__file__), 'data','test_fourthsearch.json
 	'r') as file:
 	fourth = json.load(file)
 # results containing multiple records:
-# -one in the wrong taxonomic group (plus a repeat)
 # -one with a lower matching score
 # -one resolved to a higher taxonomic level 
 with open(os.path.join(os.path.dirname(__file__), 'data','test_multiple.json'),\
@@ -55,10 +54,10 @@ class ResolverTestSuite(unittest.TestCase):
 		tnr.gnr_tools.GnrResolver.search = dummy_search
 		tnr.gnr_tools.GnrDataSources = Dummy_GnrDataSources
 		# first resolver has no store
-		self.resolver1 = tnr.resolver.Resolver(terms = terms, taxon_id = 51)
+		self.resolver1 = tnr.resolver.Resolver(terms = terms, taxon_id = '51')
 		# second has a store added
-		self.resolver2 = tnr.resolver.Resolver(terms = terms, taxon_id = 51)
-		test_store = tnr.gnr_tools.GnrStore(terms)
+		self.resolver2 = tnr.resolver.Resolver(terms = terms, taxon_id = '51')
+		test_store = tnr.gnr_tools.GnrStore(terms, tax_group = '51')
 		test_store.add(first)
 		self.resolver2._store = test_store
 
@@ -104,14 +103,15 @@ speciesA,GenusA speciesA,|51|41|31|21|11|1,3|0|0,1,1,test_number1'
 		# the results should equal 10
 		self.resolver1.main()
 		res = self.resolver1._store.keys()
+		print self.resolver1._store
 		self.assertEqual(len(res), 10)
 
 	def test_resolver_private_sieve(self):
 		# filter the multiple records
 		# first replace the multiple records in the store
 		self.resolver2._store.replace(multiple)
-		multi_records = ['GenusA speciesA', 'GenusA speciesB', 'GenusF speciesI']
-		res = self.resolver2._sieve(multi_records, self.resolver2.taxon_id)
+		multi_records = ['GenusA speciesB', 'GenusF speciesI']
+		res = self.resolver2._sieve(multi_records)
 		res = [len(each['results']) == 1 for each in res]
 		self.assertTrue(all(res))
 		
