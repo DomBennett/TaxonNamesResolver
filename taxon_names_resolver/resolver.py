@@ -89,7 +89,7 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 		multi_records = self._count(greater = True, nrecords = 1)
 		if multi_records:
 			logging.info('Choosing best records to return ...')
-			res = self._sieve(multi_records, self.taxon_id)
+			res = self._sieve(multi_records)
 			self._store.replace(res)
 		
 	#def extract(self, what): # depends on tnr
