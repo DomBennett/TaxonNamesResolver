@@ -133,7 +133,6 @@ class GnrStore(dict):
 	def _filter(self, results):
 		#filter out all results that are not in tax_group
 		if not self.tax_group:
-			print 'here'
 			return results
 		filtered = []
 		for result in results:

@@ -103,7 +103,6 @@ speciesA,GenusA speciesA,|51|41|31|21|11|1,3|0|0,1,1,test_number1'
 		# the results should equal 10
 		self.resolver1.main()
 		res = self.resolver1._store.keys()
-		print self.resolver1._store
 		self.assertEqual(len(res), 10)
 
 	def test_resolver_private_sieve(self):
