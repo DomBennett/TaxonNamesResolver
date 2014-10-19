@@ -41,8 +41,7 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 		self.terms = terms
 		self._res = GnrResolver(datasource)
 		self.primary_datasource = datasource
-		self._store = GnrStore(terms)
-		self.taxon_id = taxon_id
+		self._store = GnrStore(terms, tax_group = taxon_id)
 		self.key_terms = ['query_name', 'classification_path', 'data_source_title', \
 					  'match_type', 'score', 'classification_path_ranks',\
 					  'name_string', 'canonical_form',\
@@ -93,7 +92,6 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 			res = self._sieve(multi_records, self.taxon_id)
 			self._store.replace(res)
 		
-		
 	#def extract(self, what): # depends on tnr
 	#	lkeys = ['qnames', 'rnames', 'taxonids', 'ranks']
 	#	i = [i for i, each in enumerate(lkeys) if what is each][0]
@@ -124,7 +122,7 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 		else:
 			return assessed
 	
-	def _sieve(self, multiple_records, tax_group = None):
+	def _sieve(self, multiple_records):
 		"""Return json object without multiple returns per resolved name.\
 Names with multiple records are reduced by finding the name in the clade of\ 
 interest, have the highest score, have the lowest taxonomic rank and/or are\
@@ -151,17 +149,6 @@ the first item returned."""
 		for term in multiple_records:
 			results = GnrStore[term]
 			while len(results) > 1:
-				# in correct taxonomic group?
-				if tax_group:
-					# ensure tax_group is string; class_ids are stringst
-					tax_group = str(tax_group)
-					key_str = 'classification_path_ids'
-					bool_tg = [0] * len(results)
-					for i,result in enumerate(results):
-						class_ids = result[key_str].split('|')
-						if tax_group in class_ids:
-							bool_tg[i] = 1
-					results = boolResults(results, bool_tg)
 				# choose result with best score
 				scores = [result['score'] for result in results]
 				bool_score = [1 if score == max(scores) else 0 for score in scores]

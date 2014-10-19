@@ -125,9 +125,22 @@ Return JSON object."""
 
 class GnrStore(dict):
 	"""GNR store class: acts like a dictionary for GNR JSON format"""
-	def __init__(self, terms):
+	def __init__(self, terms, tax_group = None):
+		self.tax_group = tax_group
 		for term in terms:
 			self[term] = []
+
+	def _filter(self, results):
+		#filter out all results that are not in tax_group
+		if not self.tax_group:
+			print 'here'
+			return results
+		filtered = []
+		for result in results:
+			classids = result['classification_path_ids'].split('|')
+			if self.tax_group in classids:
+				filtered.append(result)
+		return filtered
 
 	def add(self, jobj):
 		if not isinstance(jobj, bool):
@@ -135,7 +148,8 @@ class GnrStore(dict):
 				term = record['supplied_name_string']
 				try:
 					if len(record) > 1:
-						self[term].extend(record['results'])
+						results = self._filter(record['results'])
+						self[term].extend(results)
 					else:
 						self[term] = []
 				except KeyError:
@@ -146,7 +160,8 @@ class GnrStore(dict):
 			term = record['supplied_name_string']
 			try:
 				if len(record) > 1:
-					self[term] = record['results']
+					results = self._filter(record['results'])
+					self[term] = results
 				else:
 					self[term] = []
 			except KeyError:
