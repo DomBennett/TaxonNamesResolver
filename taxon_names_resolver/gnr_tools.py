@@ -71,10 +71,9 @@ Return JSON object."""
 				results = record['results']
 				for result in results:
 					r_name = result['canonical_form']
-					if r_name == term:
-						pass
-					else:
-						alt_terms.append((term, r_name))
+					if r_name == term or r_name is None:
+						continue
+					alt_terms.append((term, r_name))
 		alt_terms = list(set(alt_terms))
 		return alt_terms
 
@@ -149,8 +148,6 @@ class GnrStore(dict):
 					if len(record) > 1:
 						results = self._filter(record['results'])
 						self[term].extend(results)
-					else:
-						self[term] = []
 				except KeyError:
 					logging.debug('JSON object contains terms not in GnrStore')
 
