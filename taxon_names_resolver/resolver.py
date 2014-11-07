@@ -10,6 +10,10 @@ Resolver class for parsing GNR records.
 import json,os,csv,re,copy,logging
 from gnr_tools import GnrStore
 from gnr_tools import GnrResolver
+import urllib
+
+class EncodingError(Exception):
+	pass
 
 class Resolver(object):
 	"""Taxon Names Resovler class : Automatically resolves taxon names \
@@ -38,6 +42,7 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 		format(len(terms)))
 		logging.info('... of which [{0}] are unique.'.format(len(terms)))
 		# init dep classes
+		self._check(terms)
 		self.terms = terms
 		self._res = GnrResolver(datasource)
 		self.primary_datasource = datasource
@@ -48,6 +53,16 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
 					  'classification_path_ids', 'prescore','data_source_id',\
 					  'taxon_id', 'gni_uuid'] # http://resolver.globalnames.org/api
 		# self.tnr_obj = [] # this will hold all output
+
+	def _check(self, terms):
+		"""Check terms do not contain unknown characters"""
+		for t in terms:
+			try:
+				_ = urllib.quote(unicode(t).encode('utf8'))
+			except:
+				logging.error('Unknown character in [{0}]!'.format(t))
+				logging.error('.... remove character and try again.')
+				raise EncodingError
 		
 	def main(self):
 		"""Search and sieve query names."""

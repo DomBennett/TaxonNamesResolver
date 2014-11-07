@@ -9,6 +9,7 @@ import contextlib,logging
 import json
 import urllib, urllib2
 import os
+import re
 
 class GnrDataSources(object):
 	"""GNR data sources class: extract IDs for specified data sources."""
