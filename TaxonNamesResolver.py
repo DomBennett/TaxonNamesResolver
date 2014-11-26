@@ -1,9 +1,9 @@
 #! /usr/bin/env python
-## Dominic John Bennett
-## 16/05/2014
+# D.J. Bennett
+# 16/05/2014
 """
 TaxonNamesResolver is a python package for resolving taxonomic
-names through Global Names Resolver (Copyright (C) 2012-2013 
+names through Global Names Resolver (Copyright (C) 2012-2013
 Marine Biological Laboratory). It was written by Dominic John
 Bennett with additional help from Lawrence Hudson.
 
@@ -25,7 +25,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 """
 
 # Import
-import os,sys,argparse,logging,platform
+import os
+import sys
+import argparse
+import logging
+import platform
 from datetime import datetime
 from taxon_names_resolver import Resolver
 
@@ -37,57 +41,60 @@ Resolve taxonomic names through the Global Names Resolver
 multiple taxonomic datasources.
 """
 
+
 def parseArgs():
-	"""Read arguments"""
-	parser = argparse.ArgumentParser()
-	parser.add_argument("-names", "-n", help=".txt file of taxonomic names")
-	parser.add_argument("-datasource", "-d", help="taxonomic datasource by \
+    """Read arguments"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-names", "-n", help=".txt file of taxonomic names")
+    parser.add_argument("-datasource", "-d", help="taxonomic datasource by \
 which names will be resolved (default NCBI)")
-	parser.add_argument("-taxonid", "-t", help="parent taxonomic ID")
-	parser.add_argument("--verbose", help="increase output verbosity",
-					action="store_true")
-	return parser
+    parser.add_argument("-taxonid", "-t", help="parent taxonomic ID")
+    parser.add_argument("--verbose", help="increase output verbosity",
+                        action="store_true")
+    return parser
+
 
 def logSysInfo():
-	"""Write system info to log file"""
-	logging.info('\n' + '#' * 70)
-	logging.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
-	logging.info('Running on [{0}] [{1}]'.format(platform.node(),
-				platform.platform()))
-	logging.info('Python [{0}]'.format(sys.version))
-	logging.info('#' * 70 + '\n')
+    """Write system info to log file"""
+    logging.info('\n' + '#' * 70)
+    logging.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
+    logging.info('Running on [{0}] [{1}]'.format(platform.node(),
+                                                 platform.platform()))
+    logging.info('Python [{0}]'.format(sys.version))
+    logging.info('#' * 70 + '\n')
+
 
 def logEndTime():
-	"""Write end info to log"""
-	logging.info('\n' + '#' * 70)
-	logging.info('Complete')
-	logging.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
-	logging.info('#' * 70 + '\n')
+    """Write end info to log"""
+    logging.info('\n' + '#' * 70)
+    logging.info('Complete')
+    logging.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
+    logging.info('#' * 70 + '\n')
 
 if __name__ == '__main__':
-	parser = parseArgs()
-	args = parser.parse_args()
-	if not os.path.isfile(args.names):
-		print '[{0}] could not be found!'.format(args.names)
-		sys.exit()
-	print '\n' + description + '\n'
-	if args.datasource:
-		datasource = args.datasource
-	else:
-		datasource = 'NCBI'
-	# simple logging, no levels, duplicate to console if verbose
-	logfile = 'log.txt'
-	logging.basicConfig(filename = logfile, level=logging.INFO,\
-		format = '%(message)s')
-	if args.verbose:
-		console = logging.StreamHandler()
-		console.setLevel(logging.INFO)
-		logging.getLogger('').addHandler(console)
-	# log system info
-	logSysInfo()
-	resolver = Resolver(args.names, datasource, args.taxonid)
-	resolver.main()
-	resolver.write()
-	logEndTime()
-	if not args.verbose:
-		print '\nComplete\n'
+    parser = parseArgs()
+    args = parser.parse_args()
+    if not os.path.isfile(args.names):
+        print '[{0}] could not be found!'.format(args.names)
+        sys.exit()
+    print '\n' + description + '\n'
+    if args.datasource:
+        datasource = args.datasource
+    else:
+        datasource = 'NCBI'
+    # simple logging, no levels, duplicate to console if verbose
+    logfile = 'log.txt'
+    logging.basicConfig(filename=logfile, level=logging.INFO,
+                        format='%(message)s')
+    if args.verbose:
+        console = logging.StreamHandler()
+        console.setLevel(logging.INFO)
+        logging.getLogger('').addHandler(console)
+    # log system info
+    logSysInfo()
+    resolver = Resolver(args.names, datasource, args.taxonid)
+    resolver.main()
+    resolver.write()
+    logEndTime()
+    if not args.verbose:
+        print '\nComplete\n'

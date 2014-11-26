@@ -1,9 +1,9 @@
 #! /usr/bin/env python
-## D.J. Bennett
-## 01/06/2014
+# D.J. Bennett
+# 01/06/2014
 """
 TaxonNamesResolver is a python package for resolving taxonomic
-names through Global Names Resolver (Copyright (C) 2012-2013 
+names through Global Names Resolver (Copyright (C) 2012-2013
 Marine Biological Laboratory).
 
 Copyright (C) 2014  Dominic John Bennett
