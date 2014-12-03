@@ -48,12 +48,13 @@ class TaxRef(object):
         d = dlevel + i
         up = True
         while i <= len(default_taxonomy):
-            try:
-                drank = default_taxonomy[d]
-            except IndexError:
-                pass
-            if drank in taxonomy:
-                return taxonomy.index(drank)
+            if d > 0:
+                try:
+                    drank = default_taxonomy[d]
+                except IndexError:
+                    pass
+                if drank in taxonomy:
+                    return taxonomy.index(drank)
             if up:
                 d = dlevel - i
                 up = False
@@ -154,9 +155,10 @@ def stringClade(taxrefs, name, at):
     return string
 
 
-def taxTree(idents, ranks, lineages, taxonomy=default_taxonomy):
+def taxTree(idents, ranks, lineages, taxonomy=None):
     """Generate Taxonomic Newick tree"""
-    # Internal function
+    if not taxonomy:
+        taxonomy = default_taxonomy
     # replace any ' ' with '_' for taxon tree
     idents = [re.sub("\s", "_", e) for e in idents]
     # create a taxonomic dictionary which holds the lineage of each ident in
