@@ -6,7 +6,14 @@ Automatically search taxon names against the [Global Names Resolver (GNR)](resol
 
 Return raw JSON search files, csv file of resolved names and txt file of unresolved names.
 
-## How does it work?
+## Installation
+Requires [python 2.7](https://wiki.python.org/moin/BeginnersGuide/Download) to be installed and requires the installation of the python pacakge setuptools.
+* Click 'Download ZIP' to download the program
+* Open a terminal/command prompt, and navigate to the downloaded folder
+* Type `python setup.py install` (for mac and unix systems you may need to type `sudo python setup.py install`)
+* This will install taxon names resolver as a package in your python library, it will also add the python script `TaxonNamesResolver.py` to your system path
+
+### How does it work?
 Global Names Resolver is a powerful API that uses specialised fuzzy-matching algorithms to search taxonomic datasources across the web. TaxonNamesResovler queries these datasources through the programming language python.
 
 TaxonNamesResolver first searches all the names (in chunks of 100) against the main datasource (search 1). Names that fail to be resolved are then searched against other datasources (search 2) to find synonyms. If any synonyms are returned, these are searched against the main datasource (search 3). Names that remain unresolved, are reduced to their genus name, and these are again searched as above (searches 4 to 6).
@@ -15,29 +22,31 @@ For returned names with multiple records, the most likely match is found by test
 
 The resolved names are then written to a csv file.
 
-## Installation
-Requires [python 2.7.3](https://wiki.python.org/moin/BeginnersGuide/Download) to be installed and requires the installation of the python pacakge setuptools.
-* Click 'Download ZIP' to download the program
-* Open a terminal/command prompt, and navigate to the downloaded folder
-* Type 'python setup.py install' (for mac and unix systems you may need to type 'sudo python setup.py install')
-* This will install taxon names resolver as a package in your python library, it will also add the python script 'TaxonNamesResolver.py' to your system path
+## Taxon ID
+Taxonomy is full of synonyms; to avoid returning the wrong name it is best to specify a parent clade ID. For example, if you know all the taxon names in your list are mammals, then any names matched that are not a mammal must be incorrect and TaxonNamesResolver will remove them. When searching NCBI as the main datasource, use [NCBI taxonomy](http://www.ncbi.nlm.nih.gov/taxonomy) to search for and find the ID of your parent clade.
 
-## Basic usage
-* To run the program, open terminal/command prompt and type: 'TaxonNamesResolver.py'
+## JSON files
+The GNR API returns [JSON](http://en.wikipedia.org/wiki/JSON) files after searching across datasources. To keep the program transparent, every search carried out be TaxonNamesResolver is saved in the 'resolved_names' folder. These files can be viewed in a web browser with the appropriate add-on.
+
+## Quick guide
+### Command-line usage
+* To run the program, open terminal/command prompt and type: `TaxonNamesResolver.py`
  * Provide file name for list of taxon names
  * Provide the name of the datasource you wish to search against (NCBI by default)
  * Provide the taxon ID of the parent clade of all names given (see Taxon ID below)
  * Ensure details are correct, then click enter
 * Results are generated in the 'resolved_names' folder
 
-## Within python
-The taxon_names_resolver is a pacakge and be imported into a python session and run, so:
+### Within python
+#### Running
+The `taxon_names_resolver` is a python package and be imported into session and run, so:
 ```{python}
 from taxon_names_resolver import Resolver
 resolver = Resolver(input_file, datasource, taxon_id)
 resolver.main() # to run the search
 resolver.write() # to output the csv file
 ```
+
 Different elements of the returned JSON file can be extracted using `.retrieve(key_term)`. This function will return a list for each resolved name based on the key_term given. The key_terms are:
 * query_name -- name used to search datasources
 * classification_path -- taxonomic lineage, according to main datasource
@@ -53,16 +62,66 @@ Different elements of the returned JSON file can be extracted using `.retrieve(k
 * taxon_id -- taxonomic ID for the returned name (datasource dependent)
 * gni_uuid -- Global Names Unique ID
 
-## Taxon ID
-Taxonomy is full of synonyms; to avoid returning the wrong name it is best to specifiy a parent clade ID. For example, if you know all the taxon names in your list are mammals, then any names matched that are not a mammal must be incorrect and TaxonNamesResolver will remove them. When searching NCBI as the main datasource, use [NCBI taxonomy](http://www.ncbi.nlm.nih.gov/taxonomy) to search for and find the ID of your parent clade.
+#### Generating a taxonomic tree
+taxTree creates a Newick string from lists of names, lineages and ranks. It can be used in conjunction with `Resolver`, like:
 
-## JSON files
-The GNR API returns [JSON](http://en.wikipedia.org/wiki/JSON) files after searching across datasources. To keep the program transparent, every search carried out be TaxonNamesResolver is saved in the 'resolved_names' folder. These files can be viewed in a web browser with the appropriate add-on.
+```{python}
+# IMPORT
+from taxon_names_resolver import Resolver
+from taxon_names_resolver import taxTree
 
-## Future
-* TaxonNamesResolver tools:
- * Generate taxonomic trees
- * Return different names based on given options
+# EXAMPLE NAMES
+terms = ['Homo sapiens', 'Gorilla gorilla', 'Pongo pongo', 'Macca mulatta',
+'Mus musculus', 'Ailuropoda melanoleuca', 'Ailurus fulgens',
+'Chlorotalpa tytonis', 'Arabidopsis thaliana', 'Bacillus subtilus']
+
+# RESOLVE
+resolver = Resolver(terms=terms, datasource="NCBI")
+resolver.main()
+
+# CREATE TREE
+ranks = resolver.retrieve('classification_path_ranks')
+idents = resolver.retrieve('query_name')
+lineages = resolver.retrieve('classification_path')
+treestring = taxTree(idents, ranks, lineages)
+
+# SAVE
+with open('example.tre', 'w') as file:
+    file.write(treestring)
+```
+
+![tree]:https://github.com/DomBennett/TaxonNamesResolver/example.jpg
+
+The tree can be visualised with [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) or via one of these websites [Trex-Online](http://www.trex.uqam.ca/index.php?action=newick) or [ETE](http://etetoolkit.org/treeview/).
+
+Alternatively it could be viewed in python using the following code:
+```{python}
+# IMPORT
+from Bio import Phylo
+from cStringIO import StringIO
+
+# PROCESS
+tree = Phylo.read(StringIO(treestring), "newick")  # Pass to Phylo
+Phylo.draw_ascii(tree)  # Draw as ASCII
+```
+
+Or `R` if it has been saved as a .tre:
+```{R}
+# LIBRARY
+library(ape)
+
+# PROCESS
+tree <- read.tree('example.tre')
+plot(tree)
+```
+
+`taxTree` by default uses all the taxonomic levels available in NCBI's taxonomy. To change this use the argument `taxonomy` to select which ranks of you would like to build a tree:
+
+```{python}
+taxonomy = ['family', 'superfamily', 'order', 'class', 'kingdom', 'superkingdom']
+treestring = taxTree(idents, ranks, lineages, taxonomy=taxonomy)
+```
+
 
 ## Thanks
 * Thanks to Lawrence Hudson for coding inspiration
