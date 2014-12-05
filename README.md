@@ -20,7 +20,7 @@ For returned names with multiple records, the most likely match is found by test
 The resolved names are then written to a .csv file.
 
 ### Taxon ID
-Taxonomy is full of synonyms; to avoid returning the wrong name it is best to specify a parent clade ID. For example, if you know all the taxon names in your list are mammals, then any names matched that are not a mammal must be incorrect and TaxonNamesResolver will remove them. When searching NCBI as the main datasource, use [NCBI taxonomy](http://www.ncbi.nlm.nih.gov/taxonomy) to search for and find the ID of your parent clade.
+Taxonomy is full of synonyms; to avoid returning the wrong name it is best to specify a parent clade ID. For example, if you know all the taxon names in your list are mammals, then any names matched that are not a mammal must be incorrect and TaxonNamesResolver will remove them. When searching NCBI as the main datasource, use [NCBI taxonomy](http://www.ncbi.nlm.nih.gov/taxonomy) to search for and find the ID of your parent clade. (For mammals it would be 40674.)
 
 ### JSON files
 The GNR API returns [JSON](http://en.wikipedia.org/wiki/JSON) files after searching across datasources. To keep the program transparent, every search carried out be TaxonNamesResolver is saved in the 'resolved_names' folder. These files can be viewed in a web browser with the appropriate add-on.
@@ -82,7 +82,7 @@ with open('example.tre', 'w') as file:
     file.write(treestring)
 ```
 
-![tree]:https://raw.githubusercontent.com/DomBennett/TaxonNamesResolver/master/example.jpg
+![tree]:(https://raw.githubusercontent.com/DomBennett/TaxonNamesResolver/master/example.jpg "An example taxonomic tree")
 
 The tree can be visualised with [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) or via one of these websites [Trex-Online](http://www.trex.uqam.ca/index.php?action=newick) or [ETE](http://etetoolkit.org/treeview/).
 
