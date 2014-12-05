@@ -31,7 +31,7 @@ Open a terminal/command prompt and type: `TaxonNamesResolver.py`. The program wi
 
 ### Within python
 #### Running
-The `taxon_names_resolver` is a python package and be imported into a session and run, so:
+The `taxon_names_resolver` is a python package and can be imported into a session and run, so:
 ```{python}
 from taxon_names_resolver import Resolver
 resolver = Resolver(input_file, datasource, taxon_id)
