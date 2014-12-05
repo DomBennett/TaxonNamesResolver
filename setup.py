@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # D.J. Bennett
 # 01/06/2014
+# Put on PyPi with http://peterdowns.com/posts/first-time-with-pypi.html
 """
 TaxonNamesResolver setup
 """
@@ -25,6 +26,7 @@ setup(
     license="LICENSE.txt",
     keywords="taxonomy biodiversity systematics natural history",
     url="https://github.com/DomBennett/TaxonNamesResolver",
+    download_url="https://github.com/DomBennett/TaxonNamesResolver/tarball/1.0",
     packages=PACKAGES,
     package_dir=dict(zip(PACKAGES, PACKAGE_DIRS)),
     test_suite='tests',
