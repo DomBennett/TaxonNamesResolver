@@ -82,7 +82,7 @@ with open('example.tre', 'w') as file:
     file.write(treestring)
 ```
 
-![tree]:(https://raw.githubusercontent.com/DomBennett/TaxonNamesResolver/master/example.jpg "An example taxonomic tree")
+![tree](https://raw.githubusercontent.com/DomBennett/TaxonNamesResolver/master/example.jpg "An example taxonomic tree")
 
 The tree can be visualised with [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) or via one of these websites [Trex-Online](http://www.trex.uqam.ca/index.php?action=newick) or [ETE](http://etetoolkit.org/treeview/).
 
