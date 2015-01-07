@@ -75,10 +75,11 @@ Return JSON object."""
         # TODO(07/06/2013): record DSs used
         alt_terms = []
         for record in jobj:
-            if len(record) < 2:
+            if 'results' not in record.keys():
                 pass
             else:
                 term = record['supplied_name_string']
+                print record
                 results = record['results']
                 for result in results:
                     r_name = result['canonical_form']
@@ -170,7 +171,7 @@ class GnrStore(dict):
             for record in jobj:
                 term = record['supplied_name_string']
                 try:
-                    if len(record) > 1:
+                    if 'results' in record.keys():
                         results = self._filter(record['results'])
                         self[term].extend(results)
                 except KeyError:
@@ -180,7 +181,7 @@ class GnrStore(dict):
         for record in jobj:
             term = record['supplied_name_string']
             try:
-                if len(record) > 1:
+                if 'results' in record.keys():
                     results = self._filter(record['results'])
                     self[term] = results
                 else:
