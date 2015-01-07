@@ -13,12 +13,6 @@ import urllib
 import urllib2
 import os
 
-# GLOBALS
-max_check = 4
-term_counter = 0
-waitat = 10.0
-waittime = 1.0
-
 
 # CLASSES
 class GnrDataSources(object):
@@ -50,6 +44,8 @@ class GnrResolver(object):
         self.write_counter = 1
         self.Id = ds.byName(datasource)
         self.otherIds = ds.byName(datasource, invert=True)
+        self.waittime = 600  # wait ten minutes if server fail
+        self.max_check = 6  # search for up to an hour
 
     def search(self, terms, prelim=True):
         """Search terms against GNR. If prelim = False, search other datasources \
@@ -115,17 +111,24 @@ Return JSON object."""
             logging.info('Querying [{0}] to [{1}] of [{2}]'.format(lower,
                                                                    upper,
                                                                    len(terms)))
-            res.append(self._query(terms[lower:upper], ds_id))
+            # if server error wait
+            finished = 0
+            while True:
+                try:
+                    query = self._query(terms[lower:upper], ds_id)
+                    break
+                except:
+                    if finished == max_check:
+                        logging.info('----- server error ----')
+                        return None
+                finished += 1
+                time.sleep(self.waittime)
+            res.append(query)
             lower = upper
         res = [record for search in res for record in search['data']]
         return(res)
 
     def _query(self, terms, data_source_ids):
-        # wait waittime for every waitat terms
-        global term_counter
-        if term_counter/waitat >= 1:
-            time.sleep((term_counter/waitat)*waittime)
-        # query
         ds_ids = [str(id) for id in data_source_ids]
         terms = [urllib.quote(unicode(t).encode('utf8')) for t in terms]
         url = ('http://resolver.globalnames.org/name_resolvers.json?' +
