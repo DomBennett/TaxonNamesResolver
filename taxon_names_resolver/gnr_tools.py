@@ -5,6 +5,7 @@
 Tools for interacting with the GNR.
 """
 
+import time
 import contextlib
 import logging
 import json
@@ -12,7 +13,14 @@ import urllib
 import urllib2
 import os
 
+# GLOBALS
+max_check = 4
+term_counter = 0
+waitat = 10.0
+waittime = 1.0
 
+
+# CLASSES
 class GnrDataSources(object):
     """GNR data sources class: extract IDs for specified data sources."""
 
@@ -113,6 +121,11 @@ Return JSON object."""
         return(res)
 
     def _query(self, terms, data_source_ids):
+        # wait waittime for every waitat terms
+        global term_counter
+        if term_counter/waitat >= 1:
+            time.sleep((term_counter/waitat)*waittime)
+        # query
         ds_ids = [str(id) for id in data_source_ids]
         terms = [urllib.quote(unicode(t).encode('utf8')) for t in terms]
         url = ('http://resolver.globalnames.org/name_resolvers.json?' +
