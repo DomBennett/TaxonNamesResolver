@@ -18,6 +18,7 @@ from gnr_tools import GnrResolver
 import urllib
 
 
+# CLASSES
 class EncodingError(Exception):
     pass
 
