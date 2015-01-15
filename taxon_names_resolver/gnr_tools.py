@@ -7,22 +7,37 @@ Tools for interacting with the GNR.
 
 import time
 import contextlib
-import logging
 import json
 import urllib
 import urllib2
 import os
 
 
+# FUNCTIONS
+def safeReadJSON(url, logger, max_check=6, waittime=30):
+    '''Return JSON object from URL'''
+    counter = 0
+    # try, try and try again ....
+    while counter < max_check:
+        try:
+            with contextlib.closing(urllib2.urlopen(url)) as f:
+                res = json.loads(f.read())
+            return res
+        except Exception as errmsg:
+            logger.info('----- GNR error [{0}] : retrying ----'.format(errmsg))
+        counter += 1
+        time.sleep(waittime)
+    logger.error('----- Returning nothing : GNR server may be down -----')
+    return None
+
+
 # CLASSES
 class GnrDataSources(object):
     """GNR data sources class: extract IDs for specified data sources."""
 
-    def __init__(self):
+    def __init__(self, logger):
         url = 'http://resolver.globalnames.org/data_sources.json'
-        with contextlib.closing(urllib2.urlopen(url)) as f:
-            res = f.read()
-        self.available = json.loads(res)
+        self.available = safeReadJSON(url, logger)
 
     def summary(self):
         # see what sources are available
@@ -39,8 +54,9 @@ class GnrDataSources(object):
 class GnrResolver(object):
     """GNR resolver class: search the GNR"""
 
-    def __init__(self, datasource='NCBI'):
-        ds = GnrDataSources()
+    def __init__(self, logger, datasource='NCBI'):
+        self.logger = logger
+        ds = GnrDataSources(logger)
         self.write_counter = 1
         self.Id = ds.byName(datasource)
         self.otherIds = ds.byName(datasource, invert=True)
@@ -79,7 +95,6 @@ Return JSON object."""
                 pass
             else:
                 term = record['supplied_name_string']
-                print record
                 results = record['results']
                 for result in results:
                     r_name = result['canonical_form']
@@ -109,21 +124,9 @@ Return JSON object."""
         lower = 0
         while lower < len(terms):
             upper = min(len(terms), lower + chunk_size)
-            logging.info('Querying [{0}] to [{1}] of [{2}]'.format(lower,
-                                                                   upper,
-                                                                   len(terms)))
-            # if server error wait
-            finished = 0
-            while True:
-                try:
-                    query = self._query(terms[lower:upper], ds_id)
-                    break
-                except:
-                    if finished == max_check:
-                        logging.info('----- server error ----')
-                        return None
-                finished += 1
-                time.sleep(self.waittime)
+            self.logger.info('Querying [{0}] to [{1}] of [{2}]'.
+                             format(lower, upper, len(terms)))
+            query = self._query(terms[lower:upper], ds_id)
             res.append(query)
             lower = upper
         res = [record for search in res for record in search['data']]
@@ -135,8 +138,7 @@ Return JSON object."""
         url = ('http://resolver.globalnames.org/name_resolvers.json?' +
                'data_source_ids=' + '|'.join(ds_ids) + '&' +
                'resolve_once=false&' + 'names=' + '|'.join(terms))
-        with contextlib.closing(urllib2.urlopen(url)) as f:
-            return json.loads(f.read())
+        return safeReadJSON(url, self.logger)
 
     def _write(self, jobj):
         directory = os.path.join(os.getcwd(), 'resolved_names')
@@ -150,7 +152,8 @@ Return JSON object."""
 class GnrStore(dict):
     """GNR store class: acts like a dictionary for GNR JSON format"""
 
-    def __init__(self, terms, tax_group=None):
+    def __init__(self, terms, logger, tax_group=None):
+        self.logger = logger
         self.tax_group = tax_group
         for term in terms:
             self[term] = []
@@ -175,7 +178,7 @@ class GnrStore(dict):
                         results = self._filter(record['results'])
                         self[term].extend(results)
                 except KeyError:
-                    logging.debug('JSON object contains terms not in GnrStore')
+                    self.logger.debug('JSON object contains terms not in self.logger')
 
     def replace(self, jobj):
         for record in jobj:
@@ -187,4 +190,4 @@ class GnrStore(dict):
                 else:
                     self[term] = []
             except KeyError:
-                logging.debug('JSON object contains terms not in GnrStore')
+                self.logger.debug('JSON object contains terms not in GnrStore')

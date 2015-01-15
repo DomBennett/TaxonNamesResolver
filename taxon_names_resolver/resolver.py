@@ -29,7 +29,9 @@ through GNR. All output written in 'resolved_names' folder.
 See https://github.com/DomBennett/TaxonNamesResolver for details."""
 
     def __init__(self, input_file=None, datasource='NCBI', taxon_id=None,
-                 terms=None):
+                 terms=None, logger=logging.getLogger('')):
+        # add logger
+        self.logger = logger
         # organising dirs
         self.directory = os.getcwd()
         self.outdir = os.path.join(self.directory, 'resolved_names')
@@ -45,17 +47,17 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
             terms = [term for term in terms if not term == '']
         else:
             if not terms:
-                logging.info("No terms provided")
+                self.logger.info("No terms provided")
         terms = list(set(terms))
-        logging.info('\nFound [{0}] taxon names to search in input file... '.
-                     format(len(terms)))
-        logging.info('... of which [{0}] are unique.'.format(len(terms)))
+        self.logger.info('\nFound [{0}] taxon names to search in input file... '.
+                         format(len(terms)))
+        self.logger.info('... of which [{0}] are unique.'.format(len(terms)))
         # init dep classes
         self._check(terms)
         self.terms = terms
-        self._res = GnrResolver(datasource)
+        self._res = GnrResolver(logger=self.logger, datasource=datasource)
         self.primary_datasource = datasource
-        self._store = GnrStore(terms, tax_group=taxon_id)
+        self._store = GnrStore(terms, tax_group=taxon_id, logger=self.logger)
         # http://resolver.globalnames.org/api
         self.key_terms = ['query_name', 'classification_path',
                           'data_source_title', 'match_type', 'score',
@@ -70,8 +72,8 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
             try:
                 _ = urllib.quote(unicode(t).encode('utf8'))
             except:
-                logging.error('Unknown character in [{0}]!'.format(t))
-                logging.error('.... remove character and try again.')
+                self.logger.error('Unknown character in [{0}]!'.format(t))
+                self.logger.error('.... remove character and try again.')
                 raise EncodingError
 
     def main(self):
@@ -84,10 +86,10 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
         original_names = []
         while True:
             if primary_bool:
-                logging.info('Searching [{0}] ...'.
+                self.logger.info('Searching [{0}] ...'.
                              format(self.primary_datasource))
             else:
-                logging.info('Searching other datasources ...')
+                self.logger.info('Searching other datasources ...')
             res = self._res.search(search_terms, prelim=primary_bool)
             if nsearch > 2 and res:
                 # if second search failed, look up alternative names
@@ -117,7 +119,7 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
         # Check for multiple records
         multi_records = self._count(greater=True, nrecords=1)
         if multi_records:
-            logging.info('Choosing best records to return ...')
+            self.logger.info('Choosing best records to return ...')
             res = self._sieve(multi_records)
             self._store.replace(res)
 

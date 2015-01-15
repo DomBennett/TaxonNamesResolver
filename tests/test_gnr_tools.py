@@ -57,6 +57,24 @@ _form': u'Gallus gallus', u'classification_path_ids': u'131567|2759|33154|33208|
 
 
 # STUBS
+class dummy_Logger(object):
+
+    def __init__(self):
+        pass
+
+    def info(self, msg):
+        pass
+
+    def debug(self, msg):
+        pass
+
+    def warn(self, msg):
+        pass
+
+    def error(self, msg):
+        pass
+
+
 class Dummy_GnrResolver(gt.GnrResolver):
     pass
 
@@ -72,12 +90,17 @@ class GNRToolsTestSuite(unittest.TestCase):
     # no tests for search and write
 
     def setUp(self):
-        self.resolver = gt.GnrResolver()
-        self.dummy_resolver = Dummy_GnrResolver()
+        self.logger = dummy_Logger()
+        self.resolver = gt.GnrResolver(logger=self.logger)
+        self.dummy_resolver = Dummy_GnrResolver(logger=self.logger)
+
+    def test_safereadjson(self):
+        self.assertIsNone(gt.safeReadJSON(url='not_a_url', logger=self.logger,
+                                          max_check=1, waittime=0.1))
 
     def test_datasources(self):
         # create test datasources class
-        test_ds = gt.GnrDataSources()
+        test_ds = gt.GnrDataSources(logger=self.logger)
         res_sum = test_ds.summary()
         # assert that we get a list of dictionaries
         self.assertTrue(isinstance(res_sum[0], dict))
@@ -89,7 +112,7 @@ class GNRToolsTestSuite(unittest.TestCase):
 
     def test_store(self):
         # create test store
-        test_store = gt.GnrStore(terms)
+        test_store = gt.GnrStore(terms, logger=self.logger)
         # add test json to store
         test_store.add(first)
         res1 = test_store['GenusA speciesA'][0]

@@ -33,6 +33,24 @@ terms = ['GenusA speciesA', 'GenusA speciesB', 'GenusA speciesC',
 
 
 # STUBS
+class dummy_Logger(object):
+
+    def __init__(self):
+        pass
+
+    def info(self, msg):
+        pass
+
+    def debug(self, msg):
+        pass
+
+    def warn(self, msg):
+        pass
+
+    def error(self, msg):
+        pass
+
+
 # redefining the unbound search method...
 def dummy_search(self, terms, prelim):
     if prelim:
@@ -43,7 +61,7 @@ def dummy_search(self, terms, prelim):
 
 # add the datasources to prevent talking to GNR
 class Dummy_GnrDataSources(object):
-    def __init__(self):
+    def __init__(self, logger):
         pass
 
     def byName(self, names, invert=False):
@@ -62,10 +80,14 @@ class ResolverTestSuite(unittest.TestCase):
         tnr.gnr_tools.GnrResolver.search = dummy_search
         tnr.gnr_tools.GnrDataSources = Dummy_GnrDataSources
         # first resolver has no store
-        self.resolver1 = tnr.resolver.Resolver(terms=terms, taxon_id='51')
+        self.logger = dummy_Logger()
+        self.resolver1 = tnr.resolver.Resolver(terms=terms, taxon_id='51',
+                                               logger=self.logger)
         # second has a store added
-        self.resolver2 = tnr.resolver.Resolver(terms=terms, taxon_id='51')
-        test_store = tnr.gnr_tools.GnrStore(terms, tax_group='51')
+        self.resolver2 = tnr.resolver.Resolver(terms=terms, taxon_id='51',
+                                               logger=self.logger)
+        test_store = tnr.gnr_tools.GnrStore(terms, tax_group='51',
+                                            logger=self.logger)
         test_store.add(first)
         self.resolver2._store = test_store
 
