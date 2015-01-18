@@ -24,4 +24,5 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 """
 # Create namespace
 from taxon_names_resolver.resolver import Resolver
-from taxon_names_resolver.misc_tools import taxTree
+from taxon_names_resolver.manip_tools import TaxDict
+from taxon_names_resolver.manip_tools import taxTree

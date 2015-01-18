@@ -88,6 +88,11 @@ class TaxDict(dict):
     def __init__(self, idents, ranks, lineages, taxonomy=default_taxonomy):
         # add entry for each ident of lineages ordered by taxonomy
         # ranks without corresponding lineage are given ''
+        # 'ident' is the unique name for a taxonomic entity (e.g. query name)
+        # 'ranks' must be the names of the corresponding ranks in lineages
+        #  (e.g. classification_path_ranks)
+        # 'lineages' is the names for each of the ranks (e.g.
+        #   classification_path or classification_path_ids)
         self.taxonomy = taxonomy
         for i in range(len(idents)):
             # extract lineage according to given taxonomy
@@ -96,8 +101,14 @@ class TaxDict(dict):
             # create taxref
             taxref = TaxRef(ident=idents[i], rank=ranks[i][-1],
                             taxonomy=taxonomy)
-            # create key for ident and insert dictionary of lineage and taxref
-            self[idents[i]] = {'lineage': lineage, 'taxref': taxref}
+            # create key for ident and insert dictionary of lineage, taxref and
+            #  contextual ident
+            self[idents[i]] = {'lineage': lineage, 'taxref': taxref,
+                               'cident': None}
+        # gen hierarchy
+        self._hierarchy()
+        # contexualise
+        self._contextualise()
 
     def _slice(self, level):
         '''Return list of tuples of ident and lineage ident for given level
@@ -129,15 +140,32 @@ class TaxDict(dict):
                 res.append((group, lident))
         return res
 
-    def hierarchy(self):
-        '''Return dictionary of referenced idents grouped by shared rank'''
-        res = {}
+    def _hierarchy(self):
+        '''Generate dictionary of referenced idents grouped by shared rank'''
+        self.hierarchy = {}
         for rank in self.taxonomy:
             # extract lineage idents for this rank
             taxslice = self._slice(level=self.taxonomy.index(rank))
             # group idents by shared group at this rank
-            res[rank] = self._group(taxslice)
-        return res
+            self.hierarchy[rank] = self._group(taxslice)
+
+    def _contextualise(self):
+        '''Determine contextual idents (cidents)'''
+        # loop through hierarchy identifying unique lineages
+        deja_vues = []
+        for rank in reversed(self.taxonomy):
+            # return named clades -- '' are ignored
+            clades = [e for e in self.hierarchy[rank] if e[1]]
+            # print 'Rank: {0} - {1}'.format(rank, len(clades))
+            # get unique lineages at this level
+            uniques = [e for e in clades if len(e[0]) == 1]
+            # removed those already seen
+            uniques = [e for e in uniques if e[0][0].ident not in deja_vues]
+            # add each to self[ident]['cident']
+            for e in uniques:
+                ident = e[0][0].ident
+                self[ident]['cident'] = e[1]
+                deja_vues.append(ident)
 
 
 # FUNCTIONS
@@ -156,7 +184,7 @@ def stringClade(taxrefs, name, at):
 
 
 def taxTree(idents, ranks, lineages, taxonomy=None):
-    """Generate Taxonomic Newick tree"""
+    """Return taxonomic Newick tree"""
     if not taxonomy:
         taxonomy = default_taxonomy
     # replace any ' ' with '_' for taxon tree
@@ -165,13 +193,11 @@ def taxTree(idents, ranks, lineages, taxonomy=None):
     #  the same order as the given taxonomy
     taxdict = TaxDict(idents=idents, ranks=ranks, lineages=lineages,
                       taxonomy=taxonomy)
-    # generate a hierarchy from the taxdict
-    hierarchy = taxdict.hierarchy()
     # use hierarchy to construct a taxonomic tree
     for rank in taxonomy[1:]:
         current_level = float(taxonomy.index(rank))
         # get clades at this rank in hierarchy
-        clades = hierarchy[rank]
+        clades = taxdict.hierarchy[rank]
         # merge those that are in the same clade into a cladestring
         for clade in clades:
             # unpack the identities in this clade and its clade name
@@ -190,9 +216,9 @@ def taxTree(idents, ranks, lineages, taxonomy=None):
             for e in cladeidents[1:]:
                 e.change(ident='', rank=rank)
     # join any remaining strands into tree
-    if len(hierarchy[taxonomy[-1]]) > 1:
+    if len(taxdict.hierarchy[taxonomy[-1]]) > 1:
         # unlist first
-        clade = [e[0] for e in hierarchy[taxonomy[-1]]]
+        clade = [e[0] for e in taxdict.hierarchy[taxonomy[-1]]]
         cladeidents = sum(clade, [])
         cladeidents = [e for e in cladeidents if e.ident]
         cladestring = stringClade(cladeidents, 'life', current_level+1)
