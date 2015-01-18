@@ -49,7 +49,7 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
             if not terms:
                 self.logger.info("No terms provided")
         terms = list(set(terms))
-        self.logger.info('\nFound [{0}] taxon names to search in input file... '.
+        self.logger.info('Found [{0}] taxon names to search in input file... '.
                          format(len(terms)))
         self.logger.info('... of which [{0}] are unique.'.format(len(terms)))
         # init dep classes
