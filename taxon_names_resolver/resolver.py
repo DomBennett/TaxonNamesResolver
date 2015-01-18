@@ -245,10 +245,12 @@ Possible terms (02/12/2013): 'query_name', 'classification_path',
         if key_term not in self.key_terms:
             raise IndexError('Term given is invalid! Check doc string for \
 valid terms.')
-        store = copy.deepcopy(self._store)
+        store = self._store
         retrieved = []
         for key in store.keys():
-            record = store[key]
+            # take copy, so changes made to the returned list do not affect
+            #  store
+            record = copy.deepcopy(store[key])
             if len(record) > 0:
                 if key_term == 'query_name':
                     retrieved.append(key)
