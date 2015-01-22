@@ -4,7 +4,7 @@ Tests for misc tools
 """
 
 import unittest
-from taxon_names_resolver import misc_tools as mt
+from taxon_names_resolver import manip_tools as mt
 
 # DATA
 idents = ['Homo sapiens', 'Pongo pongo', 'Mus musculus', 'Bacillus subtilus',
@@ -109,7 +109,7 @@ lineages = [['Eukaryota', 'Opisthokonta', 'Metazoa', 'Eumetazoa', 'Bilateria',
              'Eutheria', 'Afrotheria', 'Chrysochloridae', 'Chlorotalpa']]
 
 
-class MiscToolsTestSuite(unittest.TestCase):
+class ManipToolsTestSuite(unittest.TestCase):
 
     def setUp(self):
         pass
@@ -139,9 +139,10 @@ class MiscToolsTestSuite(unittest.TestCase):
         # should be two groups: eukaryotes and bacteria
         rung = taxdict._group(taxslice)
         self.assertEqual(len(rung), 2)
-        # build a hierarchy for the three leveled taxonomy
-        hierarchy = taxdict.hierarchy()
-        self.assertTrue(all([e in taxonomy for e in hierarchy.keys()]))
+        # all the levels of the taxonomy should be in the hierarchy
+        self.assertTrue(all([e in taxonomy for e in taxdict.hierarchy.keys()]))
+        # Bacillus subtilus is the ONLY bacteria
+        self.assertEqual(taxdict['Bacillus subtilus']['cident'], 'Bacteria')
 
     def test_stringclade(self):
         thing1 = mt.TaxRef(ident='thing1', rank='species')
@@ -151,14 +152,15 @@ class MiscToolsTestSuite(unittest.TestCase):
         self.assertEqual(cladestring, '(thing1:3.0,thing2:1.0)things')
 
     def test_taxtree(self):
-        treestring = mt.taxTree(idents=idents, ranks=ranks, lineages=lineages)
-        self.assertEqual(treestring, '((((Ailurus_fulgens:9.0,Ailuropoda_\
-melanoleuca:9.0)Caniformia_suborder:6.0,((((Gorilla_gorilla:4.0,\
-Homo_sapiens:4.0)Homininae_subfamily:1.0,Pongo_pongo:3.0)Hominidae_family\
-:2.0,Macca_mulatta:7.0)Catarrhini_parvorder:4.0,Mus_musculus:11.0)\
-Euarchontoglires_superorder:4.0,Chlorotalpa_tytonis:13.0)Mammalia_class:\
-5.0,Arabidopsis_thaliana:20.0)Eukaryota_superkingdom:1.0,Bacillus_subtilus:\
-21.0)life;')
+        taxdict = mt.TaxDict(idents=idents, ranks=ranks, lineages=lineages)
+        treestring = mt.taxTree(taxdict)
+        # not the best test as newick string order can be arbritrary
+        self.assertEqual(treestring, '(((((((Homo_sapiens:4.0,Gorilla_gorilla:\
+4.0)Homininae_subfamily:1.0,Pongo_pongo:3.0)Hominidae_family:2.0,Macca_mulatta:\
+7.0)Catarrhini_parvorder:4.0,Mus_musculus:11.0)Euarchontoglires_superorder:4.0,\
+(Ailuropoda_melanoleuca:9.0,Ailurus_fulgens:9.0)Caniformia_suborder:6.0,\
+Chlorotalpa_tytonis:13.0)Mammalia_class:5.0,Arabidopsis_thaliana:20.0)\
+Eukaryota_superkingdom:1.0,Bacillus_subtilus:21.0)life;')
 
 if __name__ == '__main__':
     unittest.main()

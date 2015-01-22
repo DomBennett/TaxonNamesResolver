@@ -176,26 +176,22 @@ def stringClade(taxrefs, name, at):
         # distance is the difference between the taxonomic level of the ref
         #  and the current level of the tree growth
         d = float(at-ref.level)
-        string.append('{0}:{1}'.format(ref.ident, d))
+        # ensure no spaces in ident, Newick tree cannot have spaces
+        ident = re.sub("\s", "_", ref.ident)
+        string.append('{0}:{1}'.format(ident, d))
     # join into single string with a name for the clade
     string = ','.join(string)
     string = '({0}){1}'.format(string, name)
     return string
 
 
-def taxTree(idents, ranks, lineages, taxonomy=None):
+def taxTree(taxdict):
     """Return taxonomic Newick tree"""
-    if not taxonomy:
-        taxonomy = default_taxonomy
-    # replace any ' ' with '_' for taxon tree
-    idents = [re.sub("\s", "_", e) for e in idents]
-    # create a taxonomic dictionary which holds the lineage of each ident in
-    #  the same order as the given taxonomy
-    taxdict = TaxDict(idents=idents, ranks=ranks, lineages=lineages,
-                      taxonomy=taxonomy)
+    # the taxonomic dictionary holds the lineage of each ident in
+    #  the same order as the taxonomy
     # use hierarchy to construct a taxonomic tree
-    for rank in taxonomy[1:]:
-        current_level = float(taxonomy.index(rank))
+    for rank in taxdict.taxonomy[1:]:
+        current_level = float(taxdict.taxonomy.index(rank))
         # get clades at this rank in hierarchy
         clades = taxdict.hierarchy[rank]
         # merge those that are in the same clade into a cladestring
@@ -216,9 +212,9 @@ def taxTree(idents, ranks, lineages, taxonomy=None):
             for e in cladeidents[1:]:
                 e.change(ident='', rank=rank)
     # join any remaining strands into tree
-    if len(taxdict.hierarchy[taxonomy[-1]]) > 1:
+    if len(taxdict.hierarchy[taxdict.taxonomy[-1]]) > 1:
         # unlist first
-        clade = [e[0] for e in taxdict.hierarchy[taxonomy[-1]]]
+        clade = [e[0] for e in taxdict.hierarchy[taxdict.taxonomy[-1]]]
         cladeidents = sum(clade, [])
         cladeidents = [e for e in cladeidents if e.ident]
         cladestring = stringClade(cladeidents, 'life', current_level+1)
