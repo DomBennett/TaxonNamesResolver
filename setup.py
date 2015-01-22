@@ -19,14 +19,14 @@ PACKAGE_DIRS = [p.replace(".", os.path.sep) for p in PACKAGES]
 
 setup(
     name="taxon_names_resolver",
-    version="1.0.1",
+    version="1.0.2",
     author="Dominic John Bennett",
     author_email="dominic.john.bennett@gmail.com",
     description=("Resolve taxonomic names through Global Names Resolver."),
     license="LICENSE.txt",
     keywords="taxonomy biodiversity systematics natural history",
     url="https://github.com/DomBennett/TaxonNamesResolver",
-    download_url="https://github.com/DomBennett/TaxonNamesResolver/tarball/1.0.1",
+    download_url="https://github.com/DomBennett/TaxonNamesResolver/tarball/1.0.2",
     packages=PACKAGES,
     package_dir=dict(zip(PACKAGES, PACKAGE_DIRS)),
     test_suite='tests',
