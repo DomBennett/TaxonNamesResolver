@@ -85,7 +85,8 @@ class TaxRef(object):
 class TaxDict(dict):
     '''Taxonomic Dictionary : hold and return taxonomic information'''
 
-    def __init__(self, idents, ranks, lineages, taxonomy=default_taxonomy):
+    def __init__(self, idents, ranks, lineages, taxonomy=default_taxonomy,
+                 **kwargs):
         # add entry for each ident of lineages ordered by taxonomy
         # ranks without corresponding lineage are given ''
         # 'ident' is the unique name for a taxonomic entity (e.g. query name)
@@ -101,14 +102,27 @@ class TaxDict(dict):
             # create taxref
             taxref = TaxRef(ident=idents[i], rank=ranks[i][-1],
                             taxonomy=taxonomy)
-            # create key for ident and insert dictionary of lineage, taxref and
-            #  contextual ident
+            # create key for ident and insert a dictionary of:
+            #  lineage, taxref, cident, ident and rank
             self[idents[i]] = {'lineage': lineage, 'taxref': taxref,
-                               'cident': None}
+                               'cident': None, 'rank': ranks[i][-1],
+                               'ident': lineage[taxref.level]}
+        # add addtional optional slots from **kwargs
+        self._additional(idents, kwargs)
         # gen hierarchy
         self._hierarchy()
         # contexualise
         self._contextualise()
+
+    def _additional(self, idents, kwargs):
+        '''Add additional data slots from **kwargs'''
+        if kwargs:
+            for name, value in kwargs.items():
+                if not isinstance(value, list):
+                    raise ValueError('Additional arguments must be lists of \
+same length as idents')
+                for i in range(len(value)):
+                    self[idents[i]][name] = value[i]
 
     def _slice(self, level):
         '''Return list of tuples of ident and lineage ident for given level
