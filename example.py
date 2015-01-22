@@ -40,6 +40,9 @@ lineages = resolver.retrieve('classification_path')
 # extract the lists of corresponding rank names for 'lineages' ('ranks', e.g.
 #  species, genus etc.) for each entity
 ranks = resolver.retrieve('classification_path_ranks')
+# optional extra data slots are also possible, for example a list of 1s and 0s
+# it could be anything, just as long as its in the same order
+extra = [1, 1, 1, 0, 0, 1, 1, 0, 1, 0]
 # create a taxonomy specifying the names and order of 'ranks'. N.B. this is the
 #  default and is based on NCBI's taxonomy.
 taxonomy = ['subspecies', 'species', 'subgenus', 'genus', 'tribe', 'subfamily',
@@ -50,12 +53,15 @@ taxonomy = ['subspecies', 'species', 'subgenus', 'genus', 'tribe', 'subfamily',
 # use 'idents', 'ranks', 'lineages' and 'taxonomy' (optional) to construct a
 #  TaxDict
 taxdict = TaxDict(idents=idents, ranks=ranks, lineages=lineages,
-                  taxonomy=taxonomy)
+                  taxonomy=taxonomy, extra=extra)
 
 # EXPLORE TAXDICT
-# a dictionary for each ident with: its lineage, taxref and cident
+# a dictionary for each ident with: 'lineage', 'taxref', 'ident', 'cident' and
+#  'rank' (+ 'extra')
 # the lineage
 taxdict['Homo sapiens']['lineage']  # N.B. not all lineages are named, ''
+# the ident is the same format as lineage e.g. it could be an ID
+taxdict['Homo sapiens']['ident']
 # the 'cident' (Contextual Ident), the highest named taxonomic group unique to
 #  this ident among all other idents
 taxdict['Arabidopsis thaliana']['cident']  # A. thaliana is the only plant
@@ -68,6 +74,8 @@ print taxdict.taxonomy
 #  {'rank':[([taxref1, taxref2, ....],'lineage1'),
 #           ([taxref3, taxref4, ....],'lineage2'), ....]}
 print taxdict.hierarchy
+# we've also added an extra data slot
+taxdict['Homo sapiens']['extra']
 
 # CREATE TREE
 # use the taxdict to create a Newick string
