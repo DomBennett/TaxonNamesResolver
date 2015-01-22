@@ -94,14 +94,17 @@ class TaxDict(dict):
         #  (e.g. classification_path_ranks)
         # 'lineages' is the names for each of the ranks (e.g.
         #   classification_path or classification_path_ids)
-        self.taxonomy = taxonomy
+        if taxonomy:
+            self.taxonomy = taxonomy
+        else:
+            self.taxonomy = default_taxonomy
         for i in range(len(idents)):
             # extract lineage according to given taxonomy
             lineage = [lineages[i][ranks[i].index(e)] if e in ranks[i] else ''
-                       for e in taxonomy]
+                       for e in self.taxonomy]
             # create taxref
             taxref = TaxRef(ident=idents[i], rank=ranks[i][-1],
-                            taxonomy=taxonomy)
+                            taxonomy=self.taxonomy)
             # create key for ident and insert a dictionary of:
             #  lineage, taxref, cident, ident and rank
             self[idents[i]] = {'lineage': lineage, 'taxref': taxref,
@@ -166,6 +169,7 @@ same length as idents')
     def _contextualise(self):
         '''Determine contextual idents (cidents)'''
         # loop through hierarchy identifying unique lineages
+        # TODO: gain other contextual information, not just ident
         deja_vues = []
         for rank in reversed(self.taxonomy):
             # return named clades -- '' are ignored
