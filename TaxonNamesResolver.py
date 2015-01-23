@@ -1,28 +1,6 @@
 #! /usr/bin/env python
 # D.J. Bennett
 # 16/05/2014
-"""
-TaxonNamesResolver is a python package for resolving taxonomic
-names through Global Names Resolver (Copyright (C) 2012-2013
-Marine Biological Laboratory). It was written by Dominic John
-Bennett with additional help from Lawrence Hudson.
-
-Copyright (C) 2014  Dominic John Bennett
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-"""
 
 # Import
 import os
@@ -32,16 +10,21 @@ import logging
 import platform
 from datetime import datetime
 from taxon_names_resolver import Resolver
+from taxon_names_resolver import __version__ as version
+from taxon_names_resolver import __doc__ as details
 
 description = """
-TaxonNamesResolver D.J. Bennett (C) 2014
+----------------------------------------------------------------------
+TaxonNamesResolver Version {0}, Copyright (C) Bennett 2014
+----------------------------------------------------------------------
+This program comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under certain conditions.
+For more details, type `TaxonNamesResolver.py --details`.
+----------------------------------------------------------------------
+""".format(version)
 
-Resolve taxonomic names through the Global Names Resolver
-(Copyright (C) 2012-2013 Marine Biological Laboratory) by searching
-multiple taxonomic datasources.
-"""
 
-
+# FUNCTIONS
 def parseArgs():
     """Read arguments"""
     parser = argparse.ArgumentParser()
@@ -51,29 +34,39 @@ which names will be resolved (default NCBI)")
     parser.add_argument("-taxonid", "-t", help="parent taxonomic ID")
     parser.add_argument("--verbose", help="increase output verbosity",
                         action="store_true")
-    return parser
+    parser.add_argument('--details', help='display information about the \
+program', action='store_true')
+    return parser.parse_args()
 
 
 def logSysInfo():
     """Write system info to log file"""
-    logging.info('\n' + '#' * 70)
-    logging.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
-    logging.info('Running on [{0}] [{1}]'.format(platform.node(),
-                                                 platform.platform()))
-    logging.info('Python [{0}]'.format(sys.version))
-    logging.info('#' * 70 + '\n')
+    logger.info('#' * 70)
+    logger.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
+    logger.info('Running on [{0}] [{1}]'.format(platform.node(),
+                                                platform.platform()))
+    logger.info('Python [{0}]'.format(sys.version))
+    logger.info('#' * 70 + '\n')
 
 
 def logEndTime():
     """Write end info to log"""
-    logging.info('\n' + '#' * 70)
-    logging.info('Complete')
-    logging.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
-    logging.info('#' * 70 + '\n')
+    logger.info('\n' + '#' * 70)
+    logger.info('Complete')
+    logger.info(datetime.today().strftime("%A, %d %B %Y %I:%M%p"))
+    logger.info('#' * 70 + '\n')
 
+# MAIN
 if __name__ == '__main__':
-    parser = parseArgs()
-    args = parser.parse_args()
+    args = parseArgs()
+    if args.details:
+        print '\nThis is TaxonNamesResolver, version: [{0}]'.format(version)
+        print details
+        sys.exit()
+    if not args.names:
+        print 'No names file provided!'
+        print 'Type `TaxonNamesResolver.py -h` for help.'
+        sys.exit()
     if not os.path.isfile(args.names):
         print '[{0}] could not be found!'.format(args.names)
         sys.exit()
@@ -84,12 +77,15 @@ if __name__ == '__main__':
         datasource = 'NCBI'
     # simple logging, no levels, duplicate to console if verbose
     logfile = 'log.txt'
-    logging.basicConfig(filename=logfile, level=logging.INFO,
-                        format='%(message)s')
+    logger = logging.getLogger('')
+    logger.setLevel(logging.INFO)
+    loghandler = logging.FileHandler(logfile, 'a')
+    loghandler.setFormatter(logging.Formatter('%(message)s'))
+    logger.addHandler(loghandler)
     if args.verbose:
         console = logging.StreamHandler()
-        console.setLevel(logging.INFO)
-        logging.getLogger('').addHandler(console)
+        console.setFormatter(logging.Formatter('%(message)s'))
+        logger.addHandler(console)
     # log system info
     logSysInfo()
     resolver = Resolver(args.names, datasource, args.taxonid)

@@ -1,10 +1,21 @@
 #! /usr/bin/env python
 # D.J. Bennett
 # 01/06/2014
-"""
-TaxonNamesResolver is a python package for resolving taxonomic
-names through Global Names Resolver (Copyright (C) 2012-2013
-Marine Biological Laboratory).
+
+# Create namespace
+from taxon_names_resolver.resolver import Resolver
+from taxon_names_resolver.manip_tools import TaxDict
+from taxon_names_resolver.manip_tools import taxTree
+__doc__ = '''
+TaxonNamesResolver is a python package for resolving taxonomic names through
+Global Names Resolver (Copyright (C) 2012-2013 Marine Biological Laboratory).
+It was written by Dominic John Bennett with additional help from Lawrence
+Hudson.
+
+For details on how to use TaxonNamesResolver, please refer to its wiki:
+`https://github.com/DomBennett/TaxonNamesResolver/wiki`
+For any questions or comments, feel free to email:
+`dominic.john.bennett@gmail.com`.
 
 Copyright (C) 2014  Dominic John Bennett
 
@@ -21,8 +32,5 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-"""
-# Create namespace
-from taxon_names_resolver.resolver import Resolver
-from taxon_names_resolver.manip_tools import TaxDict
-from taxon_names_resolver.manip_tools import taxTree
+'''
+__version__ = '1.0.3'
