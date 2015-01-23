@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # Dom Bennett
 # 22/01/2015
+# TODO: add tutorial on advanced TaxDict usage
 '''
 Example script for using taxon_names_resolver
 '''
