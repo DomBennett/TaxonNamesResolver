@@ -29,7 +29,7 @@ through GNR. All output written in 'resolved_names' folder.
 See https://github.com/DomBennett/TaxonNamesResolver for details."""
 
     def __init__(self, input_file=None, datasource='NCBI', taxon_id=None,
-                 terms=None, logger=logging.getLogger('')):
+                 terms=None, lowrank=False, logger=logging.getLogger('')):
         # add logger
         self.logger = logger
         # organising dirs
@@ -64,6 +64,7 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
                           'classification_path_ranks', 'name_string',
                           'canonical_form', 'classification_path_ids',
                           'prescore', 'data_source_id', 'taxon_id', 'gni_uuid']
+        self.lowrank = lowrank  # return lowest ranked match
         # self.tnr_obj = [] # this will hold all output
 
     def _check(self, terms):
@@ -156,8 +157,8 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
     def _sieve(self, multiple_records):
         """Return json object without multiple returns per resolved name.\
 Names with multiple records are reduced by finding the name in the clade of\
-interest, have the highest score, have the lowest taxonomic rank and/or are\
-the first item returned."""
+interest, have the highest score, have the lowest taxonomic rank (if lowrank is
+true) and/or are the first item returned."""
         # TODO: Break up, too complex
         GnrStore = self._store
 
@@ -194,15 +195,16 @@ the first item returned."""
                               scores]
                 results = boolResults(results, bool_score)
                 # choose result resolved to lowest taxonomic rank
-                res_ranks = [result['classification_path_ranks'].split('|')[-1]
-                             for result in results]
-                for j, rank in enumerate(ranks):
-                    bool_rank = [1 if res_rank == rank else 0 for res_rank in
-                                 res_ranks]
-                    if sum(bool_rank) > 0:
-                        break
-                results = boolResults(results, bool_rank)
-                results = boolResults(results, bool_rank, rand=True)
+                if self.lowrank:
+                    res_ranks = [result['classification_path_ranks'].
+                                 split('|')[-1] for result in results]
+                    for j, rank in enumerate(ranks):
+                        bool_rank = [1 if res_rank == rank else 0 for res_rank in
+                                     res_ranks]
+                        if sum(bool_rank) > 0:
+                            break
+                    results = boolResults(results, bool_rank)
+                results = boolResults(results, [], rand=True)
             record = writeAsJson(term, results)
             sieved.append(record)
         return sieved
