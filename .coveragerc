@@ -1,0 +1,7 @@
+[run]
+source = taxon_names_resolver
+
+[report]
+omit =
+    */python?.?/*
+    */site-packages/nose/*
