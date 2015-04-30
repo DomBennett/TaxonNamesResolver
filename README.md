@@ -1,22 +1,37 @@
 # TaxonNamesResolver
+[![Coverage Status](https://coveralls.io/repos/DomBennett/TaxonNamesResolver/badge.svg?branch=master)](https://coveralls.io/r/DomBennett/TaxonNamesResolver?branch=master)
+
 A python package for the automatic search of taxon names against the
-[Global Names Resolver (GNR)](resolver.globalnames.org).
+[Global Names Resolver (GNR)][gnr].
 
-Features include:
+## Features
+
 * automatically resolve lists of taxonomic names within python or via command-line
-* generate a taxonomic tree from a list of names
-* identify unique lineages from a list of names
+* generate taxonomic trees
+* identify unique lineages
 
-See the [installation](https://github.com/DomBennett/TaxonNamesResolver/wiki/Installation)
-and [how to use?](https://github.com/DomBennett/TaxonNamesResolver/wiki/How-to-use%3F)
-pages for more details.
+## Installation and usage
 
-# Acknowledgements
-* Thanks to Lawrence Hudson for coding inspiration
-* Thanks to the GNR API and the [Global Names](http://www.globalnames.org/) family for creating this wonderful resource
+Click [here][wiki], to see the wiki for information on how to use and install.
 
-# Author
-Dominic John Bennett (dominic.john.bennett@gmail.com)
+## Version
+
+1.0.3
 
 ## License
-See [LICENSE.txt](https://raw.githubusercontent.com/DomBennett/TaxonNamesResolver/master/LICENSE.txt)
+
+GPL v.2
+
+## Acknowledgements
+
+Thanks to the GNR API and the [Global Names][gnr]
+
+## Authors
+
+[Dom Bennett][db] and [Lawrence Hudson][lh]
+
+<!-- References -->
+[db]: https://github.com/DomBennett
+[lh]: https://github.com/quicklizard99
+[wiki]: https://github.com/DomBennett/TaxonNamesResolver/wiki
+[gnr]: http://www.globalnames.org/
