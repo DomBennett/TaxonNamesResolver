@@ -208,7 +208,7 @@ def taxTree(taxdict):
     # the taxonomic dictionary holds the lineage of each ident in
     #  the same order as the taxonomy
     # use hierarchy to construct a taxonomic tree
-    for rank in taxdict.taxonomy[1:]:
+    for rank in taxdict.taxonomy:
         current_level = float(taxdict.taxonomy.index(rank))
         # get clades at this rank in hierarchy
         clades = taxdict.hierarchy[rank]
