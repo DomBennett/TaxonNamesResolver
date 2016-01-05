@@ -1,4 +1,4 @@
-# TaxonNamesResolver
+# Taxon Names Resolver
 [![Coverage Status](https://coveralls.io/repos/DomBennett/TaxonNamesResolver/badge.svg?branch=master)](https://coveralls.io/r/DomBennett/TaxonNamesResolver?branch=master)
 
 A python package for the automatic search of taxon names against the
