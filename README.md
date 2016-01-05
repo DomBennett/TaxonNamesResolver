@@ -1,32 +1,37 @@
 # Taxon Names Resolver
-[![Coverage Status](https://coveralls.io/repos/DomBennett/TaxonNamesResolver/badge.svg?branch=master)](https://coveralls.io/r/DomBennett/TaxonNamesResolver?branch=master)
+[![Coverage Status](https://coveralls.io/repos/DomBennett/TaxonNamesResolver/badge.svg?branch=master)](https://coveralls.io/r/DomBennett/TaxonNamesResolver?branch=master) [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.44342.svg)](http://dx.doi.org/10.5281/zenodo.44342)
 
 A python package for the automatic search of taxon names against the
 [Global Names Resolver (GNR)][gnr].
 
-## Features
+### Features
 
 * automatically resolve lists of taxonomic names within python or via command-line
 * generate taxonomic trees
 * identify unique lineages
 
-## Installation and usage
+### Installation and usage
 
 Click [here][wiki], to see the wiki for information on how to use and install.
 
-## Version
+### Version
 
-1.0.3
+1.0.4
 
-## License
+### License
 
 GPL v.2
 
-## Acknowledgements
+### Acknowledgements
 
 Thanks to the GNR API and the [Global Names][gnr]
 
-## Authors
+### Citation
+
+Please cite as:
+> Bennett, D.J. & Hudson, L. (2016) Taxon Names Resolver: a python package for interacting with Global Names Resolver. Zenodo, 10.5281/zenodo.44342
+
+### Authors
 
 [Dom Bennett][db] and [Lawrence Hudson][lh]
 
