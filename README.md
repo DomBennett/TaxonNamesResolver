@@ -29,7 +29,7 @@ Thanks to the GNR API and the [Global Names][gnr]
 ### Citation
 
 Please cite as:
-> Bennett, D.J. & Hudson, L. (2016) Taxon Names Resolver: a python package for interacting with Global Names Resolver. Zenodo, 10.5281/zenodo.44342
+> Bennett, D.J. & Hudson, L. (2016) Taxon Names Resolver: the automatic search of taxon names against the Global Names Resolver. Zenodo, 10.5281/zenodo.44342
 
 ### Authors
 
