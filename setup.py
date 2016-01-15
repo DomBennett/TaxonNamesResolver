@@ -5,11 +5,13 @@
 """
 TaxonNamesResolver setup
 """
+from __future__ import absolute_import
 
 # PACKAGES
 import os
 import taxon_names_resolver
 from setuptools import setup, find_packages
+from six.moves import zip
 
 # FIND
 PACKAGES = find_packages()
@@ -30,7 +32,7 @@ setup(
     url="https://github.com/DomBennett/TaxonNamesResolver",
     download_url=url,
     packages=PACKAGES,
-    package_dir=dict(zip(PACKAGES, PACKAGE_DIRS)),
+    package_dir=dict(list(zip(PACKAGES, PACKAGE_DIRS))),
     test_suite='tests',
     scripts=['TaxonNamesResolver.py'],
     long_description=taxon_names_resolver.__doc__,

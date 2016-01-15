@@ -4,13 +4,14 @@
 """
 Tools for interacting with the GNR.
 """
+from __future__ import absolute_import
 
 import time
 import contextlib
 import json
-import urllib
-import urllib2
 import os
+import six
+from six.moves import urllib
 
 
 # FUNCTIONS
@@ -20,7 +21,7 @@ def safeReadJSON(url, logger, max_check=6, waittime=30):
     # try, try and try again ....
     while counter < max_check:
         try:
-            with contextlib.closing(urllib2.urlopen(url)) as f:
+            with contextlib.closing(urllib.request.urlopen(url)) as f:
                 res = json.loads(f.read())
             return res
         except Exception as errmsg:
@@ -91,7 +92,7 @@ Return JSON object."""
         # TODO(07/06/2013): record DSs used
         alt_terms = []
         for record in jobj:
-            if 'results' not in record.keys():
+            if 'results' not in list(record.keys()):
                 pass
             else:
                 term = record['supplied_name_string']
@@ -134,7 +135,7 @@ Return JSON object."""
 
     def _query(self, terms, data_source_ids):
         ds_ids = [str(id) for id in data_source_ids]
-        terms = [urllib.quote(unicode(t).encode('utf8')) for t in terms]
+        terms = [urllib.parse.quote(six.text_type(t).encode('utf8')) for t in terms]
         url = ('http://resolver.globalnames.org/name_resolvers.json?' +
                'data_source_ids=' + '|'.join(ds_ids) + '&' +
                'resolve_once=false&' + 'names=' + '|'.join(terms))
@@ -174,7 +175,7 @@ class GnrStore(dict):
             for record in jobj:
                 term = record['supplied_name_string']
                 try:
-                    if 'results' in record.keys():
+                    if 'results' in list(record.keys()):
                         results = self._filter(record['results'])
                         self[term].extend(results)
                 except KeyError:
@@ -184,7 +185,7 @@ class GnrStore(dict):
         for record in jobj:
             term = record['supplied_name_string']
             try:
-                if 'results' in record.keys():
+                if 'results' in list(record.keys()):
                     results = self._filter(record['results'])
                     self[term] = results
                 else:

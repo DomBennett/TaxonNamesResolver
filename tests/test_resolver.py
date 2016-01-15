@@ -2,6 +2,7 @@
 """
 Tests for Resolver
 """
+from __future__ import absolute_import
 
 import unittest
 import json
@@ -132,7 +133,7 @@ speciesA,GenusA speciesA,|51|41|31|21|11|1,3|0|0,1,1,test_number1'
         # test the searches
         # the results should equal 10
         self.resolver1.main()
-        res = self.resolver1._store.keys()
+        res = list(self.resolver1._store.keys())
         self.assertEqual(len(res), 10)
 
     def test_resolver_private_sieve(self):

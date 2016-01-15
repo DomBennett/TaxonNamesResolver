@@ -5,6 +5,8 @@
 '''
 Example script for using taxon_names_resolver
 '''
+from __future__ import absolute_import
+from __future__ import print_function
 
 # SETUP LOGGING (OPTIONAL)
 import logging
@@ -68,13 +70,13 @@ taxdict['Homo sapiens']['ident']
 taxdict['Arabidopsis thaliana']['cident']  # A. thaliana is the only plant
 # the 'taxref', a holder of 'ident' and taxonomic posistion. Requires printing
 #  e.g. C. tytonis could only resolved to the genus level (22/01/2015)
-print taxdict['Chlorotalpa tytonis']['taxref']
+print(taxdict['Chlorotalpa tytonis']['taxref'])
 # check the taxonomy
-print taxdict.taxonomy
+print(taxdict.taxonomy)
 # check the hierarchy, a dictionary of taxrefs ranked and grouped in the form:
 #  {'rank':[([taxref1, taxref2, ....],'lineage1'),
 #           ([taxref3, taxref4, ....],'lineage2'), ....]}
-print taxdict.hierarchy
+print(taxdict.hierarchy)
 # we've also added an extra data slot
 taxdict['Homo sapiens']['extra']
 

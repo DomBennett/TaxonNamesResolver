@@ -2,6 +2,7 @@
 """
 Tests for misc tools
 """
+from __future__ import absolute_import
 
 import unittest
 from taxon_names_resolver import manip_tools as mt
@@ -140,7 +141,7 @@ class ManipToolsTestSuite(unittest.TestCase):
         rung = taxdict._group(taxslice)
         self.assertEqual(len(rung), 2)
         # all the levels of the taxonomy should be in the hierarchy
-        self.assertTrue(all([e in taxonomy for e in taxdict.hierarchy.keys()]))
+        self.assertTrue(all([e in taxonomy for e in list(taxdict.hierarchy.keys())]))
         # Bacillus subtilus is the ONLY bacteria
         self.assertEqual(taxdict['Bacillus subtilus']['cident'], 'Bacteria')
 
