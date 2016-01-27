@@ -22,7 +22,7 @@ def safeReadJSON(url, logger, max_check=6, waittime=30):
     while counter < max_check:
         try:
             with contextlib.closing(urllib.request.urlopen(url)) as f:
-                res = json.loads(f.read())
+                res = json.loads(f.read().decode('utf8'))
             return res
         except Exception as errmsg:
             logger.info('----- GNR error [{0}] : retrying ----'.format(errmsg))
