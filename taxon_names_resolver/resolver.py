@@ -230,8 +230,16 @@ true) and/or are the first item returned."""
                     for key_term in headers[1:]:
                         element = results[0][key_term]
                         # GNR returns UTF-8, csv requires ascii
-                        if 'encode' in dir(element):
-                            element = element.encode('ascii')
+                        #
+                        # *** Note ***
+                        # According to all docs for csv versions >= 2.6, csv
+                        # can handle either UTF-8 or ascii, just not Unicode.
+                        # In py3, the following two lines result in csv printing
+                        # the element with a bitstring. If GNR is actually
+                        # returning UTF-8, it seems easiest to just drop these
+
+                        # if 'encode' in dir(element):
+                        #     element = element.encode('ascii')
                         row.append(element)
                     writer.writerow(row)
         if len(unresolved) > 0:
