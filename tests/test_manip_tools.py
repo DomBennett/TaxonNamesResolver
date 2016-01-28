@@ -155,8 +155,7 @@ class ManipToolsTestSuite(unittest.TestCase):
     def test_taxtree(self):
         taxdict = mt.TaxDict(idents=idents, ranks=ranks, lineages=lineages)
         treestring = mt.taxTree(taxdict)
-        print(treestring)
-        # not the best test as newick string order can be arbritrary
+        
         self.assertEqual(treestring, '((((Ailuropoda_melanoleuca:9.0,\
 Ailurus_fulgens:9.0)Caniformia_suborder:6.0,Chlorotalpa_tytonis:13.0,\
 ((((Gorilla_gorilla:4.0,Homo_sapiens:4.0)Homininae_subfamily:1.0,\
