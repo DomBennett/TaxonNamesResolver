@@ -135,7 +135,7 @@ same length as idents')
         if level >= len(self.taxonomy):
             raise IndexError('Level greater than size of taxonomy')
         res = []
-        for ident in list(self.keys()):
+        for ident in sorted(list(self.keys())):
             res.append((self[ident]['taxref'], self[ident]['lineage'][level]))
         return res
 
