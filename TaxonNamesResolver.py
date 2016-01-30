@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from __future__ import print_function
 #! /usr/bin/env python
 # D.J. Bennett
 # 16/05/2014
@@ -60,17 +62,17 @@ def logEndTime():
 if __name__ == '__main__':
     args = parseArgs()
     if args.details:
-        print '\nThis is TaxonNamesResolver, version: [{0}]'.format(version)
-        print details
+        print('\nThis is TaxonNamesResolver, version: [{0}]'.format(version))
+        print(details)
         sys.exit()
     if not args.names:
-        print 'No names file provided!'
-        print 'Type `TaxonNamesResolver.py -h` for help.'
+        print('No names file provided!')
+        print('Type `TaxonNamesResolver.py -h` for help.')
         sys.exit()
     if not os.path.isfile(args.names):
-        print '[{0}] could not be found!'.format(args.names)
+        print('[{0}] could not be found!'.format(args.names))
         sys.exit()
-    print '\n' + description + '\n'
+    print('\n' + description + '\n')
     if args.datasource:
         datasource = args.datasource
     else:
@@ -93,4 +95,4 @@ if __name__ == '__main__':
     resolver.write()
     logEndTime()
     if not args.verbose:
-        print '\nComplete\n'
+        print('\nComplete\n')

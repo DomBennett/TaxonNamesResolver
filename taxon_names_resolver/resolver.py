@@ -6,6 +6,7 @@
 """
 Resolver class for parsing GNR records.
 """
+from __future__ import absolute_import
 
 import json
 import os
@@ -13,9 +14,10 @@ import csv
 import re
 import copy
 import logging
-from gnr_tools import GnrStore
-from gnr_tools import GnrResolver
-import urllib
+from .gnr_tools import GnrStore
+from .gnr_tools import GnrResolver
+import six
+from six.moves import zip, urllib
 
 
 # CLASSES
@@ -71,7 +73,7 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
         """Check terms do not contain unknown characters"""
         for t in terms:
             try:
-                _ = urllib.quote(unicode(t).encode('utf8'))
+                _ = urllib.parse.quote(six.text_type(t).encode('utf8'))
             except:
                 self.logger.error('Unknown character in [{0}]!'.format(t))
                 self.logger.error('.... remove character and try again.')
@@ -141,7 +143,7 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
         #  greater or less than nrecords
         GnrStore = self._store
         assessed = []
-        lens = [len(GnrStore[key]) for key in GnrStore.keys()]
+        lens = [len(GnrStore[key]) for key in list(GnrStore.keys())]
         if greater:
             len_bools = [each > nrecords for each in lens]
         else:
@@ -216,10 +218,10 @@ true) and/or are the first item returned."""
         txt_file = os.path.join(self.outdir, 'unresolved.txt')
         headers = self.key_terms
         unresolved = []
-        with open(csv_file, 'wb') as file:
+        with open(csv_file, 'w') as file:
             writer = csv.writer(file)
             writer.writerow(headers)
-            for key in self._store.keys():
+            for key in list(self._store.keys()):
                 results = self._store[key]
                 if len(results) == 0:
                     unresolved.append(key)
@@ -228,8 +230,16 @@ true) and/or are the first item returned."""
                     for key_term in headers[1:]:
                         element = results[0][key_term]
                         # GNR returns UTF-8, csv requires ascii
-                        if 'encode' in dir(element):
-                            element = element.encode('ascii')
+                        #
+                        # *** Note ***
+                        # According to all docs for csv versions >= 2.6, csv
+                        # can handle either UTF-8 or ascii, just not Unicode.
+                        # In py3, the following two lines result in csv printing
+                        # the element with a bitstring. If GNR is actually
+                        # returning UTF-8, it seems easiest to just drop these
+
+                        # if 'encode' in dir(element):
+                        #     element = element.encode('ascii')
                         row.append(element)
                     writer.writerow(row)
         if len(unresolved) > 0:
@@ -249,7 +259,7 @@ Possible terms (02/12/2013): 'query_name', 'classification_path',
 valid terms.')
         store = self._store
         retrieved = []
-        for key in store.keys():
+        for key in list(store.keys()):
             # take copy, so changes made to the returned list do not affect
             #  store
             record = copy.deepcopy(store[key])

@@ -4,9 +4,11 @@
 """
 misc tools
 """
+from __future__ import absolute_import
 
 # PACKAGES
 import re
+from six.moves import range
 
 # GLOBALS
 # nodes on a taxonomic tree
@@ -120,7 +122,7 @@ class TaxDict(dict):
     def _additional(self, idents, kwargs):
         '''Add additional data slots from **kwargs'''
         if kwargs:
-            for name, value in kwargs.items():
+            for name, value in list(kwargs.items()):
                 if not isinstance(value, list):
                     raise ValueError('Additional arguments must be lists of \
 same length as idents')
@@ -133,7 +135,7 @@ same length as idents')
         if level >= len(self.taxonomy):
             raise IndexError('Level greater than size of taxonomy')
         res = []
-        for ident in self.keys():
+        for ident in sorted(list(self.keys())):
             res.append((self[ident]['taxref'], self[ident]['lineage'][level]))
         return res
 

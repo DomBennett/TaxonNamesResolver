@@ -2,6 +2,7 @@
 """
 Tests for GNR tools
 """
+from __future__ import absolute_import
 
 import unittest
 import json

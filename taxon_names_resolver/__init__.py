@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 #! /usr/bin/env python
 # D.J. Bennett
 # 01/06/2014
