@@ -5,6 +5,7 @@
 '''
 Example script for using taxon_names_resolver
 '''
+# this is for forward compatibility with python 3
 from __future__ import absolute_import
 from __future__ import print_function
 
