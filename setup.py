@@ -42,5 +42,5 @@ setup(
         "Programming Language :: Python :: 2.7",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools', 'six'],
 )
