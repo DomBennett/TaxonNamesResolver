@@ -1,9 +1,9 @@
-from __future__ import absolute_import
 #! /usr/bin/env python
 # D.J. Bennett
 # 01/06/2014
 
 # Create namespace
+from __future__ import absolute_import
 from taxon_names_resolver.resolver import Resolver
 from taxon_names_resolver.manip_tools import TaxDict
 from taxon_names_resolver.manip_tools import taxTree
@@ -18,7 +18,7 @@ For details on how to use TaxonNamesResolver, please refer to its wiki:
 For any questions or comments, feel free to email:
 `dominic.john.bennett@gmail.com`.
 
-Copyright (C) 2014  Dominic John Bennett
+Copyright (C) 2014-2016  Dominic John Bennett
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -34,4 +34,4 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 '''
-__version__ = '1.0.4'
+__version__ = '1.0.5'
