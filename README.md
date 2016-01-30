@@ -17,7 +17,7 @@ Click [here][wiki], to see the wiki for information on how to use and install.
 
 ### Version
 
-1.0.4
+1.0.5
 
 ### License
 
@@ -30,14 +30,15 @@ Thanks to the GNR API and the [Global Names][gnr]
 ### Citation
 
 Please cite as:
-> Bennett, D.J. & Hudson, L.N. (2016) Taxon Names Resolver: a python package for the automatic search of taxon names against the Global Names Resolver. Zenodo, 10.5281/zenodo.44342
+> Bennett, D.J., Sanders, J. & Hudson, L.N. (2016) Taxon Names Resolver: a python package for the automatic search of taxon names against the Global Names Resolver. Zenodo, 10.5281/zenodo.44342
 
 ### Authors
 
-[Dom Bennett][db] and [Lawrence Hudson][lh]
+[D.J. Bennett][db], [J. Sanders][js] and [L. Hudson][lh]
 
 <!-- References -->
 [db]: https://github.com/DomBennett
+[js]: https://github.com/tanaes
 [lh]: https://github.com/quicklizard99
 [wiki]: https://github.com/DomBennett/TaxonNamesResolver/wiki
 [gnr]: http://www.globalnames.org/
