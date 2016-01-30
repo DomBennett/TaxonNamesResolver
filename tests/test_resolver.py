@@ -115,31 +115,31 @@ data_source_id,taxon_id,gni_uuid'
         exp_results = ['GenusA speciesA,|kingdomA|phylumA|orderA|familyA|genusA|speciesA,\
 test_source,1,1.0,|kingdom|phylum|order|family|genus|species,\
 GenusA speciesA,GenusA speciesA,|51|41|31|21|11|1,3|0|0,1,1,test_number1',
-'GenusA speciesB,|kingdomA|phylumA|orderA|familyA|genusA|speciesB,\
+                       'GenusA speciesB,|kingdomA|phylumA|orderA|familyA|genusA|speciesB,\
 test_source,1,1.0,|kingdom|phylum|order|family|genus|species,\
 GenusA speciesB,GenusA speciesB,|51|41|31|21|11|2,3|0|0,1,2,test_number2',
-'GenusA speciesC,|kingdomA|phylumA|orderA|familyA|genusA|speciesC,\
+                       'GenusA speciesC,|kingdomA|phylumA|orderA|familyA|genusA|speciesC,\
 test_source,1,1.0,|kingdom|phylum|order|family|genus|species,\
 GenusA speciesC,GenusA speciesC,|51|41|31|21|11|3,3|0|0,1,3,test_number3',
-'GenusC speciesF,|kingdomA|phylumA|orderA|familyB|genusC|speciesF,\
+                       'GenusC speciesF,|kingdomA|phylumA|orderA|familyB|genusC|speciesF,\
 test_source,1,1.0,|kingdom|phylum|order|family|genus|species,\
 GenusC speciesF,GenusC speciesF,|51|41|31|22|13|6,3|0|0,1,6,test_number6',
-'GenusD speciesG,|kingdomA|phylumA|orderB|familyC|genusD|speciesG,\
+                       'GenusD speciesG,|kingdomA|phylumA|orderB|familyC|genusD|speciesG,\
 test_source,1,1.0,|kingdom|phylum|order|family|genus|species,\
 GenusD speciesG,GenusD speciesG,|51|41|32|23|14|7,3|0|0,1,7,test_number7',
-'GenusB speciesE,|kingdomA|phylumA|orderA|familyA|genusB|speciesE,\
+                       'GenusB speciesE,|kingdomA|phylumA|orderA|familyA|genusB|speciesE,\
 test_source,1,1.0,|kingdom|phylum|order|family|genus|species,\
 GenusB speciesE,GenusB speciesE,|51|41|31|21|12|5,3|0|0,1,5,test_number5',
-'GenusB speciesD,|kingdomA|phylumA|orderA|familyA|genusB|speciesD,\
+                       'GenusB speciesD,|kingdomA|phylumA|orderA|familyA|genusB|speciesD,\
 test_source,1,1.0,|kingdom|phylum|order|family|genus|species,\
 GenusB speciesD,GenusB speciesD,|51|41|31|21|12|4,3|0|0,1,4,test_number4',
-'GenusF speciesI,|kingdomA|phylumC|orderD|familyE|genusF|speciesI,\
+                       'GenusF speciesI,|kingdomA|phylumC|orderD|familyE|genusF|speciesI,\
 test_source,1,1.0,|kingdom|phylum|order|family|genus|species,\
 GenusF speciesI,GenusF speciesI,|51|43|34|25|16|9,3|0|0,1,9,test_number9',
-'GenusE speciesH,|kingdomA|phylumB|orderC|familyD|genusE|speciesH,\
+                       'GenusE speciesH,|kingdomA|phylumB|orderC|familyD|genusE|speciesH,\
 test_source,1,1.0,|kingdom|phylum|order|family|genus|species,\
 GenusE speciesH,GenusE speciesH,|51|42|33|24|15|8,3|0|0,1,8,test_number8']
-        
+
         self.resolver2.write()
         with open(os.path.join('resolved_names', 'unresolved.txt'), 'r')\
                 as f:
@@ -149,10 +149,6 @@ GenusE speciesH,GenusE speciesH,|51|42|33|24|15|8,3|0|0,1,8,test_number8']
         with open(os.path.join('resolved_names', 'search_results.csv'), 'r')\
                 as f:
             obs_lines = [line.rstrip() for line in f]
-
-        print(obs_lines[1:])
-        print('\n\nobserved\n\n')
-        print(exp_results)
         self.assertEqual(exp_header, obs_lines[0])
         six.assertCountEqual(self, exp_results, obs_lines[1:])
 

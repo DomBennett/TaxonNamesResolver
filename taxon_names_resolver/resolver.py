@@ -89,8 +89,8 @@ See https://github.com/DomBennett/TaxonNamesResolver for details."""
         original_names = []
         while True:
             if primary_bool:
-                self.logger.info('Searching [{0}] ...'.
-                             format(self.primary_datasource))
+                self.logger.info('Searching [{0}] ...'.format(
+                    self.primary_datasource))
             else:
                 self.logger.info('Searching other datasources ...')
             res = self._res.search(search_terms, prelim=primary_bool)
@@ -201,8 +201,8 @@ true) and/or are the first item returned."""
                     res_ranks = [result['classification_path_ranks'].
                                  split('|')[-1] for result in results]
                     for j, rank in enumerate(ranks):
-                        bool_rank = [1 if res_rank == rank else 0 for res_rank in
-                                     res_ranks]
+                        bool_rank = [1 if res_rank == rank else 0 for res_rank
+                                     in res_ranks]
                         if sum(bool_rank) > 0:
                             break
                     results = boolResults(results, bool_rank)
