@@ -1,6 +1,7 @@
 # Taxon Names Resolver
 [![Build Status](https://travis-ci.org/DomBennett/TaxonNamesResolver.svg)](https://travis-ci.org/DomBennett/TaxonNamesResolver)
-[![Coverage Status](https://coveralls.io/repos/DomBennett/TaxonNamesResolver/badge.svg?branch=master)](https://coveralls.io/r/DomBennett/TaxonNamesResolver?branch=master) [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.44342.svg)](http://dx.doi.org/10.5281/zenodo.44342)
+[![Coverage Status](https://coveralls.io/repos/DomBennett/TaxonNamesResolver/badge.svg?branch=master)](https://coveralls.io/r/DomBennett/TaxonNamesResolver?branch=master) 
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.45342.svg)](http://dx.doi.org/10.5281/zenodo.45342)
 
 A python package for the automatic search of taxon names against the
 [Global Names Resolver (GNR)][gnr].
