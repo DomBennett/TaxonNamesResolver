@@ -73,7 +73,14 @@ Return JSON object."""
             self._write(res)
             return res
         else:  # search other DSs for alt names, search DS with these
-            res = self._resolve(terms, self.otherIds)
+            # quick fix: https://github.com/DomBennett/TaxonNamesResolver/issues/5
+            # seems to be due to limit on number of ids in single request
+            # switiching to a for loop for each data source
+            # appending all results into single res
+            res = []
+            for ds_id in self.otherIds:
+                tmp = self._resolve(terms, [ds_id])
+                res.append(tmp[0])
             self._write(res)
             alt_terms = self._parseNames(res)
             if len(alt_terms) == 0:
