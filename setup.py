@@ -40,6 +40,8 @@ setup(
         "Development Status :: 4 - Beta",
         "Topic :: Scientific/Engineering :: Bio-Informatics",
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     ],
     install_requires=['setuptools', 'six'],
