@@ -1,10 +1,10 @@
-from __future__ import absolute_import
-from __future__ import print_function
 #! /usr/bin/env python
 # D.J. Bennett
 # 16/05/2014
 
 # Import
+from __future__ import absolute_import
+from __future__ import print_function
 import os
 import sys
 import argparse
