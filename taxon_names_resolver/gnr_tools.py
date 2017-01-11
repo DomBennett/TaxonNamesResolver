@@ -68,6 +68,8 @@ class GnrResolver(object):
         """Search terms against GNR. If prelim = False, search other datasources \
 for alternative names (i.e. synonyms) with which to search main datasource.\
 Return JSON object."""
+        #TODO: There are now lots of additional data sources, make additional
+        # searching optional (11/01/2017)
         if prelim:  # preliminary search
             res = self._resolve(terms, self.Id)
             self._write(res)
@@ -162,7 +164,14 @@ class GnrStore(dict):
 
     def __init__(self, terms, logger, tax_group=None):
         self.logger = logger
-        self.tax_group = tax_group
+        # Issue 6: suggest multiple tax_groups, not just one
+        if not tax_group:
+            self.tax_group = tax_group
+        else:
+            if not isinstance(tax_group, list):
+                tax_group = [tax_group]
+            # ensure strings
+            self.tax_group = [str(e) for e in tax_group]
         for term in terms:
             self[term] = []
 
@@ -173,7 +182,7 @@ class GnrStore(dict):
         filtered = []
         for result in results:
             classids = result['classification_path_ids'].split('|')
-            if self.tax_group in classids:
+            if any([True if e in classids else False for e in self.tax_group]):
                 filtered.append(result)
         return filtered
 
