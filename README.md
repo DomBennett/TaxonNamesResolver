@@ -19,7 +19,7 @@ Click [here][wiki], to see the wiki for information on how to use and install.
 
 ### Version
 
-1.0.6
+1.0.7
 
 ### License
 

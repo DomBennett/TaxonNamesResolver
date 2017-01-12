@@ -18,7 +18,7 @@ For details on how to use TaxonNamesResolver, please refer to its wiki:
 For any questions or comments, feel free to email:
 `dominic.john.bennett@gmail.com`.
 
-Copyright (C) 2014-2016  Dominic John Bennett
+Copyright (C) 2014-2017  Dominic John Bennett
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -34,4 +34,4 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 '''
-__version__ = '1.0.6'
+__version__ = '1.0.7'
