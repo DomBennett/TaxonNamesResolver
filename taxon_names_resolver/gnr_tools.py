@@ -68,7 +68,7 @@ class GnrResolver(object):
         """Search terms against GNR. If prelim = False, search other datasources \
 for alternative names (i.e. synonyms) with which to search main datasource.\
 Return JSON object."""
-        #TODO: There are now lots of additional data sources, make additional
+        # TODO: There are now lots of additional data sources, make additional
         # searching optional (11/01/2017)
         if prelim:  # preliminary search
             res = self._resolve(terms, self.Id)
