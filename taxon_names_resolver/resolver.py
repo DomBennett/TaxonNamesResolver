@@ -199,12 +199,22 @@ true) and/or are the first item returned."""
                 # choose result resolved to lowest taxonomic rank
                 if self.lowrank:
                     res_ranks = [result['classification_path_ranks'].
-                                 split('|')[-1] for result in results]
-                    for j, rank in enumerate(ranks):
-                        bool_rank = [1 if res_rank == rank else 0 for res_rank
-                                     in res_ranks]
-                        if sum(bool_rank) > 0:
-                            break
+                                 split('|') for result in results]
+                    # calculate 'rank scores' for named and un-named ranks
+                    nmd_rnks = []
+                    unnmd_rnks = []
+                    for rs in res_ranks:
+                        nmd_rnks.append(min([j for j,e in enumerate(ranks) if
+                                             e in rs]))
+                        unnmd_rnk = [j for j,e in enumerate(rs) if
+                                     e == ranks[nmd_rnks[-1]]][0]
+                        unnmd_rnk -= len(rs)
+                        unnmd_rnks.append(unnmd_rnk)
+                    # calculate bool
+                    unnmd_rnks = [e if nmd_rnks[j] == min(nmd_rnks) else 0 for
+                                  j,e in enumerate(unnmd_rnks)]
+                    bool_rank = [1 if e == min(unnmd_rnks) else 0 for e in
+                                 unnmd_rnks]
                     results = boolResults(results, bool_rank)
                 results = boolResults(results, [], rand=True)
             record = writeAsJson(term, results)
